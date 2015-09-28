@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](0_0_frontpage.md)
-* [Using Unix and Apocrita](1_0_using_unix_and_apocrita..md)
+* [Using Unix and Apocrita](1_0_using_unix_and_apocrita.md)
    * [What is Apocrita?](1_1_what_is_apocrita.md)
    * [Connecting to Apocrita](1_2_connecting_to_apocrita.md)
    * [Launching a job on Apocrita](1_3_launching_a_job_on_apocrita.md)
