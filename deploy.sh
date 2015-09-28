@@ -2,18 +2,18 @@
 
 set -o errexit -o nounset
 
-# rev=$(git rev-parse --short HEAD)
+rev=$(git rev-parse --short HEAD)
 
-# rm -r gitbook
-# mv src/_book/* .
+cd _book
+git init
 
-# git config user.name "IsmailM"
-# git config user.email "ismail.moghul@gmail.com"
-# git config --global push.default simple
+git config user.name "IsmailM"
+git config user.email "ismail.moghul@gmail.com"
+git remote add deploy "https://$GH_TOKEN@github.com/sbcs-informatics/sbcs-informatics.github.io.git"
 
-# git remote add deploy "https://$GH_TOKEN@github.com/sbcs-informatics/sbcs-informatics.github.io.git"
+git fetch deploy master
+git reset deploy/master
 
-# git add -A .
-# git commit -m "build website at ${rev} [ci skip]"
-# git push deploy HEAD:master
-
+git add -A .
+git commit -m "build website at ${rev}"
+git push deploy HEAD:master
