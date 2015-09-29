@@ -1,4 +1,4 @@
-SBCS-Informatics
+#SBCS-Informatics
 =======
 
-This website is:...
+Click on the menu on the left to navigate through the website.
