@@ -1,6 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
+
 * [Using Unix and Apocrita](1_0_using_unix_and_apocrita.md)
    * [What is Apocrita?](1_1_what_is_apocrita.md)
    * [Connecting to Apocrita](1_2_connecting_to_apocrita.md)
