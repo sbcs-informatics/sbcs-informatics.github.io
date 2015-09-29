@@ -20,7 +20,7 @@
         
     
     
-    <link rel="next" href="./1_5_copying_&amp;_downloading_files.html" />
+    <link rel="next" href="./2_0_contact_us.html" />
     
     
     <link rel="prev" href="./1_3_launching_a_job_on_apocrita.html" />
@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="2.4" data-basepath="." data-revision="Mon Sep 28 2015 14:09:54 GMT+0000 (UTC)">
+    <div class="book" data-level="2.4" data-basepath="." data-revision="Tue Sep 29 2015 13:18:51 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -163,75 +163,35 @@
     
         <li class="chapter " data-level="2.5" data-path="1_5_copying_&amp;_downloading_files.html">
             
-                
-                    <a href="./1_5_copying_&amp;_downloading_files.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.5.</b>
-                        
-                        Copying &amp; Downloading Files
-                    </a>
-                
+            <span><b>2.5.</b> Copying &amp; Downloading Files</span>
             
             
         </li>
     
         <li class="chapter " data-level="2.6" data-path="1_6_dealing_with_compressed_files.html">
             
-                
-                    <a href="./1_6_dealing_with_compressed_files.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.6.</b>
-                        
-                        Dealing with Compressed Files
-                    </a>
-                
+            <span><b>2.6.</b> Dealing with Compressed Files</span>
             
             
         </li>
     
         <li class="chapter " data-level="2.7" data-path="1_7_compiling_a_piece_of_software.html">
             
-                
-                    <a href="./1_7_compiling_a_piece_of_software.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.7.</b>
-                        
-                        Compiling a piece of software
-                    </a>
-                
+            <span><b>2.7.</b> Compiling a piece of software</span>
             
             
         </li>
     
         <li class="chapter " data-level="2.8" data-path="1_8_r.html">
             
-                
-                    <a href="./1_8_r.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.8.</b>
-                        
-                        R
-                    </a>
-                
+            <span><b>2.8.</b> R</span>
             
             
         </li>
     
         <li class="chapter " data-level="2.9" data-path="1_9_handy_shortcuts.html">
             
-                
-                    <a href="./1_9_handy_shortcuts.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.9.</b>
-                        
-                        Handy Shortcuts
-                    </a>
-                
+            <span><b>2.9.</b> Handy Shortcuts</span>
             
             
         </li>
@@ -389,35 +349,7 @@ cd ../../anthr_dir/subdir2   #as many as you want
 </code></pre><blockquote>
 <p><em>Note: On Mac, it&apos;s possible to click and drag the desired location of a directory or file from the finder (by the icon) to the terminal. Just type <code>cd</code> followed by a space, click &amp; drag, hit enter. You can do this from any starting point.</em></p>
 </blockquote>
-<hr>
-<h2 id="5-playing-with-files">5. Playing with Files</h2>
-<h3 id="creating-a-new-directory">Creating a new directory</h3>
-<p>The <code>mkdir</code> command will create a directory inside your current location.</p>
-<pre><code>mkdir newdirectoryname 
-</code></pre><h3 id="moving-files-in-local-machine">Moving files in local machine</h3>
-<p>The <code>mv</code> command will remove a file or directory from its current location and place it elsewhere. The syntax is, &quot;move, current location, new location&quot;. It can also be used to rename files.</p>
-<p>If the new location is a file, the file is renamed:</p>
-<pre><code>mv oldfile newfile
-</code></pre><p> or if the target is a directory, the file is moved:</p>
-<pre><code>mv oldfile newdirectory/  
-</code></pre><h3 id="delete-files-or-directories">Delete files or directories</h3>
-<p>Delete files with the &apos;remove&apos; command, <code>rm</code>:</p>
-<pre><code>rm filename
-</code></pre><p>or for a directory <code>rmdir</code>, the directory has to be empty:</p>
-<pre><code>rmdir directory/
-</code></pre><p>You can use <code>rm</code> to remove directories with the <code>-r</code> option, it removes files in a directory recursively. Be careful when using <code>rm</code>, once you hit enter, the files are gone. After adding &amp; removing files and directories, you can check and make sure it&apos;s worked using the <code>ls</code> command.</p>
-<h3 id="viewing-different-parts-of-an-existing-file">Viewing different parts of an existing file</h3>
-<p><code>less</code> shows a small portion of the file, <code>more</code> shows a larger portion (according to the manual, it will display your file &apos;one screen&apos;s worth of lines at a time&apos;). <code>head</code> displays the first ten lines, and <code>tail</code> displays the last ten lines.</p>
-<pre><code>less filename.extension
-more filename.extension
-</code></pre><p>The head and tail commands can be modified to show a specific number of lines, with a flag <code>-n</code>, where n= number of lines:</p>
-<pre><code>head -15 file.txt   #displays the first 15 lines
-tail file.txt       #displays the last 10 lines (default)
-</code></pre><h3 id="searching-for-a-pattern-within-a-file">Searching for a pattern within a file</h3>
-<p>The <code>grep</code> function searches for a particular pattern of characters. The syntax for the grep function is: &apos;grep, &quot;pattern&quot;, file-to-look-in&apos;.
-   e.g. </p>
-<pre><code>grep &quot;scaffold&quot; genome.fasta
-</code></pre>
+
                     
                     </section>
                 
@@ -430,7 +362,7 @@ tail file.txt       #displays the last 10 lines (default)
         <a href="./1_3_launching_a_job_on_apocrita.html" class="navigation navigation-prev " aria-label="Previous page: Launching a job on Apocrita"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./1_5_copying_&amp;_downloading_files.html" class="navigation navigation-next " aria-label="Next page: Copying &amp; Downloading Files"><i class="fa fa-angle-right"></i></a>
+        <a href="./2_0_contact_us.html" class="navigation navigation-next " aria-label="Next page: Contact Us"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
