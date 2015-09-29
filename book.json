@@ -6,5 +6,10 @@
                 "base": "https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src",
                 "label": "Edit"
             }
+    },
+    
+    "structure": {
+        "readme": "0_0_frontpage.md"
     }
+
 }
