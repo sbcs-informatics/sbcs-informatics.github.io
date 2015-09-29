@@ -12,5 +12,5 @@
    * [Compiling a piece of software](1_8_compiling_a_piece_of_software.md)
    * [R](1_9_r.md)
    * [Handy Shortcuts](1_10_handy_shortcuts.md)
-* [Contact Us](2_0_contact_us.md)
+* [Contact](3_0_contact.md)
 
