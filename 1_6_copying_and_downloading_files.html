@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Introduction | SBCS-Informatics</title>
+        <title>Copying &amp; Downloading Files | SBCS-Informatics</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.1">
@@ -20,10 +20,10 @@
         
     
     
-    <link rel="next" href="./1_0_using_unix_and_apocrita.html" />
+    <link rel="next" href="./1_7_dealing_with_compressed_files.html" />
     
     
-    <link rel="prev" href="./index.html" />
+    <link rel="prev" href="./1_5_playing_with_files.html" />
     
 
         
@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1" data-basepath="." data-revision="Tue Sep 29 2015 13:23:22 GMT+0000 (UTC)">
+    <div class="book" data-level="2.6" data-basepath="." data-revision="Tue Sep 29 2015 13:23:22 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -70,7 +70,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="0_0_frontpage.html">
+        <li class="chapter " data-level="1" data-path="0_0_frontpage.html">
             
                 
                     <a href="./0_0_frontpage.html">
@@ -176,7 +176,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="1_6_copying_and_downloading_files.html">
+        <li class="chapter active" data-level="2.6" data-path="1_6_copying_and_downloading_files.html">
             
                 
                     <a href="./1_6_copying_and_downloading_files.html">
@@ -374,9 +374,31 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/0_0_frontpage.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h1 id="sbcs-informatics">SBCS-Informatics</h1>
-<p>=======</p>
-<p>Click on the menu on the left to navigate through the website.</p>
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_6_copying_and_downloading_files.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="6-copying-downloading-files">6. Copying &amp; Downloading files</h2>
+<p>Files can be copied in an around your computer, in and around your space on the servers, and between the two. The basic copy function, <code>cp</code>, is for within locations (i.e. your computer or the server). To go between the two, use &apos;secure copy&apos;, <code>scp</code>.</p>
+<p>The basic syntax is &apos;cp, original file location, new file&apos;.</p>
+<h3 id="between-a-remote-server-and-local-machine">Between a remote server and local machine</h3>
+<p>From local file to server: </p>
+<pre><code>scp /path/to/local/file.txt server:/path/to/server/directory_or_newfile.txt
+</code></pre><p>From local file to server file:</p>
+<pre><code>scp /Users/bob/Desktop/data.csv btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/archive/2013/data.csv
+</code></pre><p>From server to local directory on local machine:</p>
+<pre><code>scp sm11:/home/[youruserid]/myoutput.pdf .
+</code></pre><p>Note, &quot;<code>.</code>&quot; means &quot;current directory&quot;.</p>
+<h3 id="within-your-home-computer-or-the-servers">Within your home computer, or the servers</h3>
+<p>This is just the same, except replace <code>scp</code> with <code>cp</code>.</p>
+<pre><code>cp /path/to/file.extension /new/directory/
+</code></pre><h3 id="using-a-graphical-user-interface">Using a graphical user interface</h3>
+<p><a href="http://cyberduck.ch" target="_blank">Cyberduck</a> (on Mac) or <a href="http://filezilla-project.org" target="_blank">FileZilla</a> (on Windows). FileZilla works on Mac, but the interface isn&apos;t so good.
+GUI programs offer file-sharing via a straightforward drag-and-drop or by menu navigation with a mouse. </p>
+<p>Both programs have a facility for attaching your account and passwords to them so they&apos;ll log in automatically. Make sure you check in the preferences/options/settings to set the file transfer protocol to &quot;ssh&quot;, as that&apos;s not usually the default.</p>
+<blockquote>
+<p><em>Note that while these systems are convenient for moving and organising your files, that&apos;s all they do. Alas, it&apos;s back to the command line to do anything with your files.</em></p>
+</blockquote>
+<h3 id="downloading-files-from-the-web">Downloading files from the web</h3>
+<p><code>wget</code> is short for &quot;web-get&quot;, and will download a target file into your current working directory, e.g. </p>
+<pre><code>    wget http://ftp.gnu.org/gnu/wget/wget-1.5.3.tar.gz
+</code></pre><p>Here wget is used to download an old version of itself</p>
 
                     
                     </section>
@@ -387,10 +409,10 @@
         </div>
 
         
-        <a href="./index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="./1_5_playing_with_files.html" class="navigation navigation-prev " aria-label="Previous page: Playing With Files"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./1_0_using_unix_and_apocrita.html" class="navigation navigation-next " aria-label="Next page: Using Unix and Apocrita"><i class="fa fa-angle-right"></i></a>
+        <a href="./1_7_dealing_with_compressed_files.html" class="navigation navigation-next " aria-label="Next page: Dealing with Compressed Files"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Introduction | SBCS-Informatics</title>
+        <title>R | SBCS-Informatics</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.1">
@@ -20,10 +20,10 @@
         
     
     
-    <link rel="next" href="./1_0_using_unix_and_apocrita.html" />
+    <link rel="next" href="./1_10_handy_shortcuts.html" />
     
     
-    <link rel="prev" href="./index.html" />
+    <link rel="prev" href="./1_8_compiling_a_piece_of_software.html" />
     
 
         
@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1" data-basepath="." data-revision="Tue Sep 29 2015 13:23:22 GMT+0000 (UTC)">
+    <div class="book" data-level="2.9" data-basepath="." data-revision="Tue Sep 29 2015 13:23:22 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -70,7 +70,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="0_0_frontpage.html">
+        <li class="chapter " data-level="1" data-path="0_0_frontpage.html">
             
                 
                     <a href="./0_0_frontpage.html">
@@ -221,7 +221,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.9" data-path="1_9_r.html">
+        <li class="chapter active" data-level="2.9" data-path="1_9_r.html">
             
                 
                     <a href="./1_9_r.html">
@@ -374,9 +374,20 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/0_0_frontpage.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h1 id="sbcs-informatics">SBCS-Informatics</h1>
-<p>=======</p>
-<p>Click on the menu on the left to navigate through the website.</p>
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_9_r.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="9-r">9. R</h2>
+<p>You can run R in the Unix command line. To do this, simply type <code>R</code>. </p>
+<p>This essentially turns the command window into the R console you&apos;re familiar with. From here, you can do all of the same things as you can in regular R. There are a few things worth noting:</p>
+<h3 id="reading-files">Reading files</h3>
+<p>Alas, the command line is completely mouseless, so the <code>file.choose()</code> command for reading data using <code>read.table()</code> or <code>read.csv()</code> is no longer available. Instead, type in the name of the file you want in inverted commas. Fortunately, R will look for the file in the working directory you were in when you started the console, so it may actually be even more straightforward. However, if you&apos;re not in the same directory, you&apos;ll need to type the path the same way as you would when copying, moving, or navigating files &amp; folders.</p>
+<pre><code>mydata &lt;- read.table(&quot;data.txt&quot;, header=T)
+otherdata &lt;- read.csv(&quot;work-monthly/RData/data.csv&quot;)
+</code></pre><h3 id="creating-pdf-file-of-a-plot">Creating pdf file of a plot</h3>
+<p>Unless you&apos;re using a screen, you won&apos; t be able to see any plots you&apos;ve made in R and so this will be necessary. Even if you are, once you&apos;ve made the plot you want for your paper, you&apos;ll still need to save it. R can do this by opening its own workspace inside a pdf file, called a &apos;device&apos;. Other devices include the Quartz &amp; X11 windows you&apos;re already familiar with looking at your plots on. </p>
+<p>First, call the <code>pdf()</code> function to tell it what the file should be called, then make your plot as you like it. To stop working in that file call the <code>dev.off()</code> function. You can then download it from the server to view it.</p>
+<pre><code>pdf(&quot;plot.pdf&quot;)
+plot(object)
+dev.off()
+</code></pre><p>More information on R&apos;s ability to use devices (it can do more than just PDFs, and also have several open at once) can be found in the help files.</p>
 
                     
                     </section>
@@ -387,10 +398,10 @@
         </div>
 
         
-        <a href="./index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="./1_8_compiling_a_piece_of_software.html" class="navigation navigation-prev " aria-label="Previous page: Compiling a piece of software"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./1_0_using_unix_and_apocrita.html" class="navigation navigation-next " aria-label="Next page: Using Unix and Apocrita"><i class="fa fa-angle-right"></i></a>
+        <a href="./1_10_handy_shortcuts.html" class="navigation navigation-next " aria-label="Next page: Handy Shortcuts"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

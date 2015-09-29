@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Introduction | SBCS-Informatics</title>
+        <title>Playing With Files | SBCS-Informatics</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.1">
@@ -20,10 +20,10 @@
         
     
     
-    <link rel="next" href="./1_0_using_unix_and_apocrita.html" />
+    <link rel="next" href="./1_6_copying_and_downloading_files.html" />
     
     
-    <link rel="prev" href="./index.html" />
+    <link rel="prev" href="./1_4_basic_unix_navigation.html" />
     
 
         
@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1" data-basepath="." data-revision="Tue Sep 29 2015 13:23:22 GMT+0000 (UTC)">
+    <div class="book" data-level="2.5" data-basepath="." data-revision="Tue Sep 29 2015 13:23:22 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -70,7 +70,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="0_0_frontpage.html">
+        <li class="chapter " data-level="1" data-path="0_0_frontpage.html">
             
                 
                     <a href="./0_0_frontpage.html">
@@ -161,7 +161,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="1_5_playing_with_files.html">
+        <li class="chapter active" data-level="2.5" data-path="1_5_playing_with_files.html">
             
                 
                     <a href="./1_5_playing_with_files.html">
@@ -374,10 +374,34 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/0_0_frontpage.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h1 id="sbcs-informatics">SBCS-Informatics</h1>
-<p>=======</p>
-<p>Click on the menu on the left to navigate through the website.</p>
-
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_5_playing_with_files.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="5-playing-with-files">5. Playing with Files</h2>
+<h3 id="creating-a-new-directory">Creating a new directory</h3>
+<p>The <code>mkdir</code> command will create a directory inside your current location.</p>
+<pre><code>mkdir newdirectoryname 
+</code></pre><h3 id="moving-files-in-local-machine">Moving files in local machine</h3>
+<p>The <code>mv</code> command will remove a file or directory from its current location and place it elsewhere. The syntax is, &quot;move, current location, new location&quot;. It can also be used to rename files.</p>
+<p>If the new location is a file, the file is renamed:</p>
+<pre><code>mv oldfile newfile
+</code></pre><p> or if the target is a directory, the file is moved:</p>
+<pre><code>mv oldfile newdirectory/  
+</code></pre><h3 id="delete-files-or-directories">Delete files or directories</h3>
+<p>Delete files with the &apos;remove&apos; command, <code>rm</code>:</p>
+<pre><code>rm filename
+</code></pre><p>or for a directory <code>rmdir</code>, the directory has to be empty:</p>
+<pre><code>rmdir directory/
+</code></pre><p>You can use <code>rm</code> to remove directories with the <code>-r</code> option, it removes files in a directory recursively. Be careful when using <code>rm</code>, once you hit enter, the files are gone. After adding &amp; removing files and directories, you can check and make sure it&apos;s worked using the <code>ls</code> command.</p>
+<h3 id="viewing-different-parts-of-an-existing-file">Viewing different parts of an existing file</h3>
+<p><code>less</code> shows a small portion of the file, <code>more</code> shows a larger portion (according to the manual, it will display your file &apos;one screen&apos;s worth of lines at a time&apos;). <code>head</code> displays the first ten lines, and <code>tail</code> displays the last ten lines.</p>
+<pre><code>less filename.extension
+more filename.extension
+</code></pre><p>The head and tail commands can be modified to show a specific number of lines, with a flag <code>-n</code>, where n= number of lines:</p>
+<pre><code>head -15 file.txt   #displays the first 15 lines
+tail file.txt       #displays the last 10 lines (default)
+</code></pre><h3 id="searching-for-a-pattern-within-a-file">Searching for a pattern within a file</h3>
+<p>The <code>grep</code> function searches for a particular pattern of characters. The syntax for the grep function is: &apos;grep, &quot;pattern&quot;, file-to-look-in&apos;.
+   e.g. </p>
+<pre><code>grep &quot;scaffold&quot; genome.fasta
+</code></pre>
                     
                     </section>
                 
@@ -387,10 +411,10 @@
         </div>
 
         
-        <a href="./index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="./1_4_basic_unix_navigation.html" class="navigation navigation-prev " aria-label="Previous page: Basic UNIX Navigation"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./1_0_using_unix_and_apocrita.html" class="navigation navigation-next " aria-label="Next page: Using Unix and Apocrita"><i class="fa fa-angle-right"></i></a>
+        <a href="./1_6_copying_and_downloading_files.html" class="navigation navigation-next " aria-label="Next page: Copying &amp; Downloading Files"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

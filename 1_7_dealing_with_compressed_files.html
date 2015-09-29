@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Introduction | SBCS-Informatics</title>
+        <title>Dealing with Compressed Files | SBCS-Informatics</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.1">
@@ -20,10 +20,10 @@
         
     
     
-    <link rel="next" href="./1_0_using_unix_and_apocrita.html" />
+    <link rel="next" href="./1_8_compiling_a_piece_of_software.html" />
     
     
-    <link rel="prev" href="./index.html" />
+    <link rel="prev" href="./1_6_copying_and_downloading_files.html" />
     
 
         
@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1" data-basepath="." data-revision="Tue Sep 29 2015 13:23:22 GMT+0000 (UTC)">
+    <div class="book" data-level="2.7" data-basepath="." data-revision="Tue Sep 29 2015 13:23:22 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -70,7 +70,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="0_0_frontpage.html">
+        <li class="chapter " data-level="1" data-path="0_0_frontpage.html">
             
                 
                     <a href="./0_0_frontpage.html">
@@ -191,7 +191,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.7" data-path="1_7_dealing_with_compressed_files.html">
+        <li class="chapter active" data-level="2.7" data-path="1_7_dealing_with_compressed_files.html">
             
                 
                     <a href="./1_7_dealing_with_compressed_files.html">
@@ -374,10 +374,28 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/0_0_frontpage.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h1 id="sbcs-informatics">SBCS-Informatics</h1>
-<p>=======</p>
-<p>Click on the menu on the left to navigate through the website.</p>
-
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_7_dealing_with_compressed_files.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="7-dealing-with-compressed-files">7. Dealing with Compressed files</h2>
+<h3 id="a-note-on-file-systems-maybe-misinformed-at-least-misleading">A note on file systems MAYBE MISINFORMED, AT LEAST MISLEADING</h3>
+<p>Within a computer&apos;s hard drive (which come in various physical forms), the information is stored in small &apos;blocks&apos; of data. The size of these blocks is relative to the size of the hard disks, with larger hard disks having larger constituent blocks. Importantly, any individual file stored on a hard disk, regardless of its actual size, can take up a minimum of one block. Another factor which varies with hard disk size is the speed at which it can access its files. As an analogy, imagine the computer physically looking for an object in its hard drive. If there&apos;s more space, it takes longer to look through it all (this isn&apos;t actually precisely the case, but it&apos;s a fair way to think about it).</p>
+<p>The hard disks in the clusters are of varying size and speed. Accordingly, within your allocated workspace, there are three pre-made directories. <em>Archive</em> sends files to one of the larger, slower hard disks. This has the most space, so use it for keeping any large files you aren&apos;t currently using but may need in the future. the <em>work</em> directories allocate your files to one of the smaller, faster disks which allows the computers processing the data on them to get through them faster. </p>
+<p>Storing your data in the correct folders can make a big difference to how efficiently the cluster carries out your job. Only having one type (generally the slow kind) of hard drive on your personal computer won&apos;t really make that much difference because you&apos;re unlikely to have ever done something more computationally sophisticated than compiling or saving a complicated photoshop file. However on a supercomputer processing a massive amount of data - like whole genomes or highly iterative mathematical models - ease of access to data is as important as the right kind of equipment is to a professional athlete, shaving hours (or even days!) off how long a job takes.</p>
+<h3 id="compressed-files">Compressed Files</h3>
+<p>Compressed files fit into a smaller space, in a file type commonly called an &apos;archive&apos;. It works by taking lots of small files, which each individually would fit in a single block but are held separate by the computer, and telling it to turn all of them into one file, which can take up a minimum of one block on its own. Hence, if you have a collection of files that are all only a tenth of a block in size, compressing them into an archive will allow them to take up a tenth of the space. This is useful for a) conserving space and b) holding &amp; distributing collections of files e.g. software on the internet. Downloading one small box full of everything you need is much more convenient than downloading several similar sized boxes and sorting them out on your own!</p>
+<p>Compressed files are the flat-packs of the computing world. It&apos;s worth noting that while a compressed file takes up a lot less space than its constituent parts, the data inside have to be &apos;extracted&apos; (read: built) into their original form before a computer can use them again. </p>
+<p>For that reason, if you&apos;re making archives to store your files in, it will allow you to hold a lot more data on your server space, but it&apos;s probably best to store them in the &apos;archive&apos; directory, they&apos;ll just get in the way elsewhere. Extract your data into a working directory before working on it.</p>
+<h3 id="creating-an-archive">Creating an archive</h3>
+<p>Compressed files have extensions like .zip (common in everyday computing) and .gz.
+You can compress a file using the <code>gzip</code> command:</p>
+<pre><code>gzip file
+</code></pre><p>This zips the file up and gives it the .gz extension.</p>
+<h3 id="extracting-compressed-files-e-g-zip-tar-gz-tgz">Extracting compressed files, e.g. .zip  .tar.gz  .tgz</h3>
+<p>The command for unzipping a file depends on the type of archive it is (i.e. its extension)</p>
+<pre><code>unzip file.zip          #for regular .zip
+gunzip file.gz          #for .gz
+tar -zxvf file.tar.gz   #for .tar.gz
+tar -zxvf file.tgz      #for .tgz
+tar -jxvf file.tar.bz   #for .tar.bz
+</code></pre>
                     
                     </section>
                 
@@ -387,10 +405,10 @@
         </div>
 
         
-        <a href="./index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="./1_6_copying_and_downloading_files.html" class="navigation navigation-prev " aria-label="Previous page: Copying &amp; Downloading Files"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./1_0_using_unix_and_apocrita.html" class="navigation navigation-next " aria-label="Next page: Using Unix and Apocrita"><i class="fa fa-angle-right"></i></a>
+        <a href="./1_8_compiling_a_piece_of_software.html" class="navigation navigation-next " aria-label="Next page: Compiling a piece of software"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
