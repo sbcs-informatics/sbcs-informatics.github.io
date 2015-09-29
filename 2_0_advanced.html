@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
-        <title>Connecting to Apocrita | SBCS-Informatics</title>
+        <title>Advanced | SBCS-Informatics</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.0.1">
@@ -20,10 +20,10 @@
         
     
     
-    <link rel="next" href="./1_3_launching_a_job_on_apocrita.html" />
+    <link rel="next" href="./2_1_oneliners.html" />
     
     
-    <link rel="prev" href="./1_1_what_is_apocrita.html" />
+    <link rel="prev" href="./1_10_handy_shortcuts.html" />
     
 
         
@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.2" data-basepath="." data-revision="Tue Sep 29 2015 14:51:59 GMT+0000 (UTC)">
+    <div class="book" data-level="2" data-basepath="." data-revision="Tue Sep 29 2015 14:51:59 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -101,7 +101,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="1_2_connecting_to_apocrita.html">
+        <li class="chapter " data-level="1.2" data-path="1_2_connecting_to_apocrita.html">
             
                 
                     <a href="./1_2_connecting_to_apocrita.html">
@@ -241,7 +241,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2" data-path="2_0_advanced.html">
+        <li class="chapter active" data-level="2" data-path="2_0_advanced.html">
             
                 
                     <a href="./2_0_advanced.html">
@@ -395,27 +395,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_2_connecting_to_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="2-connecting-to-apocrita">2. Connecting to Apocrita</h2>
-<h3 id="windows">Windows</h3>
-<p>Download PuTTY. In the host name window enter the server address e.g.  </p>
-<pre><code>frontend1.apocrita.hpc.qmul.ac.uk 
-</code></pre><p>Enter the correct port number (22) and check on correct connection type (SSH). Now go to the data tab under connection and in auto-login username box enter your username (e.g.bt12345). Go back to the session tab and in the saved sessions box enter a name for this log in (e.g. frontend1). Save! </p>
-<p>Now double click the name which should open up the Apocrita window. In the window, after your username, double click to bring up a highlighted bar. Now copy password and then right click to paste it into the box. The password won&apos;t appear but it should log on.</p>
-<h3 id="mac">Mac</h3>
-<p>It&apos;s much easier on Macs as the Apple OS is unix-based.
-If you just need the commandline, open Terminal (this is accessible from Spotlight or in Applications/Utilities).</p>
-<pre><code>ssh [youruserID]@frontend[1/2].apocrita.hpc.qmul.ac.uk
-</code></pre><p>e.g.: </p>
-<pre><code>ssh btw666@frontend1.apocrita.hpc.qmul.ac.uk
-</code></pre><p>If you have a shortcut: </p>
-<pre><code>ssh sm11 [for sbcs node]
-</code></pre><p>If prompted, enter the password given by ITS research. You can also set up SSH keys that will be used when you log in from your computer instead of a password.</p>
-<h3 id="screen">Screen</h3>
-<p>Finally, if you&apos;re planning on using any graphical interface, specifically something which requires plots, add the screen flag, <code>-X</code>. This instructs the terminal to open a graphics window, that will show your plots etc. This is useful when working in R and viewing plots, otherwise you&apos;ll have to save them to .pdfs and download them every time.</p>
-<pre><code>ssh -X sm11
-</code></pre><p>or</p>
-<pre><code>ssh -X btw666@frontend1.apocrita.hpc.qmul.ac.uk
-</code></pre><p>Usefully, the screen feature allows you to keep a process running on a server without the need to be consistently connected to the network (e.g. when you&apos;re carrying your laptop between home and campus and can&apos;t be connected to the internet). This is worth remembering for if/when you have a job that requires a lot of time to run.</p>
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/2_0_advanced.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="advanced">ADVANCED</h2>
 
                     
                     </section>
@@ -426,10 +406,10 @@ If you just need the commandline, open Terminal (this is accessible from Spotlig
         </div>
 
         
-        <a href="./1_1_what_is_apocrita.html" class="navigation navigation-prev " aria-label="Previous page: What is Apocrita?"><i class="fa fa-angle-left"></i></a>
+        <a href="./1_10_handy_shortcuts.html" class="navigation navigation-prev " aria-label="Previous page: Handy Shortcuts"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./1_3_launching_a_job_on_apocrita.html" class="navigation navigation-next " aria-label="Next page: Launching a job on Apocrita"><i class="fa fa-angle-right"></i></a>
+        <a href="./2_1_oneliners.html" class="navigation navigation-next " aria-label="Next page: Oneliners"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
