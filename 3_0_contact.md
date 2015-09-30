@@ -1,4 +1,4 @@
-## Contact us
+## Contact
 
 ### Adrian Lärkeryd
 * a.larkeryd@qmul.ac.uk
