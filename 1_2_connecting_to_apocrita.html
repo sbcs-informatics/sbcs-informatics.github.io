@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.2" data-basepath="." data-revision="Wed Sep 30 2015 11:11:28 GMT+0000 (UTC)">
+    <div class="book" data-level="1.2" data-basepath="." data-revision="Wed Sep 30 2015 15:10:34 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -270,6 +270,27 @@
                 
             
             
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="2_2_specs.html">
+            
+                
+                    <a href="./2_2_specs.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.1.</b>
+                        
+                        Apocrita specifications
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
         </li>
     
 
@@ -396,13 +417,17 @@
                     <section class="normal" id="section-">
                     
                         <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_2_connecting_to_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="2-connecting-to-apocrita">2. Connecting to Apocrita</h2>
-<h3 id="windows">Windows</h3>
+<h3 id="get-an-account-on-the-cluster">Get an account on the cluster</h3>
+<p>In order to log in you will need to get an account from ITS research. You request a user using the online ITS research form linked to below, when a user has been set up for you they will contact you with the details.</p>
+<p><a href="https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/RequestAccount" target="_blank">Request account form</a></p>
+<p>This user account will have certain limitations, for example, a user has a set data quota on their home directory so that the cluster isnt overburdened. Additionally you will only have access to files and folders which have been specifically granted. Talk to your PI, perhaps there is a directory specific to your lab.</p>
+<h3 id="logging-in-from-windows">Logging in from Windows</h3>
 <p>Download PuTTY. In the host name window enter the server address e.g.  </p>
 <pre><code>frontend1.apocrita.hpc.qmul.ac.uk 
 </code></pre><p>Enter the correct port number (22) and check on correct connection type (SSH). Now go to the data tab under connection and in auto-login username box enter your username (e.g.bt12345). Go back to the session tab and in the saved sessions box enter a name for this log in (e.g. frontend1). Save! </p>
 <p>Now double click the name which should open up the Apocrita window. In the window, after your username, double click to bring up a highlighted bar. Now copy password and then right click to paste it into the box. The password won&apos;t appear but it should log on.</p>
-<h3 id="mac">Mac</h3>
-<p>It&apos;s much easier on Macs as the Apple OS is unix-based.
+<h3 id="logging-in-from-mac">Logging in from Mac</h3>
+<p>It&apos;s much easier on Macs as Apple&apos;s OS X is unix-based.
 If you just need the commandline, open Terminal (this is accessible from Spotlight or in Applications/Utilities).</p>
 <pre><code>ssh [youruserID]@frontend[1/2].apocrita.hpc.qmul.ac.uk
 </code></pre><p>e.g.: </p>
@@ -410,7 +435,7 @@ If you just need the commandline, open Terminal (this is accessible from Spotlig
 </code></pre><p>If you have a shortcut: </p>
 <pre><code>ssh sm11 [for sbcs node]
 </code></pre><p>If prompted, enter the password given by ITS research. You can also set up SSH keys that will be used when you log in from your computer instead of a password.</p>
-<h3 id="screen">Screen</h3>
+<h3 id="display">Display</h3>
 <p>Finally, if you&apos;re planning on using any graphical interface, specifically something which requires plots, add the screen flag, <code>-X</code>. This instructs the terminal to open a graphics window, that will show your plots etc. This is useful when working in R and viewing plots, otherwise you&apos;ll have to save them to .pdfs and download them every time.</p>
 <pre><code>ssh -X sm11
 </code></pre><p>or</p>
