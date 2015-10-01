@@ -5,21 +5,31 @@ The basic syntax is 'cp, original file location, new file'.
 ### Between a remote server and local machine
 From local file to server: 
 
-    scp /path/to/local/file.txt server:/path/to/server/directory_or_newfile.txt
+```bash
+scp /path/to/local/file.txt server:/path/to/server/directory_or_newfile.txt
+```
 
 From local file to server file:
 
-    scp /Users/bob/Desktop/data.csv btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/archive/2013/data.csv
-    
+```bash
+scp /Users/bob/Desktop/data.csv btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/archive/2013/data.csv
+```
+
 From server to local directory on local machine:
 
-    scp sm11:/home/[youruserid]/myoutput.pdf .
-Note, "`.`" means "current directory".
+```bash
+scp sm11:/home/[youruserid]/myoutput.pdf .
+```
+
+>*Note, "`.`" means "current directory".*
+
 ### Within your home computer, or the servers
 This is just the same, except replace `scp` with `cp`.
     
-    cp /path/to/file.extension /new/directory/
-    
+```bash
+cp /path/to/file.extension /new/directory/
+```
+
 ### Using a graphical user interface
 [Cyberduck](http://cyberduck.ch) (on Mac) or [FileZilla](http://filezilla-project.org) (on Windows). FileZilla works on Mac, but the interface isn't so good.
 GUI programs offer file-sharing via a straightforward drag-and-drop or by menu navigation with a mouse. 
@@ -32,6 +42,8 @@ Both programs have a facility for attaching your account and passwords to them s
 ### Downloading files from the web
 `wget` is short for "web-get", and will download a target file into your current working directory, e.g. 
     
-        wget http://ftp.gnu.org/gnu/wget/wget-1.5.3.tar.gz
+```bash
+wget http://ftp.gnu.org/gnu/wget/wget-1.5.3.tar.gz
+```
 
 Here wget is used to download an old version of itself

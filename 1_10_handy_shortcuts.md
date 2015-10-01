@@ -1,3 +1,3 @@
 ## 10. Handy shortcuts
 
-* Get your quota information 'qmquota -s'
+* Get your quota information ```bash qmquota -s```

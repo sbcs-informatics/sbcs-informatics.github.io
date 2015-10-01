@@ -17,17 +17,18 @@ For that reason, if you're making archives to store your files in, it will allow
 Compressed files have extensions like .zip (common in everyday computing) and .gz.
 You can compress a file using the `gzip` command:
     
-    gzip file
-    
+```bash gzip file```
+
 This zips the file up and gives it the .gz extension.
 
 ### Extracting compressed files, e.g. .zip  .tar.gz  .tgz
 The command for unzipping a file depends on the type of archive it is (i.e. its extension)
 
-    unzip file.zip          #for regular .zip
-    gunzip file.gz          #for .gz
-    tar -zxvf file.tar.gz   #for .tar.gz
-    tar -zxvf file.tgz      #for .tgz
-    tar -jxvf file.tar.bz   #for .tar.bz
-    
+```bash
+unzip file.zip          #for regular .zip
+gunzip file.gz          #for .gz
+tar -zxvf file.tar.gz   #for .tar.gz
+tar -zxvf file.tgz      #for .tgz
+tar -jxvf file.tar.bz   #for .tar.bz
+```    
 

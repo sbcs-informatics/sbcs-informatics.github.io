@@ -9,16 +9,20 @@ Files are organised in your allocated server space into folders, or 'directories
 It's easy to check the contents of the directory you're currently in, using the list command, `ls`. This works similarly to the `ls()` command in R, which lists the objects in your workspace.
 Typing `ls` alone will list the filenames. However, if you require extra information you can add 'flags' after the command to give the computer further instructions:
 
-    ls           #prints filenames in a list
-    ls -a        #prints all filenames, including hidden files
-    ls -l        #'long' list, displays info including permissions.
-    ls -h        #prints the sizes of files in units you can read
-    ls -tr       #t for time sorted, r for reverse
+```bash
+ls           #prints filenames in a list
+ls -a        #prints all filenames, including hidden files
+ls -l        #'long' list, displays info including permissions.
+ls -h        #prints the sizes of files in units you can read
+ls -tr       #t for time sorted, r for reverse
+```
+
 The above flags (amongst others) can be combined together in one string for convenience. You may use one `-` (to indicate a flag) followed by all required characters, or separate them individually:
     
-    ls -lhatr          #has the same effect as 
-    ls -l -h -a -t -r
-
+```bash
+ls -lhatr          #has the same effect as 
+ls -l -h -a -t -r
+```
     
 This bit will print a list of files with all of the above information.
 
@@ -28,17 +32,27 @@ Navigate through directories using the 'change directory' command, `cd`.  It wil
 
 #### Change directory
 
-    cd directory_name/
-    
+```bash
+cd directory_name/
+```
+
 #### Go back "up" one directory: 
-    cd ../
-    cd ../../                    #you can go several at a time
-    cd ../../anthr_dir/subdir2   #as many as you want
+
+```bash
+cd ../
+cd ../../                    #you can go several at a time
+cd ../../anthr_dir/subdir2   #as many as you want
+```
 
 #### Return to home directory
-    cd ~/
+
+```bash
+cd ~/
+```
 or just 
     
-    cd
+```bash
+cd
+```
 
 >*Note: On Mac, it's possible to click and drag the desired location of a directory or file from the finder (by the icon) to the terminal. Just type `cd` followed by a space, click & drag, hit enter. You can do this from any starting point.*
