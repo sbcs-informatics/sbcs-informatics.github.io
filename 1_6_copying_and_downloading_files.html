@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.6" data-basepath="." data-revision="Thu Oct 01 2015 10:47:41 GMT+0000 (UTC)">
+    <div class="book" data-level="1.6" data-basepath="." data-revision="Thu Oct 01 2015 10:54:52 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -415,22 +415,18 @@
 <p>The basic syntax is &apos;cp, original file location, new file&apos;.</p>
 <h3 id="between-a-remote-server-and-local-machine">Between a remote server and local machine</h3>
 <p>From local file to server: </p>
-<pre><code class="lang-bash">scp /path/to/<span class="hljs-built_in">local</span>/file.txt server:/path/to/server/directory_or_newfile.txt
-</code></pre>
-<p>From local file to server file:</p>
-<pre><code class="lang-bash">scp /Users/bob/Desktop/data.csv btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/archive/<span class="hljs-number">2013</span>/data.csv
-</code></pre>
-<p>From server to local directory on local machine:</p>
-<pre><code class="lang-bash">scp sm11:/home/[youruserid]/myoutput.pdf .
-</code></pre>
-<blockquote>
+<pre><code>scp /path/to/local/file.txt server:/path/to/server/directory_or_newfile.txt
+</code></pre><p>From local file to server file:</p>
+<pre><code>scp /Users/bob/Desktop/data.csv btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/archive/2013/data.csv
+</code></pre><p>From server to local directory on local machine:</p>
+<pre><code>scp sm11:/home/[youruserid]/myoutput.pdf .
+</code></pre><blockquote>
 <p><em>Note, &quot;<code>.</code>&quot; means &quot;current directory&quot;.</em></p>
 </blockquote>
 <h3 id="within-your-home-computer-or-the-servers">Within your home computer, or the servers</h3>
 <p>This is just the same, except replace <code>scp</code> with <code>cp</code>.</p>
-<pre><code class="lang-bash">cp /path/to/file.extension /new/directory/
-</code></pre>
-<h3 id="using-a-graphical-user-interface">Using a graphical user interface</h3>
+<pre><code>cp /path/to/file.extension /new/directory/
+</code></pre><h3 id="using-a-graphical-user-interface">Using a graphical user interface</h3>
 <p><a href="http://cyberduck.ch" target="_blank">Cyberduck</a> (on Mac) or <a href="http://filezilla-project.org" target="_blank">FileZilla</a> (on Windows). FileZilla works on Mac, but the interface isn&apos;t so good.
 GUI programs offer file-sharing via a straightforward drag-and-drop or by menu navigation with a mouse. </p>
 <p>Both programs have a facility for attaching your account and passwords to them so they&apos;ll log in automatically. Make sure you check in the preferences/options/settings to set the file transfer protocol to &quot;ssh&quot;, as that&apos;s not usually the default.</p>
@@ -439,9 +435,8 @@ GUI programs offer file-sharing via a straightforward drag-and-drop or by menu n
 </blockquote>
 <h3 id="downloading-files-from-the-web">Downloading files from the web</h3>
 <p><code>wget</code> is short for &quot;web-get&quot;, and will download a target file into your current working directory, e.g. </p>
-<pre><code class="lang-bash">wget http://ftp.gnu.org/gnu/wget/wget-<span class="hljs-number">1.5</span>.<span class="hljs-number">3</span>.tar.gz
-</code></pre>
-<p>Here wget is used to download an old version of itself</p>
+<pre><code>wget http://ftp.gnu.org/gnu/wget/wget-1.5.3.tar.gz
+</code></pre><p>Here wget is used to download an old version of itself</p>
 
                     
                     </section>
