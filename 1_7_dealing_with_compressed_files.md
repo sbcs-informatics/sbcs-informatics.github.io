@@ -1,25 +1,27 @@
 ## 7. Dealing with Compressed files
-### A note on file systems MAYBE MISINFORMED, AT LEAST MISLEADING
-Within a computer's hard drive (which come in various physical forms), the information is stored in small 'blocks' of data. The size of these blocks is relative to the size of the hard disks, with larger hard disks having larger constituent blocks. Importantly, any individual file stored on a hard disk, regardless of its actual size, can take up a minimum of one block. Another factor which varies with hard disk size is the speed at which it can access its files. As an analogy, imagine the computer physically looking for an object in its hard drive. If there's more space, it takes longer to look through it all (this isn't actually precisely the case, but it's a fair way to think about it).
+As disk space is always limited and factoring in the large number of users, it is vital that everyone takes care storing their data properly on Apocrita. Always compress and archive files that aren't used.
 
-The hard disks in the clusters are of varying size and speed. Accordingly, within your allocated workspace, there are three pre-made directories. _Archive_ sends files to one of the larger, slower hard disks. This has the most space, so use it for keeping any large files you aren't currently using but may need in the future. the _work_ directories allocate your files to one of the smaller, faster disks which allows the computers processing the data on them to get through them faster. 
+### Files
+In genomics it is very common to have big files which contain sequence information or mapping files that can tell software and user where each sequence read fits against a certain reference. These files are essentially text files like any other and are often human-readable (for your convenience). Unfortunately that means these types of files take up an enourmous amount of space, but there are ways to mitigate this issue. Compression really just means that files are manipulated in such a way that information is denser, making them smaller, although this also means that they cannot be viewed/read unless you reverse the process. It is important to **compress anything that you are not currently using**, as this will save a lot of space on the cluster. 
 
-Storing your data in the correct folders can make a big difference to how efficiently the cluster carries out your job. Only having one type (generally the slow kind) of hard drive on your personal computer won't really make that much difference because you're unlikely to have ever done something more computationally sophisticated than compiling or saving a complicated photoshop file. However on a supercomputer processing a massive amount of data - like whole genomes or highly iterative mathematical models - ease of access to data is as important as the right kind of equipment is to a professional athlete, shaving hours (or even days!) off how long a job takes.
+>*Remember that some tools and applications are able to work with compressed files.*
 
-### Compressed Files
-Compressed files fit into a smaller space, in a file type commonly called an 'archive'. It works by taking lots of small files, which each individually would fit in a single block but are held separate by the computer, and telling it to turn all of them into one file, which can take up a minimum of one block on its own. Hence, if you have a collection of files that are all only a tenth of a block in size, compressing them into an archive will allow them to take up a tenth of the space. This is useful for a) conserving space and b) holding & distributing collections of files e.g. software on the internet. Downloading one small box full of everything you need is much more convenient than downloading several similar sized boxes and sorting them out on your own!
+### Directories
+In some cases it isnt a single large file that is causing storage issues. Some programs create a large system of folders filled with lots and lots of tiny files. This can add up quickly and because of the way file systems work there is a "minimum size" that a file can occupy on disk ([if you want to know more about block size](http://lmgtfy.com/?q=block+size+and+min+file+size)). The solution to this problem is to make an archive of the directory. In a Linux/Unix environment the most common archiver is a program called `tar`. `tar` was created to handle problems with block size and writes a single new file, often called tarball, containing everything in the directory. This is not compressed so what you often see is compressed tar archives where the tarball has been run through `gzip`. You should do this as well.
 
-Compressed files are the flat-packs of the computing world. It's worth noting that while a compressed file takes up a lot less space than its constituent parts, the data inside have to be 'extracted' (read: built) into their original form before a computer can use them again. 
+### `tar`
+Use the `tar` command to create, and extract, archives of folders. 
 
-For that reason, if you're making archives to store your files in, it will allow you to hold a lot more data on your server space, but it's probably best to store them in the 'archive' directory, they'll just get in the way elsewhere. Extract your data into a working directory before working on it.
+`tar directory/ > directory.tar`
 
-### Creating an archive
-Compressed files have extensions like .zip (common in everyday computing) and .gz.
-You can compress a file using the `gzip` command:
-    
+This creates a new file called `directory.tar` but the original directory is still there. You can now remove the directory.
+
+### `gzip`
+Gzip is the go-to program to use for compressing files on any Unix system. Here is how simple it is to use:
+
 `gzip file`
 
-This zips the file up and gives it the .gz extension.
+This zips the file up and gives it the .gz extension, note that this replaces the file with the compressed version.
 
 ### Extracting compressed files, e.g. .zip  .tar.gz  .tgz
 The command for unzipping a file depends on the type of archive it is (i.e. its extension)
