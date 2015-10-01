@@ -16,10 +16,16 @@ Hyperthreading is currently enabled on the Intel CPUs but each (serial) job is a
 
 ### Interconnect
 Gigabit Ethernet
+
 ### Queueing system
 Sun Grid Engine 8.0.0e
+
 ### Compilers
 Intel, Solaris Studio, Open64, Portland
+
 ### Parallel libraries
 OpenMPI
+
+### GPU
+There are no GPUs on Apocrita, but there is one node attached to Taurus with 2 NVidia C2070 GPU cards in it.
 
