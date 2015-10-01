@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.7" data-basepath="." data-revision="Wed Sep 30 2015 15:49:55 GMT+0000 (UTC)">
+    <div class="book" data-level="1.7" data-basepath="." data-revision="Thu Oct 01 2015 10:47:41 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -422,16 +422,17 @@
 <h3 id="creating-an-archive">Creating an archive</h3>
 <p>Compressed files have extensions like .zip (common in everyday computing) and .gz.
 You can compress a file using the <code>gzip</code> command:</p>
-<pre><code>gzip file
-</code></pre><p>This zips the file up and gives it the .gz extension.</p>
+<p><code>bash gzip file</code></p>
+<p>This zips the file up and gives it the .gz extension.</p>
 <h3 id="extracting-compressed-files-e-g-zip-tar-gz-tgz">Extracting compressed files, e.g. .zip  .tar.gz  .tgz</h3>
 <p>The command for unzipping a file depends on the type of archive it is (i.e. its extension)</p>
-<pre><code>unzip file.zip          #for regular .zip
-gunzip file.gz          #for .gz
-tar -zxvf file.tar.gz   #for .tar.gz
-tar -zxvf file.tgz      #for .tgz
-tar -jxvf file.tar.bz   #for .tar.bz
+<pre><code class="lang-bash">unzip file.zip          <span class="hljs-comment">#for regular .zip</span>
+gunzip file.gz          <span class="hljs-comment">#for .gz</span>
+tar -zxvf file.tar.gz   <span class="hljs-comment">#for .tar.gz</span>
+tar -zxvf file.tgz      <span class="hljs-comment">#for .tgz</span>
+tar -jxvf file.tar.bz   <span class="hljs-comment">#for .tar.bz</span>
 </code></pre>
+
                     
                     </section>
                 

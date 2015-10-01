@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.4" data-basepath="." data-revision="Wed Sep 30 2015 15:49:55 GMT+0000 (UTC)">
+    <div class="book" data-level="1.4" data-basepath="." data-revision="Thu Oct 01 2015 10:47:41 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -416,28 +416,34 @@
 <h3 id="checking-the-contents-of-directory">Checking the contents of directory</h3>
 <p>It&apos;s easy to check the contents of the directory you&apos;re currently in, using the list command, <code>ls</code>. This works similarly to the <code>ls()</code> command in R, which lists the objects in your workspace.
 Typing <code>ls</code> alone will list the filenames. However, if you require extra information you can add &apos;flags&apos; after the command to give the computer further instructions:</p>
-<pre><code>ls           #prints filenames in a list
-ls -a        #prints all filenames, including hidden files
-ls -l        #&apos;long&apos; list, displays info including permissions.
-ls -h        #prints the sizes of files in units you can read
-ls -tr       #t for time sorted, r for reverse
-</code></pre><p>The above flags (amongst others) can be combined together in one string for convenience. You may use one <code>-</code> (to indicate a flag) followed by all required characters, or separate them individually:</p>
-<pre><code>ls -lhatr          #has the same effect as 
-ls -l -h -a -t -r
-</code></pre><p>This bit will print a list of files with all of the above information.</p>
+<pre><code class="lang-bash">ls           <span class="hljs-comment">#prints filenames in a list</span>
+ls <span class="hljs-operator">-a</span>        <span class="hljs-comment">#prints all filenames, including hidden files</span>
+ls <span class="hljs-operator">-l</span>        <span class="hljs-comment">#&apos;long&apos; list, displays info including permissions.</span>
+ls -h        <span class="hljs-comment">#prints the sizes of files in units you can read</span>
+ls -tr       <span class="hljs-comment">#t for time sorted, r for reverse</span>
+</code></pre>
+<p>The above flags (amongst others) can be combined together in one string for convenience. You may use one <code>-</code> (to indicate a flag) followed by all required characters, or separate them individually:</p>
+<pre><code class="lang-bash">ls -lhatr          <span class="hljs-comment">#has the same effect as </span>
+ls <span class="hljs-operator">-l</span> -h <span class="hljs-operator">-a</span> -t -r
+</code></pre>
+<p>This bit will print a list of files with all of the above information.</p>
 <h3 id="changing-directories">Changing directories</h3>
 <p>Navigate through directories using the &apos;change directory&apos; command, <code>cd</code>.  It will assume you&apos;re looking for a directory name that is within your current working directory</p>
 <h4 id="change-directory">Change directory</h4>
-<pre><code>cd directory_name/
-</code></pre><h4 id="go-back-up-one-directory">Go back &quot;up&quot; one directory:</h4>
-<pre><code>cd ../
-cd ../../                    #you can go several at a time
-cd ../../anthr_dir/subdir2   #as many as you want
-</code></pre><h4 id="return-to-home-directory">Return to home directory</h4>
-<pre><code>cd ~/
-</code></pre><p>or just </p>
-<pre><code>cd
-</code></pre><blockquote>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> directory_name/
+</code></pre>
+<h4 id="go-back-up-one-directory">Go back &quot;up&quot; one directory:</h4>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ../
+<span class="hljs-built_in">cd</span> ../../                    <span class="hljs-comment">#you can go several at a time</span>
+<span class="hljs-built_in">cd</span> ../../anthr_dir/subdir2   <span class="hljs-comment">#as many as you want</span>
+</code></pre>
+<h4 id="return-to-home-directory">Return to home directory</h4>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/
+</code></pre>
+<p>or just </p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span>
+</code></pre>
+<blockquote>
 <p><em>Note: On Mac, it&apos;s possible to click and drag the desired location of a directory or file from the finder (by the icon) to the terminal. Just type <code>cd</code> followed by a space, click &amp; drag, hit enter. You can do this from any starting point.</em></p>
 </blockquote>
 

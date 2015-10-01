@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.2" data-basepath="." data-revision="Wed Sep 30 2015 15:49:55 GMT+0000 (UTC)">
+    <div class="book" data-level="1.2" data-basepath="." data-revision="Thu Oct 01 2015 10:47:41 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -417,24 +417,30 @@
 <p>This user account will have certain limitations, for example, a user has a set data quota on their home directory so that the cluster isnt overburdened. Additionally you will only have access to files and folders which have been specifically granted. Talk to your PI, perhaps there is a directory specific to your lab.</p>
 <h3 id="logging-in-from-windows">Logging in from Windows</h3>
 <p>Download PuTTY. In the host name window enter the server address e.g.  </p>
-<pre><code>frontend1.apocrita.hpc.qmul.ac.uk 
-</code></pre><p>Enter the correct port number (22) and check on correct connection type (SSH). Now go to the data tab under connection and in auto-login username box enter your username (e.g.bt12345). Go back to the session tab and in the saved sessions box enter a name for this log in (e.g. frontend1). Save! </p>
+<pre><code class="lang-bash">frontend1.apocrita.hpc.qmul.ac.uk
+</code></pre>
+<p>Enter the correct port number (22) and check on correct connection type (SSH). Now go to the data tab under connection and in auto-login username box enter your username (e.g.bt12345). Go back to the session tab and in the saved sessions box enter a name for this log in (e.g. frontend1). Save! </p>
 <p>Now double click the name which should open up the Apocrita window. In the window, after your username, double click to bring up a highlighted bar. Now copy password and then right click to paste it into the box. The password won&apos;t appear but it should log on.</p>
 <h3 id="logging-in-from-mac">Logging in from Mac</h3>
 <p>It&apos;s much easier on Macs as Apple&apos;s OS X is unix-based.
 If you just need the commandline, open Terminal (this is accessible from Spotlight or in Applications/Utilities).</p>
-<pre><code>ssh [youruserID]@frontend[1/2].apocrita.hpc.qmul.ac.uk
-</code></pre><p>e.g.: </p>
-<pre><code>ssh btw666@frontend1.apocrita.hpc.qmul.ac.uk
-</code></pre><p>If you have a shortcut: </p>
-<pre><code>ssh sm11 [for sbcs node]
-</code></pre><p>If prompted, enter the password given by ITS research. You can also set up SSH keys that will be used when you log in from your computer instead of a password.</p>
+<pre><code class="lang-bash">ssh [youruserID]@frontend[<span class="hljs-number">1</span>/<span class="hljs-number">2</span>].apocrita.hpc.qmul.ac.uk
+</code></pre>
+<p>e.g.: </p>
+<pre><code class="lang-bash">ssh btw666@frontend1.apocrita.hpc.qmul.ac.uk
+</code></pre>
+<p>If you have a shortcut: </p>
+<pre><code class="lang-bash">ssh sm11 [<span class="hljs-keyword">for</span> sbcs node]
+</code></pre>
+<p>If prompted, enter the password given by ITS research. You can also set up SSH keys that will be used when you log in from your computer instead of a password.</p>
 <h3 id="display">Display</h3>
 <p>Finally, if you&apos;re planning on using any graphical interface, specifically something which requires plots, add the screen flag, <code>-X</code>. This instructs the terminal to open a graphics window, that will show your plots etc. This is useful when working in R and viewing plots, otherwise you&apos;ll have to save them to .pdfs and download them every time.</p>
-<pre><code>ssh -X sm11
-</code></pre><p>or</p>
-<pre><code>ssh -X btw666@frontend1.apocrita.hpc.qmul.ac.uk
-</code></pre><p>Usefully, the screen feature allows you to keep a process running on a server without the need to be consistently connected to the network (e.g. when you&apos;re carrying your laptop between home and campus and can&apos;t be connected to the internet). This is worth remembering for if/when you have a job that requires a lot of time to run.</p>
+<pre><code class="lang-bash">ssh -X sm11
+</code></pre>
+<p>or</p>
+<pre><code class="lang-bash">ssh -X btw666@frontend1.apocrita.hpc.qmul.ac.uk
+</code></pre>
+<p>Usefully, the screen feature allows you to keep a process running on a server without the need to be consistently connected to the network (e.g. when you&apos;re carrying your laptop between home and campus and can&apos;t be connected to the internet). This is worth remembering for if/when you have a job that requires a lot of time to run.</p>
 
                     
                     </section>
