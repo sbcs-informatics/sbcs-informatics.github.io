@@ -11,3 +11,6 @@ Apocrita is a High Performance Computing cluster that consists of many computers
 Each user has a specific account on Apocrita which will have a data quota of 50GB in their home directory. Often this is nowhere near enough to run the analysis needed, therefore there is a so called **scratch** space for temporary files. This is where most people do their work but its important to note that **THE SCRATCH AREAS ARE NOT BACKED UP** and you should treat these as purely temporary. 
 
 We are working on setting up an archival data space where the user can store data long term, for things like raw and processed data from finished projects that cannot be deleted forever but probably wont be used a lot in the future. In many cases there is project specific storage implemented.
+
+### System
+Apocrita is running [Scientific Linux 6.2](https://www.scientificlinux.org/).
