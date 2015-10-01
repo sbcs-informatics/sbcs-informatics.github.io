@@ -3,7 +3,7 @@
 ### Thin nodes
 
 * 150 Nodes
-* Dual 6-core Intel Westmere (E5645)
+* Dual 6-core Intel Westmere (E5645) - 2.4 GHz
 * 24G RAM
 
 Hyperthreading is currently enabled on the Intel CPUs but each (serial) job is allocated a single real core
@@ -11,7 +11,7 @@ Hyperthreading is currently enabled on the Intel CPUs but each (serial) job is a
 ### Fat Nodes
 
 * 11 Nodes
-* 4 socket 12-core AMD Bulldozer (6234)
+* 4 socket 12-core AMD Bulldozer (6234) - 2.4 GHz
 * 512G RAM
 
 ### Interconnect
