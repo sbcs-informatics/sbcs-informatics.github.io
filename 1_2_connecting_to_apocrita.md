@@ -35,11 +35,6 @@ e.g.:
 ssh btw000@frontend1.apocrita.hpc.qmul.ac.uk
 ```
 
-If you have a [shortcut](2_3_ssh_keys.md): 
-
-```bash
-ssh sm11 #for sbcs node
-```
 
 If prompted, enter the password given by ITS research. You can also set up SSH keys that will be used when you log in from your computer instead of a password.
 
