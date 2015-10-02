@@ -32,10 +32,10 @@ ssh [youruserID]@frontend[1/2].apocrita.hpc.qmul.ac.uk
 e.g.: 
 
 ```
-ssh btw666@frontend1.apocrita.hpc.qmul.ac.uk
+ssh btw000@frontend1.apocrita.hpc.qmul.ac.uk
 ```
 
-If you have a shortcut: 
+If you have a [shortcut](2_3_ssh_keys.md): 
 
 ```bash
 ssh sm11 #for sbcs node
@@ -54,7 +54,7 @@ ssh -X sm11
 or
 
 ```
-ssh -X btw666@frontend1.apocrita.hpc.qmul.ac.uk
+ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk
 ```
 
 Usefully, the screen feature allows you to keep a process running on a server without the need to be consistently connected to the network (e.g. when you're carrying your laptop between home and campus and can't be connected to the internet). This is worth remembering for if/when you have a job that requires a lot of time to run.

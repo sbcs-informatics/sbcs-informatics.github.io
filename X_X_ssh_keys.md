@@ -1,5 +1,0 @@
-## SSH Keys
-
-### Keys
-
-### Shortcuts
