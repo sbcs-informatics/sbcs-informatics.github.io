@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.1" data-basepath="." data-revision="Fri Oct 02 2015 15:56:52 GMT+0000 (UTC)">
+    <div class="book" data-level="1.1" data-basepath="." data-revision="Mon Oct 05 2015 11:11:07 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -426,7 +426,7 @@
                     <section class="normal" id="section-">
                     
                         <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_1_what_is_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="1-what-is-apocrita">1. What is Apocrita?</h2>
-<h3 id="cluster-structure">Cluster structure</h3>
+<h3 id="cluster-structure">Cluster Structure</h3>
 <p>Apocrita is a High Performance Computing cluster that consists of many computers, called <strong>nodes</strong>, which are all interconnected. The user logs into one specific node, called a <strong>head node</strong>, from which the rest of the cluster can be accessed. Importantly, <strong><em>no jobs are run directly on the head node</em></strong>. Instead, whenever the user wants to run a job, the details of the job is submitted to a software that handles scheduling of work on the cluster and it is dispatched to a work node when one is available. </p>
 <h3 id="nodes">Nodes</h3>
 <ul>
@@ -434,8 +434,8 @@
 <li>11 so called <strong>fat nodes</strong> with four 12-core processors and 512GB RAM. These nodes are used for heavier calculations, in particular ones which require a lot of memory.</li>
 </ul>
 <h3 id="data">Data</h3>
-<p>Each user has a specific account on Apocrita which will have a data quota of 50GB in their home directory. Often this is nowhere near enough to run the analysis needed, therefore there is a so called <strong>scratch</strong> space for temporary files. This is where most people do their work but its important to note that <strong>THE SCRATCH AREAS ARE NOT BACKED UP</strong> and you should treat these as purely temporary. </p>
-<p>We are working on setting up an archival data space where the user can store data long term, for things like raw and processed data from finished projects that cannot be deleted forever but probably wont be used a lot in the future. In many cases there is project specific storage implemented.</p>
+<p>Each user has a specific account on Apocrita which will have a data quota of 50GB in their home directory. Often this is nowhere near enough to run the analysis needed, therefore there is a so called <strong>scratch</strong> space for temporary files. This is where most people do their work but its important to note that that <strong>scratch area is not backed up</strong> and you should treat these as purely temporary. In the future a time-limit may be implemented, automatically deleting old files.</p>
+<p>We are working on setting up an archival data space where the user can store data long term, for things like raw and processed data from finished projects that cannot be deleted but probably wont be used a lot in the future. In many cases there is project specific storage implemented.</p>
 <h3 id="system">System</h3>
 <p>Apocrita is running <a href="https://www.scientificlinux.org/" target="_blank">Scientific Linux 6.2</a>.</p>
 

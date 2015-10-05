@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.3" data-basepath="." data-revision="Fri Oct 02 2015 15:56:52 GMT+0000 (UTC)">
+    <div class="book" data-level="1.3" data-basepath="." data-revision="Mon Oct 05 2015 11:11:07 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -425,25 +425,32 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_3_launching_a_job_on_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="3-launching-a-job-on-apocrita">3. Launching a job on Apocrita</h2>
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_3_launching_a_job_on_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="3-launching-a-job-on-apocrita">3. Launching a Job on Apocrita</h2>
+<p>When you log in to Apocrita you will be accessing a <strong>head node</strong>. It is very important that you do not simply run your scripts on the head node. These nodes are there to accomodate logins to the cluster, not workload. Instead, there is a scheduling program running on the cluster </p>
 <h3 id="using-accessing-an-apocrita-machine-to-do-work">Using/Accessing an Apocrita machine to do work.</h3>
-<p>Three methods. Generally speaking, if you just <code>ssh</code> into Apocrita&apos;s frontend, you can instruct it to do your jobs on your quota of space. You can request to increase this if neccesary. There are two types of instruction for this:</p>
+<p>There are three methods to get your job running on the cluster. Generally speaking, if you just <code>ssh</code> into Apocrita&apos;s frontend, you can instruct it to do your jobs on your quota of space.</p>
+<p>There are two types of instruction for this:</p>
 <ul>
 <li><code>qlogin</code>  or <code>qrsh</code>:  gives you access to one machine (no risks)</li>
 <li><code>qsub</code>: submits a job you describe in a file to the cluster (no risks)</li>
 </ul>
-<p>Alternatively, using the SBCS only node, <code>sm11</code>, your job won&apos;t be restricted and will use whatever it needs. This could be risky, and you can break things:  be absolutely certain your job is not too big to run. </p>
-<ul>
-<li><code>ssh</code> into <code>sm11</code></li>
-</ul>
-<h3 id="determining-if-the-machine-is-available-for-doing-work-ie-ram-cpu">Determining if the machine is available for doing work (ie. RAM, CPU)</h3>
-<p>This is <strong>essential</strong>  if working on sm11. If using <code>qrsh</code> or <code>qsub</code> or <code>qlogin</code>, the scheduling system handles everything like that.
-It is <strong>extremely important</strong> that: </p>
-<ul>
-<li>you check that sufficient RAM is available.</li>
-<li>you check that sufficient compute power (ie. processors, CPUs) are available. </li>
-</ul>
-<p>For this, <code>top</code> can help. This command lists current usage of the server, by which users and what they&apos;re currently running.</p>
+<h3 id="-qsub"><code>qsub</code></h3>
+<p>This is the easiest way to run your job on Apocrita. Even so, it is not as simple as running your command. Remember, don&apos;t run jobs on the head nodes. </p>
+<p>You need to write a script with the instructions for your job, below you find the simplest version of such a script.</p>
+<pre><code class="lang-bash"><span class="hljs-shebang">#!/bin/sh</span>
+<span class="hljs-comment">#$ -cwd              # Set the working directory for the job to the current directory</span>
+<span class="hljs-comment">#$ -V</span>
+<span class="hljs-comment">#$ -l h_rt=24:0:0    # Request 24 hour runtime</span>
+<span class="hljs-comment">#$ -l h_vmem=1G      # Request 1GB RAM</span>
+./code                  <span class="hljs-comment"># Your code goes here</span>
+</code></pre>
+<p>After you have written and saved the script you feed it to <code>qsub</code> as such</p>
+<pre><code>qsub job_script.sh
+</code></pre><p>For more details have a look at the <a href="https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/SubmittingJobs" target="_blank">ITS research website</a>, or if you feel like you can take it, the <a href="http://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html" target="_blank">qsub man page</a></p>
+<h3 id="-qlogin-and-qrsh"><code>qlogin</code> and <code>qrsh</code></h3>
+<p>These commands will connect you to one of the worker nodes with the requested resources available for you to use. This will allow you to run your scripts/jobs interactively on a command line. This can be useful if you want to have more freedom in what you are doing than a script allows, but should be avoided for longer jobs as the frontends are rebooted fairly frequently which may kill your job. </p>
+<h3 id="monitoring-your-job">Monitoring your job</h3>
+<p>Use <code>qstat</code> to show the status of all your jobs on Apocrita, and <code>qdel</code> to delete a job from the queue. </p>
 
                     
                     </section>
