@@ -30,7 +30,7 @@ Delete files with the 'remove' command, `rm`:
 or for a directory `rmdir`, the directory has to be empty:
 
 ```rmdir directory/```
-You can use `rm` to remove directories with the `-r` option, it removes files in a directory recursively. Be careful when using `rm`, once you hit enter, the files are gone. After adding & removing files and directories, you can check and make sure it's worked using the `ls` command.
+You can use `rm` to remove directories with the `-r` option, it removes files in a directory recursively. Be careful when using `rm`, once you hit enter, the files are gone. After adding or removing files and directories, you can check and make sure it's worked using the `ls` command.
     
 ### Viewing different parts of an existing file
 `less` shows a small portion of the file, `more` shows a larger portion (according to the manual, it will display your file 'one screen's worth of lines at a time'). `head` displays the first ten lines, and `tail` displays the last ten lines.

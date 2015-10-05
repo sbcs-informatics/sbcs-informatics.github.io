@@ -4,8 +4,7 @@
 Files are organised in your allocated server space into folders, or 'directories', just like on your regular computer. You can check your current working directory (i.e. where you are) with the 'print working directory' command, `pwd`.
 
 ### Checking the contents of directory
-It's easy to check the contents of the directory you're currently in, using the list command, `ls`. This works similarly to the `ls()` command in R, which lists the objects in your workspace.
-Typing `ls` alone will list the filenames. However, if you require extra information you can add 'flags' after the command to give the computer further instructions:
+It's easy to check the contents of the directory you're currently in, using the list command, `ls`. Typing `ls` alone will list the filenames. However, if you require extra information you can add 'flags' after the command to give the computer further instructions:
 
 ```bash
 ls           #prints filenames in a list
@@ -39,7 +38,7 @@ cd directory_name/
 ```bash
 cd ../
 cd ../../                    #you can go several at a time
-cd ../../anthr_dir/subdir2   #as many as you want
+cd ../../anthr_dir/subdir2   #as many up and down as you want
 ```
 
 #### Return to home directory
