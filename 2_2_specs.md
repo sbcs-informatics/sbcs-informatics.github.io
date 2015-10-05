@@ -1,4 +1,4 @@
-## Apocrita Specifications
+## 2. Apocrita Specifications
 
 ### Thin nodes
 
