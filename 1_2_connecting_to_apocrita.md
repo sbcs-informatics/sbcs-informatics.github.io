@@ -20,6 +20,8 @@ Enter the correct port number (22) and check on correct connection type (SSH). N
 
 Now double click the name which should open up the Apocrita window. In the window, after your username, double click to bring up a highlighted bar. Now copy password and then right click to paste it into the box. The password won't appear but it should log on.
 
+You can also use MobaXterm to log in. 
+
 ### Logging in from Mac
 
 It's much easier on Macs as Apple's OS X is unix-based.
@@ -40,17 +42,11 @@ If prompted, enter the password given by ITS research. You can also set up SSH k
 
 ### Display
 
-Finally, if you're planning on using any graphical interface, specifically something which requires plots, add the screen flag, `-X`. This instructs the terminal to open a graphics window, that will show your plots etc. This is useful when working in R and viewing plots, otherwise you'll have to save them to .pdfs and download them every time.
-
-```
-ssh -X sm11
-```
-
-or
+Finally, if you're planning on using any graphical interface, specifically something which requires plots, add the X11 fowarding flag, `-X`. This instructs the terminal forward display items to your computer, that will allow you to see your plots etc. This is useful when working in R and viewing plots, otherwise you'll have to save them to .pdfs and download them every time.
 
 ```
 ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk
 ```
 
-Usefully, the screen feature allows you to keep a process running on a server without the need to be consistently connected to the network (e.g. when you're carrying your laptop between home and campus and can't be connected to the internet). This is worth remembering for if/when you have a job that requires a lot of time to run.
+Usefully, the `screen` feature allows you to keep a process running on a server without the need to be consistently connected to the network (e.g. when you're carrying your laptop between home and campus and can't be connected to the internet). This is worth remembering for if/when you have a job that requires a lot of time to run.
     
