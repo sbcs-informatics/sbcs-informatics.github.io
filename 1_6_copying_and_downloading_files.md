@@ -18,7 +18,7 @@ scp /Users/bob/Desktop/data.csv btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/b
 From server to local directory on local machine:
 
 ```
-scp sm11:/home/[youruserid]/myoutput.pdf .
+scp btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/myoutput.pdf .
 ```
 
 >*Note, "`.`" means "current directory".*
@@ -31,8 +31,8 @@ cp /path/to/file.extension /new/directory/
 ```
 
 ### Using a graphical user interface
-[Cyberduck](http://cyberduck.ch) (on Mac) or [FileZilla](http://filezilla-project.org) (on Windows). FileZilla works on Mac, but the interface isn't so good.
-GUI programs offer file-sharing via a straightforward drag-and-drop or by menu navigation with a mouse. 
+[Cyberduck](http://cyberduck.ch) (on Mac) or [FileZilla](http://filezilla-project.org) (on Windows).
+These two are GUI programs which offer file-sharing via a straightforward drag-and-drop or by menu navigation. 
 
 Both programs have a facility for attaching your account and passwords to them so they'll log in automatically. Make sure you check in the preferences/options/settings to set the file transfer protocol to "ssh", as that's not usually the default.
 

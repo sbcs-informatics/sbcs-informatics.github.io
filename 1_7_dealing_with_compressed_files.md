@@ -12,9 +12,9 @@ In some cases it isnt a single large file that is causing storage issues. Some p
 ### `tar`
 Use the `tar` command to create, and extract, archives of folders. 
 
-`tar directory/ > directory.tar`
+`tar -c directory/ > directory.tar` 
 
-This creates a new file called `directory.tar` but the original directory is still there. You can now remove the directory.
+`-c` is for create. This creates a new file called `directory.tar` but the original directory is still there. You can now remove the directory.
 
 ### `gzip`
 Gzip is the go-to program to use for compressing files on any Unix system. Here is how simple it is to use:
@@ -27,10 +27,11 @@ This zips the file up and gives it the .gz extension, note that this replaces th
 The command for unzipping a file depends on the type of archive it is (i.e. its extension)
 
 ```
-unzip file.zip          #for regular .zip
+unzip file.zip          #for .zip
 gunzip file.gz          #for .gz
 tar -zxvf file.tar.gz   #for .tar.gz
 tar -zxvf file.tgz      #for .tgz
 tar -jxvf file.tar.bz   #for .tar.bz
 ```    
 
+>*Notable is that a file may have any extension, it is actually just a part of the file name. However, using proper extensions is a way of letting the user know what kind of file it is. When you move, archive and unzip files etc, make sure that you keep correct extensions on your files, or maybe you wont remember how to open it next time.*
