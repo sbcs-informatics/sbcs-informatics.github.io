@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.7" data-basepath="." data-revision="Mon Oct 05 2015 11:28:00 GMT+0000 (UTC)">
+    <div class="book" data-level="1.7" data-basepath="." data-revision="Mon Oct 05 2015 12:36:59 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -436,20 +436,23 @@
 <p>In some cases it isnt a single large file that is causing storage issues. Some programs create a large system of folders filled with lots and lots of tiny files. This can add up quickly and because of the way file systems work there is a &quot;minimum size&quot; that a file can occupy on disk (<a href="http://lmgtfy.com/?q=block+size+and+min+file+size" target="_blank">if you want to know more about block size</a>). The solution to this problem is to make an archive of the directory. In a Linux/Unix environment the most common archiver is a program called <code>tar</code>. <code>tar</code> was created to handle problems with block size and writes a single new file, often called tarball, containing everything in the directory. This is not compressed so what you often see is compressed tar archives where the tarball has been run through <code>gzip</code>. You should do this as well.</p>
 <h3 id="-tar"><code>tar</code></h3>
 <p>Use the <code>tar</code> command to create, and extract, archives of folders. </p>
-<p><code>tar directory/ &gt; directory.tar</code></p>
-<p>This creates a new file called <code>directory.tar</code> but the original directory is still there. You can now remove the directory.</p>
+<p><code>tar -c directory/ &gt; directory.tar</code> </p>
+<p><code>-c</code> is for create. This creates a new file called <code>directory.tar</code> but the original directory is still there. You can now remove the directory.</p>
 <h3 id="-gzip"><code>gzip</code></h3>
 <p>Gzip is the go-to program to use for compressing files on any Unix system. Here is how simple it is to use:</p>
 <p><code>gzip file</code></p>
 <p>This zips the file up and gives it the .gz extension, note that this replaces the file with the compressed version.</p>
 <h3 id="extracting-compressed-files-e-g-zip-tar-gz-tgz">Extracting compressed files, e.g. .zip  .tar.gz  .tgz</h3>
 <p>The command for unzipping a file depends on the type of archive it is (i.e. its extension)</p>
-<pre><code>unzip file.zip          #for regular .zip
+<pre><code>unzip file.zip          #for .zip
 gunzip file.gz          #for .gz
 tar -zxvf file.tar.gz   #for .tar.gz
 tar -zxvf file.tgz      #for .tgz
 tar -jxvf file.tar.bz   #for .tar.bz
-</code></pre>
+</code></pre><blockquote>
+<p><em>Notable is that a file may have any extension, it is actually just a part of the file name. However, using proper extensions is a way of letting the user know what kind of file it is. When you move, archive and unzip files etc, make sure that you keep correct extensions on your files, or maybe you wont remember how to open it next time.</em></p>
+</blockquote>
+
                     
                     </section>
                 

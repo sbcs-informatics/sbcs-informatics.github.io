@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.6" data-basepath="." data-revision="Mon Oct 05 2015 11:28:00 GMT+0000 (UTC)">
+    <div class="book" data-level="1.6" data-basepath="." data-revision="Mon Oct 05 2015 12:36:59 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -434,7 +434,7 @@
 </code></pre><p>From local file to server file:</p>
 <pre><code>scp /Users/bob/Desktop/data.csv btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/archive/2013/data.csv
 </code></pre><p>From server to local directory on local machine:</p>
-<pre><code>scp sm11:/home/[youruserid]/myoutput.pdf .
+<pre><code>scp btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/myoutput.pdf .
 </code></pre><blockquote>
 <p><em>Note, &quot;<code>.</code>&quot; means &quot;current directory&quot;.</em></p>
 </blockquote>
@@ -442,8 +442,8 @@
 <p>This is just the same, except replace <code>scp</code> with <code>cp</code>.</p>
 <pre><code>cp /path/to/file.extension /new/directory/
 </code></pre><h3 id="using-a-graphical-user-interface">Using a graphical user interface</h3>
-<p><a href="http://cyberduck.ch" target="_blank">Cyberduck</a> (on Mac) or <a href="http://filezilla-project.org" target="_blank">FileZilla</a> (on Windows). FileZilla works on Mac, but the interface isn&apos;t so good.
-GUI programs offer file-sharing via a straightforward drag-and-drop or by menu navigation with a mouse. </p>
+<p><a href="http://cyberduck.ch" target="_blank">Cyberduck</a> (on Mac) or <a href="http://filezilla-project.org" target="_blank">FileZilla</a> (on Windows).
+These two are GUI programs which offer file-sharing via a straightforward drag-and-drop or by menu navigation. </p>
 <p>Both programs have a facility for attaching your account and passwords to them so they&apos;ll log in automatically. Make sure you check in the preferences/options/settings to set the file transfer protocol to &quot;ssh&quot;, as that&apos;s not usually the default.</p>
 <blockquote>
 <p><em>Note that while these systems are convenient for moving and organising your files, that&apos;s all they do. Alas, it&apos;s back to the command line to do anything with your files.</em></p>
