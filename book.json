@@ -1,21 +1,26 @@
 {
     "gitbook": "2.0.1",
-    "plugins": ["edit-link"],
+    "plugins": ["share"],
+    "plugins": ["edit-link", "ga", "infinitescroll"],
     "pluginsConfig": {
             "edit-link": {
                 "base": "https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src",
                 "label": "Edit"
+            },
+            "ga": {
+                "token": "UA-69175221-1"
             }
-    },
-    "plugins": ["search-pro"],
-    "pluginsConfig": {
-      "search-pro": {
-        "cutWordLib": "nodejieba",
-        "defineWord" : ["小需求","基础建设"]
-      }
     },
     "structure": {
         "readme": "0_0_frontpage.md"
+    },    
+    "links": {
+        "sharing": {
+            "google": false,
+            "facebook": false,
+            "twitter": false,
+            "all": false
+        }
     }
 
 }
