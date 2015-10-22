@@ -34,13 +34,13 @@
     <link rel="stylesheet" href="gitbook/style.css">
     
         
-        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search-pro/search-pro.css">
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-edit-link/plugin.css">
         
     
     
 
         
-    <div class="book" data-level="1.7" data-basepath="." data-revision="Thu Oct 22 2015 13:39:50 GMT+0000 (UTC)">
+    <div class="book" data-level="1.7" data-basepath="." data-revision="Thu Oct 22 2015 14:26:24 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -372,43 +372,9 @@
 
     <!-- Actions Right -->
     
-    <div class="dropdown pull-right">
-        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
-        </a>
-        <div class="dropdown-menu font-settings dropdown-left">
-            <div class="dropdown-caret">
-                <span class="caret-outer"></span>
-                <span class="caret-inner"></span>
-            </div>
-            <div class="buttons">
-                <button type="button" data-sharing="twitter" class="button">
-                    Share on Twitter
-                </button>
-                <button type="button" data-sharing="google-plus" class="button">
-                    Share on Google
-                </button>
-                <button type="button" data-sharing="facebook" class="button">
-                    Share on Facebook
-                </button>
-                <button type="button" data-sharing="weibo" class="button">
-                    Share on Weibo
-                </button>
-                <button type="button" data-sharing="instapaper" class="button">
-                    Share on Instapaper
-                </button>
-            </div>
-        </div>
-    </div>
-    
 
     
-    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
     
-    
-    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
-    
-    
-    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
     
     
 
@@ -425,7 +391,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h2 id="7-dealing-with-compressed-files">7. Dealing with Compressed files</h2>
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_7_dealing_with_compressed_files.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="7-dealing-with-compressed-files">7. Dealing with Compressed files</h2>
 <p>As disk space is always limited and factoring in the large number of users, it is vital that everyone takes care storing their data properly on Apocrita. Always compress and archive files that aren&apos;t used.</p>
 <h3 id="files">Files</h3>
 <p>In genomics it is very common to have big files which contain sequence information or mapping files that can tell software and user where each sequence read fits against a certain reference. These files are essentially text files like any other and are often human-readable (for your convenience). Unfortunately that means these types of files take up an enormous amount of space, but there are ways to mitigate this issue. Compression really just means that files are manipulated in such a way that information is denser, making them smaller, although this also means that they cannot be viewed/read unless you reverse the process. The simpler the file, the smaller it gets after compression because there wasn&apos;t much information to begin with. It is important to <strong>compress anything that you are not currently using</strong>, as this will save a lot of space on the cluster. </p>
@@ -474,17 +440,25 @@ tar -jxvf file.tar.bz   #for .tar.bz
 <script src="gitbook/app.js"></script>
 
     
-    <script src="gitbook/plugins/gitbook-plugin-search-pro/search-pro.js"></script>
+    <script src="gitbook/plugins/gitbook-plugin-edit-link/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-ga/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-infinitescroll/plugin.js"></script>
     
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"search-pro":{"cutWordLib":"nodejieba","defineWord":["小需求","基础建设"]}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"edit-link":{"base":"https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src","label":"Edit"},"ga":{"token":"UA-69175221-1"}};
     gitbook.start(config);
 });
 </script>
 
-        
+        <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-69175221-1', 'auto');ga('send', 'pageview');</script>
     </body>
     
 </html>
