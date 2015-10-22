@@ -34,13 +34,13 @@
     <link rel="stylesheet" href="gitbook/style.css">
     
         
-        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-edit-link/plugin.css">
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search-pro/search-pro.css">
         
     
     
 
         
-    <div class="book" data-level="1.1" data-basepath="." data-revision="Mon Oct 05 2015 15:31:00 GMT+0000 (UTC)">
+    <div class="book" data-level="1.1" data-basepath="." data-revision="Thu Oct 22 2015 13:39:50 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -425,7 +425,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_1_what_is_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="1-what-is-apocrita">1. What is Apocrita?</h2>
+                        <h2 id="1-what-is-apocrita">1. What is Apocrita?</h2>
 <h3 id="cluster-structure">Cluster Structure</h3>
 <p>Apocrita is a High Performance Computing cluster that consists of many computers, called <strong>nodes</strong>, which are all interconnected. The user logs into one specific node, called a <strong>head node</strong>, from which the rest of the cluster can be accessed. Importantly, <strong><em>no jobs are run directly on the head node</em></strong>. Instead, whenever the user wants to run a job, the details of the job is submitted to a software that handles scheduling of work on the cluster and it is dispatched to a work node when one is available. </p>
 <h3 id="nodes">Nodes</h3>
@@ -460,12 +460,12 @@
 <script src="gitbook/app.js"></script>
 
     
-    <script src="gitbook/plugins/gitbook-plugin-edit-link/plugin.js"></script>
+    <script src="gitbook/plugins/gitbook-plugin-search-pro/search-pro.js"></script>
     
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"edit-link":{"base":"https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src","label":"Edit"}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"search-pro":{"cutWordLib":"nodejieba","defineWord":["小需求","基础建设"]}};
     gitbook.start(config);
 });
 </script>

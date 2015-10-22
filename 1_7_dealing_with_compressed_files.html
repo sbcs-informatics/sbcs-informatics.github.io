@@ -34,13 +34,13 @@
     <link rel="stylesheet" href="gitbook/style.css">
     
         
-        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-edit-link/plugin.css">
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search-pro/search-pro.css">
         
     
     
 
         
-    <div class="book" data-level="1.7" data-basepath="." data-revision="Mon Oct 05 2015 15:31:00 GMT+0000 (UTC)">
+    <div class="book" data-level="1.7" data-basepath="." data-revision="Thu Oct 22 2015 13:39:50 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -425,7 +425,7 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_7_dealing_with_compressed_files.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="7-dealing-with-compressed-files">7. Dealing with Compressed files</h2>
+                        <h2 id="7-dealing-with-compressed-files">7. Dealing with Compressed files</h2>
 <p>As disk space is always limited and factoring in the large number of users, it is vital that everyone takes care storing their data properly on Apocrita. Always compress and archive files that aren&apos;t used.</p>
 <h3 id="files">Files</h3>
 <p>In genomics it is very common to have big files which contain sequence information or mapping files that can tell software and user where each sequence read fits against a certain reference. These files are essentially text files like any other and are often human-readable (for your convenience). Unfortunately that means these types of files take up an enormous amount of space, but there are ways to mitigate this issue. Compression really just means that files are manipulated in such a way that information is denser, making them smaller, although this also means that they cannot be viewed/read unless you reverse the process. The simpler the file, the smaller it gets after compression because there wasn&apos;t much information to begin with. It is important to <strong>compress anything that you are not currently using</strong>, as this will save a lot of space on the cluster. </p>
@@ -474,12 +474,12 @@ tar -jxvf file.tar.bz   #for .tar.bz
 <script src="gitbook/app.js"></script>
 
     
-    <script src="gitbook/plugins/gitbook-plugin-edit-link/plugin.js"></script>
+    <script src="gitbook/plugins/gitbook-plugin-search-pro/search-pro.js"></script>
     
 
 <script>
 require(["gitbook"], function(gitbook) {
-    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"edit-link":{"base":"https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src","label":"Edit"}};
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2},"search-pro":{"cutWordLib":"nodejieba","defineWord":["小需求","基础建设"]}};
     gitbook.start(config);
 });
 </script>
