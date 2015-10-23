@@ -1,7 +1,7 @@
 {
     "gitbook": "2.0.1",
     "plugins": ["share"],
-    "plugins": ["edit-link", "ga"],
+    "plugins": ["edit-link", "ga", "search-pro"],
     "pluginsConfig": {
             "edit-link": {
                 "base": "https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src",
@@ -9,6 +9,10 @@
             },
             "ga": {
                 "token": "UA-69175221-1"
+            },
+            "search-pro": {
+                "cutWordLib": "nodejieba",
+                "defineWord" : ["小需求","基础建设"]
             }
     },
     "structure": {
