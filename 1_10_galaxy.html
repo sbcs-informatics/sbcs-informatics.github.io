@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="1.10" data-basepath="." data-revision="Fri Oct 23 2015 13:04:32 GMT+0000 (UTC)">
+    <div class="book" data-level="1.10" data-basepath="." data-revision="Fri Oct 23 2015 14:58:07 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -356,6 +356,18 @@
                     <section class="normal" id="section-">
                     
                         <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_10_galaxy.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="10-galaxy">10. Galaxy</h2>
+<p>There is a Galaxy server set up on Apocrita. </p>
+<h3 id="login">Login</h3>
+<p><a href="https://galaxy.hpc.qmul.ac.uk/" target="_blank">https://galaxy.hpc.qmul.ac.uk/</a> - This is the link to the web interface. </p>
+<p>To log in, use your entire QMUL email address ie j.doe@qmul.ac.uk as username and your Apocrita password. </p>
+<h3 id="sftp">SFTP</h3>
+<p>You can use SFTP to transfer large files to the Galaxy server. Use a <a href="1_6_copying_and_downloading_files.html">GUI program</a> to connect to the server using SFTP and transfer your files. The hostname is the same as the website, galaxy.hpc.qmul.ac.uk.</p>
+<p>Remember to set SFTP and not FTP. </p>
+<h3 id="specifics">Specifics</h3>
+<p>The actual server runs on frontend2 but it uses DRMAA to submit jobs to the cluster queue. It will run jobs as the &quot;galaxy&quot; user, that means that the user starting the job is not the one that executes it on the cluster, but the username is listed in the job name in the queue.</p>
+<p>For an unknown reason the command line version of sftp may or may not work for transfering files. There seems to be some issue with permissions. Use Cyberduck or Filezilla (both thested to be working). </p>
+<h4 id="repeatexplorer">Repeatexplorer</h4>
+<p>Is set to use an entire fat node on Apocrita.</p>
 
                     
                     </section>
@@ -383,10 +395,6 @@
 
     
     <script src="gitbook/plugins/gitbook-plugin-ga/plugin.js"></script>
-    
-
-    
-    <script src="gitbook/plugins/gitbook-plugin-infinitescroll/plugin.js"></script>
     
 
 <script>
