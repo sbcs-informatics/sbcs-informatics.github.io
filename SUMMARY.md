@@ -10,7 +10,8 @@
    * [Dealing with Compressed Files](1_7_dealing_with_compressed_files.md)
    * [Compiling a Piece of Software](1_8_compiling_a_piece_of_software.md)
    * [R](1_9_r.md)
-   * [Handy Shortcuts](1_10_handy_shortcuts.md)
+   * [Galaxy](1_10_galaxy.md)
+   * [Handy Shortcuts](1_11_handy_shortcuts.md)
 * [Advanced](2_0_advanced.md)
 * [Contact](3_0_contact.md)
 
