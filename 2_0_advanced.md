@@ -4,11 +4,13 @@ This section contains more advanced information as well as tips and tricks for u
 
 ## 1. Oneliners
 
+* [Long list of bioinformatic and non-bio oneliners](https://github.com/stephenturner/oneliners)
 * Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`. Can email to <username>@qmul.ac.uk directly
 
 ## 2. Apocrita Specifications
 
-### Thin nodes
+### Apocrita cluster nodes
+#### Thin nodes
 
 * 150 Nodes
 * Dual 6-core Intel Westmere (E5645) - 2.4 GHz
@@ -16,23 +18,49 @@ This section contains more advanced information as well as tips and tricks for u
 
 Hyperthreading is currently enabled on the Intel CPUs but each (serial) job is allocated a single real core
 
-### Fat Nodes
+#### Fat Nodes
 
 * 11 Nodes
-* 4 socket 12-core AMD Bulldozer (6234) - 2.4 GHz
-* 512G RAM
+* Four 12-core AMD Bulldozer (6234) - 2.4 GHz
+* Memory 512GB
 
-### Interconnect
+#### Interconnect
 Gigabit Ethernet
 
-### Queueing system
+#### Queueing system
 Sun Grid Engine 8.0.0e
 
-### Compilers
+#### Compilers
 Intel, Solaris Studio, Open64, Portland
 
-### Parallel libraries
+#### Parallel libraries
 OpenMPI
+
+### SSH-able nodes
+
+#### SM11
+A "set free" fat node that SBCS users can ssh directly into. The GPFS is mounted and it should work like any other part of Apocrita, just that the Sun Grid Engine doesnt schedule jobs here so that it is free for users to handle themselves. Check whether or not the machine is free before you start something big, and maybe use a [nice value](http://linux.die.net/man/1/nice).
+
+* Four 12-core AMD Opteron(TM) Processor 6234 - 2.4 GHz
+* Mem 512GB
+
+
+#### Prometheus
+Purchased with NERC money by Nichols & Wurm.
+
+This machine is not connected to Apocrita. It runs Ubuntu 14.04 and is administrated by SBCS users. A user has to be created for anyone who wants to use this hardware, see below for contact details.
+
+* 2 10-core Intel Xeon CPU E5-2680 v2s clocked at Min:1199.953Mhz Max:2538.265Mhz with hyperthreading ON 
+* Kernel 3.18.9-031809-generic x86_64 
+* Mem 512GB
+* Runs Ubuntu
+* Docker installed
+
+Contact: a.larkeryd@qmul.ac.uk, y.wurm@qmul.ac.uk, r.a.nichols@qmul.ac.uk
+
+#### VM21 & VM22
+The VMs are two nodes of the Apocrita cluster on which a KVM is running. These were set up in order to have Docker running on the cluster, however this is not yet up and running properly. Users can log in to these nodes and run their programs, however there are some caveats. Only a few core modules are available at the moment (module avail). There is also a possibility that the virtual machine is slowing the nodes down. Benchmarks are to be held to determine exact implications of this. Possible that one machine will be reinstalled without the KVM.
+
 
 ### GPU
 There are no GPUs on Apocrita, but there is one node attached to Taurus with 2 NVidia C2070 GPU cards in it.
