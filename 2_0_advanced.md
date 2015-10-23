@@ -13,15 +13,15 @@ This section contains more advanced information as well as tips and tricks for u
 #### Thin nodes
 
 * 150 Nodes
-* Dual 6-core Intel Westmere (E5645) - 2.4 GHz
-* 24G RAM
+* Dual 6-core Intel Westmere (E5645) - 2.4GHz
+* Memory 24GB
 
 Hyperthreading is currently enabled on the Intel CPUs but each (serial) job is allocated a single real core
 
 #### Fat Nodes
 
 * 11 Nodes
-* Four 12-core AMD Bulldozer (6234) - 2.4 GHz
+* Four 12-core AMD Bulldozer (6234) - 2.4GHz
 * Memory 512GB
 
 #### Interconnect
@@ -41,8 +41,9 @@ OpenMPI
 #### SM11
 A "set free" fat node that SBCS users can ssh directly into. The GPFS is mounted and it should work like any other part of Apocrita, just that the Sun Grid Engine doesnt schedule jobs here so that it is free for users to handle themselves. Check whether or not the machine is free before you start something big, and maybe use a [nice value](http://linux.die.net/man/1/nice).
 
-* Four 12-core AMD Opteron(TM) Processor 6234 - 2.4 GHz
+* Four 12-core AMD Opteron(TM) Processor 6234 - 2.4GHz
 * Mem 512GB
+* 16TB local scratch disk
 
 
 #### Prometheus
@@ -53,6 +54,7 @@ This machine is not connected to Apocrita. It runs Ubuntu 14.04 and is administr
 * 2 10-core Intel Xeon CPU E5-2680 v2s clocked at Min:1199.953Mhz Max:2538.265Mhz with hyperthreading ON 
 * Kernel 3.18.9-031809-generic x86_64 
 * Mem 512GB
+* 13TB local scratch disk
 * Runs Ubuntu
 * Docker installed
 
@@ -60,6 +62,10 @@ Contact: a.larkeryd@qmul.ac.uk, y.wurm@qmul.ac.uk, r.a.nichols@qmul.ac.uk
 
 #### VM21 & VM22
 The VMs are two nodes of the Apocrita cluster on which a KVM is running. These were set up in order to have Docker running on the cluster, however this is not yet up and running properly. Users can log in to these nodes and run their programs, however there are some caveats. Only a few core modules are available at the moment (module avail). There is also a possibility that the virtual machine is slowing the nodes down. Benchmarks are to be held to determine exact implications of this. Possible that one machine will be reinstalled without the KVM.
+
+* VM21 and VM22 are running on frontend5 and frontend6 respectively
+* Four 10-core Intel Xeon E5-4640 v2  - 2.20GHz
+* Mem 516GB
 
 
 ### GPU
