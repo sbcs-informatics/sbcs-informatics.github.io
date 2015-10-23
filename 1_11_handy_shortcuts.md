@@ -1,3 +1,3 @@
-## 10. Handy Shortcuts
+## 11. Handy Shortcuts
 
 * Get your quota information `qmquota -s`
