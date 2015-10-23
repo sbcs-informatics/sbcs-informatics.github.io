@@ -20,10 +20,10 @@
         
     
     
-    <link rel="next" href="./2_1_oneliners.html" />
+    <link rel="next" href="./3_0_contact.html" />
     
     
-    <link rel="prev" href="./1_10_handy_shortcuts.html" />
+    <link rel="prev" href="./1_11_handy_shortcuts.html" />
     
 
         
@@ -40,7 +40,7 @@
     
 
         
-    <div class="book" data-level="2" data-basepath="." data-revision="Fri Oct 23 2015 09:59:13 GMT+0000 (UTC)">
+    <div class="book" data-level="2" data-basepath="." data-revision="Fri Oct 23 2015 13:04:32 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -221,13 +221,28 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="1_10_handy_shortcuts.html">
+        <li class="chapter " data-level="1.10" data-path="1_10_galaxy.html">
             
                 
-                    <a href="./1_10_handy_shortcuts.html">
+                    <a href="./1_10_galaxy.html">
                         <i class="fa fa-check"></i>
                         
                             <b>1.10.</b>
+                        
+                        Galaxy
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="1_11_handy_shortcuts.html">
+            
+                
+                    <a href="./1_11_handy_shortcuts.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.11.</b>
                         
                         Handy Shortcuts
                     </a>
@@ -253,57 +268,6 @@
                     </a>
                 
             
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="2.1" data-path="2_1_oneliners.html">
-            
-                
-                    <a href="./2_1_oneliners.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.1.</b>
-                        
-                        Oneliners
-                    </a>
-                
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.2" data-path="2_2_specs.html">
-            
-                
-                    <a href="./2_2_specs.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.2.</b>
-                        
-                        Apocrita Specifications
-                    </a>
-                
-            
-            
-        </li>
-    
-        <li class="chapter " data-level="2.3" data-path="2_3_ssh_keys.html">
-            
-                
-                    <a href="./2_3_ssh_keys.html">
-                        <i class="fa fa-check"></i>
-                        
-                            <b>2.3.</b>
-                        
-                        SSH Keys
-                    </a>
-                
-            
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -395,30 +359,52 @@
 <p>This section contains more advanced information as well as tips and tricks for users who know their way around. Make sure you know what a command found here does before running it.</p>
 <h2 id="1-oneliners">1. Oneliners</h2>
 <ul>
+<li><a href="https://github.com/stephenturner/oneliners" target="_blank">Long list of bioinformatic and non-bio oneliners</a></li>
 <li>Get all sbcs users: <code>ldapsearch -x cn=sbcs | grep memberUid | sort</code>. Can email to <username>@qmul.ac.uk directly</username></li>
 </ul>
 <h2 id="2-apocrita-specifications">2. Apocrita Specifications</h2>
-<h3 id="thin-nodes">Thin nodes</h3>
+<h3 id="apocrita-cluster-nodes">Apocrita cluster nodes</h3>
+<h4 id="thin-nodes">Thin nodes</h4>
 <ul>
 <li>150 Nodes</li>
 <li>Dual 6-core Intel Westmere (E5645) - 2.4 GHz</li>
 <li>24G RAM</li>
 </ul>
 <p>Hyperthreading is currently enabled on the Intel CPUs but each (serial) job is allocated a single real core</p>
-<h3 id="fat-nodes">Fat Nodes</h3>
+<h4 id="fat-nodes">Fat Nodes</h4>
 <ul>
 <li>11 Nodes</li>
-<li>4 socket 12-core AMD Bulldozer (6234) - 2.4 GHz</li>
-<li>512G RAM</li>
+<li>Four 12-core AMD Bulldozer (6234) - 2.4 GHz</li>
+<li>Memory 512GB</li>
 </ul>
-<h3 id="interconnect">Interconnect</h3>
+<h4 id="interconnect">Interconnect</h4>
 <p>Gigabit Ethernet</p>
-<h3 id="queueing-system">Queueing system</h3>
+<h4 id="queueing-system">Queueing system</h4>
 <p>Sun Grid Engine 8.0.0e</p>
-<h3 id="compilers">Compilers</h3>
+<h4 id="compilers">Compilers</h4>
 <p>Intel, Solaris Studio, Open64, Portland</p>
-<h3 id="parallel-libraries">Parallel libraries</h3>
+<h4 id="parallel-libraries">Parallel libraries</h4>
 <p>OpenMPI</p>
+<h3 id="ssh-able-nodes">SSH-able nodes</h3>
+<h4 id="sm11">SM11</h4>
+<p>A &quot;set free&quot; fat node that SBCS users can ssh directly into. The GPFS is mounted and it should work like any other part of Apocrita, just that the Sun Grid Engine doesnt schedule jobs here so that it is free for users to handle themselves. Check whether or not the machine is free before you start something big, and maybe use a <a href="http://linux.die.net/man/1/nice" target="_blank">nice value</a>.</p>
+<ul>
+<li>Four 12-core AMD Opteron(TM) Processor 6234 - 2.4 GHz</li>
+<li>Mem 512GB</li>
+</ul>
+<h4 id="prometheus">Prometheus</h4>
+<p>Purchased with NERC money by Nichols &amp; Wurm.</p>
+<p>This machine is not connected to Apocrita. It runs Ubuntu 14.04 and is administrated by SBCS users. A user has to be created for anyone who wants to use this hardware, see below for contact details.</p>
+<ul>
+<li>2 10-core Intel Xeon CPU E5-2680 v2s clocked at Min:1199.953Mhz Max:2538.265Mhz with hyperthreading ON </li>
+<li>Kernel 3.18.9-031809-generic x86_64 </li>
+<li>Mem 512GB</li>
+<li>Runs Ubuntu</li>
+<li>Docker installed</li>
+</ul>
+<p>Contact: a.larkeryd@qmul.ac.uk, y.wurm@qmul.ac.uk, r.a.nichols@qmul.ac.uk</p>
+<h4 id="vm21-vm22">VM21 &amp; VM22</h4>
+<p>The VMs are two nodes of the Apocrita cluster on which a KVM is running. These were set up in order to have Docker running on the cluster, however this is not yet up and running properly. Users can log in to these nodes and run their programs, however there are some caveats. Only a few core modules are available at the moment (module avail). There is also a possibility that the virtual machine is slowing the nodes down. Benchmarks are to be held to determine exact implications of this. Possible that one machine will be reinstalled without the KVM.</p>
 <h3 id="gpu">GPU</h3>
 <p>There are no GPUs on Apocrita, but there is one node attached to Taurus with 2 NVidia C2070 GPU cards in it.</p>
 <h2 id="3-ssh-keys">3. SSH Keys</h2>
@@ -475,10 +461,10 @@
         </div>
 
         
-        <a href="./1_10_handy_shortcuts.html" class="navigation navigation-prev " aria-label="Previous page: Handy Shortcuts"><i class="fa fa-angle-left"></i></a>
+        <a href="./1_11_handy_shortcuts.html" class="navigation navigation-prev " aria-label="Previous page: Handy Shortcuts"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="./2_1_oneliners.html" class="navigation navigation-next " aria-label="Next page: Oneliners"><i class="fa fa-angle-right"></i></a>
+        <a href="./3_0_contact.html" class="navigation navigation-next " aria-label="Next page: Contact"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
