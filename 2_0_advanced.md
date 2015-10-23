@@ -1,6 +1,6 @@
 ## Advanced
 
-This section contains more advanced information as well as tips and tricks for users who know their way around. Make sure you know what a command found here does before running it.
+This section contains more advanced information as well as tips and tricks for users who know their way around. Make sure you know what a command found here does before running it. If you are curious about something and want to know if it can be applied to your situation or research, [contact us](3_0_contact.md).
 
 ## 1. Oneliners
 
