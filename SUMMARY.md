@@ -12,8 +12,5 @@
    * [R](1_9_r.md)
    * [Handy Shortcuts](1_10_handy_shortcuts.md)
 * [Advanced](2_0_advanced.md)
-   * [Oneliners](2_1_oneliners.md)
-   * [Apocrita Specifications](2_2_specs.md)
-   * [SSH Keys](2_3_ssh_keys.md)
 * [Contact](3_0_contact.md)
 
