@@ -30,7 +30,7 @@ This is just the same, except replace `scp` with `cp`.
 cp /path/to/file.extension /new/directory/
 ```
 
-### Using a graphical user interface
+### Using a graphical user interface (GUI)
 [Cyberduck](http://cyberduck.ch) (on Mac) or [FileZilla](http://filezilla-project.org) (on Windows).
 These two are GUI programs which offer file-sharing via a straightforward drag-and-drop or by menu navigation. 
 
