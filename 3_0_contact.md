@@ -3,6 +3,3 @@ Please send an email if you need anything. If you have a question, or more infor
 
 ### Adrian Lärkeryd
 * a.larkeryd@qmul.ac.uk
-
-### Ismail Moghul
-* ismail.moghul@gmail.com
