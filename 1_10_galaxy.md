@@ -14,7 +14,9 @@ Remember to set SFTP and not FTP.
 ### Specifics
 The actual server runs on frontend2 but it uses DRMAA to submit jobs to the cluster queue. It will run jobs as the "galaxy" user, that means that the user starting the job is not the one that executes it on the cluster, but the username is listed in the job name in the queue.
 
-For an unknown reason the command line version of sftp may or may not work for transfering files. There seems to be some issue with permissions. Use Cyberduck or Filezilla (both thested to be working). 
+For an unknown reason the command line version of sftp may or may not work for transfering files. There seems to be some issue with permissions. Use Cyberduck if you can. Contact Adrian Lärkeryd or ITS-Research if you're having issues with the file transfer.
+
+This server is still very much experimental and things change. If something is not working or you need a new tool installed do not hesitate to [contact](3_0_contact.md) Adrian.
 
 #### Repeatexplorer
 Is set to use an entire fat node on Apocrita.
