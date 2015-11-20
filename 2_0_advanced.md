@@ -2,12 +2,7 @@
 
 This section contains more advanced information as well as tips and tricks for users who know their way around. Make sure you know what a command found here does before running it. If you are curious about something and want to know if it can be applied to your situation or research, [contact us](3_0_contact.md).
 
-## 1. Oneliners
-
-* [Long list of bioinformatic and non-bio oneliners](https://github.com/stephenturner/oneliners)
-* Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`. Can email to <username>@qmul.ac.uk directly
-
-## 2. Apocrita Specifications
+## 1. Apocrita Specifications
 
 ### Apocrita cluster nodes
 #### Thin nodes
@@ -39,7 +34,7 @@ OpenMPI
 ### SSH-able nodes
 
 #### SM11
-A "set free" fat node that SBCS users can ssh directly into. The GPFS is mounted and it should work like any other part of Apocrita, just that the Sun Grid Engine doesnt schedule jobs here so that it is free for users to handle themselves. Check whether or not the machine is free before you start something big, and maybe use a [nice value](http://linux.die.net/man/1/nice).
+A "set free" fat node that SBCS users can ssh directly into. The GPFS is mounted and it should work like any other part of Apocrita, just that the Sun Grid Engine doesnt schedule jobs here so that it is free for users to handle themselves. Check whether or not the machine is free (top, htop) before you start something, and maybe use a [nice value](http://linux.die.net/man/1/nice). To log in, just type `ssh sm11` when logged into a frontend. You can also make an ssh shortcut in your config file, explained below. 
 
 * Four 12-core AMD Opteron(TM) Processor 6234 - 2.4GHz
 * Mem 512GB
@@ -69,9 +64,9 @@ The VMs are two nodes of the Apocrita cluster on which a KVM is running. These w
 
 
 ### GPU
-There are no GPUs on Apocrita, but there is one node attached to Taurus with 2 NVidia C2070 GPU cards in it.
+There are no GPUs on Apocrita, but there is one node attached to Taurus with two NVidia C2070 GPU cards in it.
 
-## 3. SSH Keys
+## 2. SSH Keys
 
 ### Keys
 You can set up a pair of SSH keys for a more secure as well as password-less login to Apocrita. This is done by having a private key on your machine, and a matching public key on the remote server, when you try to log in these two match up and let you in without having to type the user password. The private key should never be shared with anyone as it will allow that person access to your login. This is why you should always **protect your private key** with a passphrase.
@@ -119,7 +114,18 @@ Host apocrita
 5. Change permissions of the file `chmod 600 ~/.ssh/config`
 6. Try `ssh apocrita`
 
+Another example, using apocrita as a proxy to connect to SM11. This way all you need to connect to SM11 is `ssh sm11`. 
+```
+Host sm11
+	Hostname sm11
+	User btw000
+	ProxyCommand ssh apocrita nc %h %p
+```
+
 You may or may not want X11 forwarding and there are other [options](http://linux.die.net/man/5/ssh_config).
 
 
+## 3. Oneliners
 
+* [Long list of bioinformatic and non-bio oneliners](https://github.com/stephenturner/oneliners)
+* Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`. Can email to <username>@qmul.ac.uk directly
