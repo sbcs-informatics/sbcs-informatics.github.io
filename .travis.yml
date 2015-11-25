@@ -1,9 +1,7 @@
 language: node_js
 node_js:
 - '0.10'
-install: 
-  - npm install -g gitbook-cli
-  - npm install gitbook-pdf -g
+install: npm install -g gitbook-cli
 before_script: gitbook install
 script: gitbook build
 after_success:
