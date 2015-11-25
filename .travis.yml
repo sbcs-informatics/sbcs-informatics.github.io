@@ -3,9 +3,10 @@ node_js:
 - '0.10'
 install: 
   - npm install -g gitbook-cli
-  - npm install gitbook-pdf -g
 before_script: gitbook install
-script: gitbook build
+script: 
+  - gitbook build
+  - gitbook pdf
 after_success:
 - bash deploy.sh
 env:
