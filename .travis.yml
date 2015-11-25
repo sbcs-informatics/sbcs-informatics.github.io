@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- '0.10'
+  - '0.10'
 install: 
   - npm install -g gitbook-cli
 before_script: gitbook install
@@ -8,7 +8,7 @@ script:
   - gitbook build
   - gitbook pdf
 after_success:
-- bash deploy.sh
+  - bash deploy.sh
 env:
   global:
     secure: pRhM2ZyoYY4MeQClXQ1hblSsZGUo0W8WpKBVi+LyvHm1FvwnMcvFCFZSL24wyr8r/8hk4OqcPcJ5KJGgr1caVOukqJO2Sxy84NKxQhSaA1O5rHXwUwAsT2gTO5LALqbs6xnEO4EjaL6usD8P2kkl4WGrKIiUZGgytx1iKl0R7/KQhVapGVLBSfrec0lGYaJ0lx74MIaiEGHfW3D2qBTJt6lKgQTOu2xASUzmA5ufcNjiF5JldQkk0+kv9XywaAWPyYNC2nufshzdcDMJ8157hvW1u6Kto7fNf54z3+VKqlEZ1Z2M7P2eDk8LZo6ZA5pMzPwUO+8VofvSO55REfD6Q3O2G4ycaiOKoefYM4F2fBAlFyPCkKe2kAYo3g86yu4nmc7dkt0pLXAve3p3BT5rkPY3eJZrsdHoy2o6QIgrUeCb6T63HMjJDFIHKh4mYTt6efrxKWeLy05fHz9dbQX48GYwmi6wDizefA++RaSHiLlvU7yXDAAbFaYv7tGr4kPtVv+QPJdf8mar17Z8mz0iBA9ESaYu6nMjdpgpde6LbigDREW8e6HJ42npmer2SkiDC9rSqw1KD8/pGsbJpaXWhEthnfvJIvoQWqZWoQ4UA8h2HAM8ppTCiq5ZAcODzgp9ArAiRwww8vGQxgX3V/rFui8RR1xoVhkTW5Z3spwNYTk=
