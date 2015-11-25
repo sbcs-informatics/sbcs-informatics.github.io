@@ -9,7 +9,7 @@ From local file to server:
 scp /path/to/local/file.txt server:/path/to/server/directory_or_newfile.txt
 ```
 
-From local file to server file:
+For example:
 
 ```
 scp /Users/bob/Desktop/data.csv btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/archive/2013/data.csv

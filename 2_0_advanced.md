@@ -124,8 +124,33 @@ Host sm11
 
 You may or may not want X11 forwarding and there are other [options](http://linux.die.net/man/5/ssh_config).
 
+## 3. `zsh` defaults
+These are instructions to set up your shell as `zsh` instead of `bash` as well as giving you a bunch of useful features like better autocompletion and history etc. This also contains a small set of aliases.
 
-## 3. Oneliners
+### All you need to do
+#### Save your own `.zshrc` file
+This is the file that says what zsh should do when you log in. You have one in your home directory which you will have to remove in order for this to work. This way you can keep your previous `.zshrc` if you feel like going back.
+
+```bash
+cd
+mv .zshrc .zshrc.BAK
+```
+
+### If you are curious
+
+#### `zsh` 5.0.7
+The default version of zsh that every SBCS user has (unless explicitly changed) is version 4.3.10 which doesn't contain all the functionality used here. Because of that a check is made when logging in and if the version of `zsh` isnt 5.0.7 it is loaded. 
+
+#### Oh My Zsh
+[Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) is a large package of settings, plugins and themes for zsh which is used as foundation for these defaults. It has a ton of options but it is kept fairly simple here, including the theme. It does allow for much more customisation that you can do for yourself.
+
+#### Per directory history
+This plugin is enabled to give you a comman line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.)
+
+#### Customising further
+Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe its syntax highlighting you crave. The setup followed above inserted a sourcing of our general `.zshrc` file in your local version. That file is located in your home directory. 
+
+## 4. Oneliners
 
 * [Long list of bioinformatic and non-bio oneliners](https://github.com/stephenturner/oneliners)
 * Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`. Can email to <username>@qmul.ac.uk directly
