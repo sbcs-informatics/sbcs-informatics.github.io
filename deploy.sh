@@ -5,6 +5,9 @@ set -o errexit -o nounset
 rev=$(git rev-parse --short HEAD)
 
 cd _book
+
+mv ../book.pdf .
+
 git init
 
 git config user.name "IsmailM"
