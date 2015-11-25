@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="2" data-basepath="." data-revision="Fri Nov 20 2015 14:23:52 GMT+0000 (UTC)">
+    <div class="book" data-level="2" data-basepath="." data-revision="Wed Nov 25 2015 14:54:56 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -456,13 +456,35 @@
 <li>Change permissions of the file <code>chmod 600 ~/.ssh/config</code></li>
 <li>Try <code>ssh apocrita</code></li>
 </ol>
-<p>Another example, using apocrita as a proxy to connect to SM11. This way all you need to connect to SM11 is <code>ssh sm11</code>. </p>
+<p>Another example, using apocrita (our newly created shortcut to frontend1) as a proxy to connect to SM11. This way all you need to connect to SM11 is <code>ssh sm11</code>. </p>
 <pre><code>Host sm11
     Hostname sm11
     User btw000
     ProxyCommand ssh apocrita nc %h %p
 </code></pre><p>You may or may not want X11 forwarding and there are other <a href="http://linux.die.net/man/5/ssh_config" target="_blank">options</a>.</p>
-<h2 id="3-oneliners">3. Oneliners</h2>
+<h2 id="3-zsh-defaults">3. <code>zsh</code> defaults</h2>
+<p>These are instructions to set up your shell with some useful <code>zsh</code> settings like better autocompletion and history etc. It also contains a small set of useful aliases.</p>
+<h3 id="all-you-need-to-do">All you need to do</h3>
+<h4 id="save-your-own-zshrc-file">Save your own <code>.zshrc</code> file</h4>
+<p>This is the file that says what zsh should do when you log in. You have one in your home directory which you will have to remove in order for this to work. This way you can keep your previous <code>.zshrc</code> if you feel like going back.</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span>
+mv .zshrc .zshrc.BAK
+</code></pre>
+<h4 id="run-the-small-installation">Run the small installation</h4>
+<pre><code class="lang-bash"><span class="hljs-built_in">source</span> /data/SBCS-Informatics/zsh_extensions
+</code></pre>
+<p>You should find yourself in a helpful shell. Have fun. </p>
+<h3 id="details">Details</h3>
+<h4 id="-zsh-5-0-7"><code>zsh</code> 5.0.7</h4>
+<p>The default version of zsh that every SBCS user has (unless explicitly changed) is version 4.3.10 which doesn&apos;t contain all the functionality used here. Because of that a check is made when logging in and if the version of <code>zsh</code> isnt 5.0.7 it is loaded. </p>
+<h4 id="oh-my-zsh">Oh My Zsh</h4>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank">Oh My Zsh</a> is a large package of settings, plugins and themes for zsh which is used as foundation for these defaults. It has a ton of options but it is kept fairly simple here, including the theme. It does allow for much more customisation which you can do for yourself.</p>
+<h4 id="per-directory-history">Per directory history</h4>
+<p>This plugin is enabled to give you a comman line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.)</p>
+<h4 id="customising-further">Customising further</h4>
+<p>Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe its syntax highlighting you crave. The setup followed above inserted a sourcing of our general <code>.zshrc</code> file in your local version. That file is located in your home directory. In order to change the settings you need to replace your <code>.zshrc.</code> with the contents of the SBCS-Informatics-zshrc. That way you can change anything you like! Add plugins, try the random theme, add your own aliases or even build your own functions. You can of course write your own .zshrc and use <a href="https://github.com/sorin-ionescu/prezto" target="_blank">other</a> packages. </p>
+<p>There are other shells available as well. <code>fish</code> for example, which claims to be &quot;Finally, a command line shell for the 90s&quot;. However, <code>fish</code> does have slightly different syntax than <code>bash</code> and <code>zsh</code>, the two of which are very similar. Feel free to keep looking, there are other more obscure things out there. </p>
+<h2 id="4-oneliners">4. Oneliners</h2>
 <ul>
 <li><a href="https://github.com/stephenturner/oneliners" target="_blank">Long list of bioinformatic and non-bio oneliners</a></li>
 <li>Get all sbcs users: <code>ldapsearch -x cn=sbcs | grep memberUid | sort</code>. Can email to <username>@qmul.ac.uk directly</username></li>
