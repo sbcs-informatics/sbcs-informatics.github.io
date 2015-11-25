@@ -114,7 +114,7 @@ Host apocrita
 5. Change permissions of the file `chmod 600 ~/.ssh/config`
 6. Try `ssh apocrita`
 
-Another example, using apocrita as a proxy to connect to SM11. This way all you need to connect to SM11 is `ssh sm11`. 
+Another example, using apocrita (our newly created shortcut to frontend1) as a proxy to connect to SM11. This way all you need to connect to SM11 is `ssh sm11`. 
 ```
 Host sm11
 	Hostname sm11
@@ -125,7 +125,7 @@ Host sm11
 You may or may not want X11 forwarding and there are other [options](http://linux.die.net/man/5/ssh_config).
 
 ## 3. `zsh` defaults
-These are instructions to set up your shell as `zsh` instead of `bash` as well as giving you a bunch of useful features like better autocompletion and history etc. This also contains a small set of aliases.
+These are instructions to set up your shell with some useful `zsh` settings like better autocompletion and history etc. It also contains a small set of useful aliases.
 
 ### All you need to do
 #### Save your own `.zshrc` file
@@ -136,19 +136,28 @@ cd
 mv .zshrc .zshrc.BAK
 ```
 
-### If you are curious
+#### Run the small installation
+
+```bash
+source /data/SBCS-Informatics/zsh_extensions
+```
+You should find yourself in a helpful shell. Have fun. 
+
+### Details
 
 #### `zsh` 5.0.7
 The default version of zsh that every SBCS user has (unless explicitly changed) is version 4.3.10 which doesn't contain all the functionality used here. Because of that a check is made when logging in and if the version of `zsh` isnt 5.0.7 it is loaded. 
 
 #### Oh My Zsh
-[Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) is a large package of settings, plugins and themes for zsh which is used as foundation for these defaults. It has a ton of options but it is kept fairly simple here, including the theme. It does allow for much more customisation that you can do for yourself.
+[Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) is a large package of settings, plugins and themes for zsh which is used as foundation for these defaults. It has a ton of options but it is kept fairly simple here, including the theme. It does allow for much more customisation which you can do for yourself.
 
 #### Per directory history
 This plugin is enabled to give you a comman line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.)
 
 #### Customising further
-Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe its syntax highlighting you crave. The setup followed above inserted a sourcing of our general `.zshrc` file in your local version. That file is located in your home directory. 
+Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe its syntax highlighting you crave. The setup followed above inserted a sourcing of our general `.zshrc` file in your local version. That file is located in your home directory. In order to change the settings you need to replace your `.zshrc.` with the contents of the SBCS-Informatics-zshrc. That way you can change anything you like! Add plugins, try the random theme, add your own aliases or even build your own functions. You can of course write your own .zshrc and use [other](https://github.com/sorin-ionescu/prezto) packages. 
+
+There are other shells available as well. `fish` for example, which claims to be "Finally, a command line shell for the 90s". However, `fish` does have slightly different syntax than `bash` and `zsh`, the two of which are very similar. Feel free to keep looking, there are other more obscure things out there. 
 
 ## 4. Oneliners
 
