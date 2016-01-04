@@ -1,4 +1,4 @@
-![QMUL logo](./qmul_logo.png)
+![QMUL logo](./img/qmul_logo.png)
 
 #SBCS-Informatics
 
