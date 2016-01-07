@@ -54,3 +54,5 @@ The `grep` function searches for a particular pattern of characters. The syntax 
 ```
 grep "scaffold" genome.fasta
 ```
+
+![QMUL logo](./img/qmul_logo.png)

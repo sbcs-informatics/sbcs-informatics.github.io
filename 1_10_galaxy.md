@@ -20,3 +20,5 @@ This server is still very much experimental and things change. If something is n
 
 #### Repeatexplorer
 Is set to use almost an entire fat node on Apocrita. Unfortunately it doesnt allow for dynamically changing the resource requirement, thus even a small job will request a lot of resources from the cluster and be stuck in the SGE queue for longer than necessary. The main requirement of this tool seems to be memory and the biggest nodes on the cluster have 512GB of RAM. It is possible that some very large jobs could exceed that limit and be killed.
+
+![QMUL logo](./img/qmul_logo.png)

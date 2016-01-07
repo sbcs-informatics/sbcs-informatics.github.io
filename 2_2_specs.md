@@ -29,3 +29,4 @@ OpenMPI
 ### GPU
 There are no GPUs on Apocrita, but there is one node attached to Taurus with 2 NVidia C2070 GPU cards in it.
 
+![QMUL logo](./img/qmul_logo.png)

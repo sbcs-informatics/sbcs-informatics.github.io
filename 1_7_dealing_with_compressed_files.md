@@ -35,3 +35,5 @@ tar -jxvf file.tar.bz   #for .tar.bz
 ```    
 
 >*Notable is that a file may have any extension, it is actually just a part of the file name. However, using proper extensions is a way of letting the user know what kind of file it is. When you move, archive and unzip files etc, make sure that you keep correct extensions on your files, or maybe you wont remember how to open it next time.*
+
+![QMUL logo](./img/qmul_logo.png)

@@ -6,4 +6,4 @@ Download it (perhaps with `wget`). Then decompress it (perhaps with `unzip` or `
 
 Some readme files are more useful than others. If there is no help in the readme, but there is a file called 'makefile' in the directory, just type `make` and that should work.
 
-
+![QMUL logo](./img/qmul_logo.png)

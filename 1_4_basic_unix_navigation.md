@@ -53,3 +53,5 @@ cd
 ```
 
 >*Note: On Mac, it's possible to click and drag the desired location of a directory or file from the finder (by the icon) to the terminal. Just type `cd` followed by a space, click & drag, hit enter. You can do this from any starting point.*
+
+![QMUL logo](./img/qmul_logo.png)

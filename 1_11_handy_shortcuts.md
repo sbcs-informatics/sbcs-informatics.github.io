@@ -10,3 +10,5 @@ ITS-R has a webpage for statistics where you can see the load on the cluster but
 [stats.hpc.qmul.ac.uk](stats.hpc.qmul.ac.uk)
 
 On the left hand menu there is a View your job detail in which you can see all the jobs ran on the cluster recently. 
+
+![QMUL logo](./img/qmul_logo.png)

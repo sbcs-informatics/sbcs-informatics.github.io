@@ -47,3 +47,5 @@ wget http://ftp.gnu.org/gnu/wget/wget-1.5.3.tar.gz
 ```
 
 Here wget is used to download an old version of itself
+
+![QMUL logo](./img/qmul_logo.png)

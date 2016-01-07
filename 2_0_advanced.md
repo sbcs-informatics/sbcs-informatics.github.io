@@ -6,7 +6,6 @@ This section contains more advanced information as well as tips and tricks for u
 
 ### Apocrita cluster nodes
 #### Thin nodes
-
 * 150 Nodes
 * Dual 6-core Intel Westmere (E5645) - 2.4GHz
 * Memory 24GB
@@ -14,26 +13,22 @@ This section contains more advanced information as well as tips and tricks for u
 Hyperthreading is currently enabled on the Intel CPUs but each (serial) job is allocated a single real core
 
 #### Fat Nodes
-
 * 11 Nodes
 * Four 12-core AMD Bulldozer (6234) - 2.4GHz
 * Memory 512GB
 
-#### Interconnect
-Gigabit Ethernet
+#### Other information on Apocrita
+* OS - [Scientific Linux 6.2](https://www.scientificlinux.org/)
+* Interconnect - Gigabit Ethernet
+* Queueing system - Sun Grid Engine 8.0.0e
+* Compilers - Intel, Solaris Studio, Open64, Portland
+* Parallel libraries - OpenMPI
 
-#### Queueing system
-Sun Grid Engine 8.0.0e
-
-#### Compilers
-Intel, Solaris Studio, Open64, Portland
-
-#### Parallel libraries
-OpenMPI
-
-### SSH-able nodes
+### Utility servers (SSH-able nodes)
 
 #### SM11
+* Purchased by Nichols, Leitch, Rossiter, Buggs, Wurm, Chelala, Clayton and Le Comber
+
 A "set free" fat node that SBCS users can ssh directly into. The GPFS is mounted and it should work like any other part of Apocrita, just that the Sun Grid Engine doesnt schedule jobs here so that it is free for users to handle themselves. Check whether or not the machine is free (top, htop) before you start something, and maybe use a [nice value](http://linux.die.net/man/1/nice). To log in, just type `ssh sm11` when logged into a frontend. You can also make an ssh shortcut in your config file, explained below. 
 
 * Four 12-core AMD Opteron(TM) Processor 6234 - 2.4GHz
@@ -42,7 +37,7 @@ A "set free" fat node that SBCS users can ssh directly into. The GPFS is mounted
 
 
 #### Prometheus
-Purchased with NERC money by Nichols & Wurm.
+* Purchased with NERC money by Nichols & Wurm.
 
 This machine is not connected to Apocrita. It runs Ubuntu 14.04 and is administrated by SBCS users. A user has to be created for anyone who wants to use this hardware, see below for contact details.
 
@@ -56,15 +51,16 @@ This machine is not connected to Apocrita. It runs Ubuntu 14.04 and is administr
 Contact: a.larkeryd@qmul.ac.uk, y.wurm@qmul.ac.uk, r.a.nichols@qmul.ac.uk
 
 #### VM21 & VM22
-The VMs are two nodes of the Apocrita cluster on which a KVM is running. These were set up in order to have Docker running on the cluster, however this is not yet up and running properly. Users can log in to these nodes and run their programs, however there are some caveats. Only a few core modules are available at the moment (module avail). There is also a possibility that the virtual machine is slowing the nodes down. Benchmarks are to be held to determine exact implications of this. Possible that one machine will be reinstalled without the KVM.
+* Purchased with NERC money by Nichols & Wurm.
+
+The VMs are two nodes of the Apocrita cluster on which a KVM is running. These were set up in order to have Docker running on the cluster, however this is not yet up and running properly. Users can log in to these nodes and run their programs. Unfortunately, there are some caveats. Only a few core modules are available at the moment (module avail). There is also a possibility that the virtual machine is slowing the nodes down. Benchmarks are to be held to determine exact implications of this. Possible that one machine will be reinstalled without the KVM.
 
 * VM21 and VM22 are running on frontend5 and frontend6 respectively
 * Four 10-core Intel Xeon E5-4640 v2  - 2.20GHz
 * Mem 516GB
 
-
 ### GPU
-There are no GPUs on Apocrita, but there is one node attached to Taurus with two NVidia C2070 GPU cards in it.
+There are no GPUs on Apocrita, if you need this for your analysis you should talk to you PI about acquisition.
 
 ## 2. SSH Keys
 
@@ -86,6 +82,8 @@ The process is different depending on which operating system you are using.
 Here its very simple, open a terminal (or MobaXterm window) and type in `ssh-copy-id btw000@login.hpc.qmul.ac.uk` using your own username. Thats it. Now try your connection `ssh -X btw000@login.hpc.qmul.ac.uk`!
 
 ##### Mac
+>*If you have [Homebrew](http://brew.sh/) installed on your Mac you can use it to install `ssh-copy-id` and go from there.*
+
 One of the few times having a mac will make you suffer extra work. You will have to manually copy your **public key** to a file located in your home directory on Apocrita.
 
 1. Open a terminal and go to your home directory with `cd`
@@ -93,9 +91,6 @@ One of the few times having a mac will make you suffer extra work. You will have
 3. Login to Apocrita `ssh btw977@login.hpc.qmul.ac.uk`
 4. `cat ~/id_rsa.pub >> ~/.ssh/authorized_keys`
 5. You can now log out and try the connection again to see if your keys work!
-
->*If you have [Homebrew](http://brew.sh/) installed on your Mac you can use it to install `ssh-copy-id` and go from there.*
-
 
 ### Shortcuts
 Another convenience tip is to add shorthand names for your ssh logins. The address to the apocrita head node is quite long and arguably tedious to write. So, this being computer science, of course there is a setup that will allow you to simply type something like `ssh apocrita` on the commandline to connect.
@@ -143,7 +138,25 @@ source /data/SBCS-Informatics/zsh_extensions
 ```
 You should find yourself in a helpful shell. Have fun. 
 
-### Details
+### Features
+
+Prompt directory information - It will show you an abbreviated version of the full path to where you are, giving you better sense of the file system.
+```
+/data/scratch/btw000/folder1         # pwd - this is the directory 
+[btw000@frontend1 folder1]$          # prompt with default bash settings
+
+btw000@frontend1 /d/s/b/folder1>     # here is how it looks with te new settings
+```
+
+Better tab completion - case insensitive tab completion and 
+```
+btw977@frontend1 ~> cd /data/sbcs    # pressing TAB twice
+sbcs/                SBCS-ClareLab/       SBCS-EizaguirreLab/  SBCS-GreyLab/        SBCS-LeitchLab/      SBCS-OsmanLab/
+SBCS-BessantLab/     SBCS-ClaytonLab/     SBCS-ElphickLab/     SBCS-HirstLab/       SBCS-MarinakisLab/   SBCS-RossiterLab/
+SBCS-BuggsLab/       SBCS-CrespoOtero/    SBCS-EvansLab/       SBCS-HurdLab/        SBCS-McElligottLab/  SBCS-RubanLab/
+SBCS-ChassLab/       SBCS-DiTommasoLab/   SBCS-ForniliLab/     SBCS-Irys/           SBCS-MSc-BioInf/     SBCS-StollewerkLab/
+SBCS-ChittkaLab/     SBCS-DuffyLab/       SBCS-GoldupLab/      SBCS-LeComberLab/    SBCS-NicholsLab/     SBCS-WurmLab/
+```
 
 #### `zsh` 5.0.7
 The default version of zsh that every SBCS user has (unless explicitly changed) is version 4.3.10 which doesn't contain all the functionality used here. Because of that a check is made when logging in and if the version of `zsh` isnt 5.0.7 it is loaded. 
@@ -163,3 +176,5 @@ There are other shells available as well. `fish` for example, which claims to be
 
 * [Long list of bioinformatic and non-bio oneliners](https://github.com/stephenturner/oneliners)
 * Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`. Can email to <username>@qmul.ac.uk directly
+
+![QMUL logo](./img/qmul_logo.png)
