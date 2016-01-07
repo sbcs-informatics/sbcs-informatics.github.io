@@ -48,6 +48,4 @@ Host apocrita
 
 You may or may not want X11 forwarding and there are other [options](http://linux.die.net/man/5/ssh_config).
 
-
-
-
+![QMUL logo](./img/qmul_logo.png)

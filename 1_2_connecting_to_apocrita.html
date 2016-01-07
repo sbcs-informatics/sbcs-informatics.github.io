@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.2" data-basepath="." data-revision="Mon Jan 04 2016 16:41:46 GMT+0000 (UTC)">
+    <div class="book" data-level="1.2" data-basepath="." data-revision="Thu Jan 07 2016 13:51:22 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -361,26 +361,59 @@
                     
                         <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_2_connecting_to_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="2-connecting-to-apocrita">2. Connecting to Apocrita</h2>
 <h3 id="get-an-account-on-the-cluster">Get an account on the cluster</h3>
-<p>In order to log in you will need to get an account from ITS research. You request a user using the online ITS research form linked to below, when a user has been set up for you they will contact you with the details.</p>
-<p><a href="https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/RequestAccount" target="_blank">Request account form</a></p>
-<p>This user account will have certain limitations, for example, a user has a set data quota on their home directory so that the cluster isnt overburdened. Additionally you will only have access to files and folders which have been specifically granted. Talk to your PI, perhaps there is a directory specific to your lab.</p>
+<p>To get an Apocrita account you need to make a <a href="https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/RequestAccount" target="_blank">request to ITS Research</a>. Once this has been set up you can continue to log in with the details provided</p>
+<h3 id="logging-in-from-mac-or-other-unix-systems">Logging in from Mac (or other unix systems)</h3>
+<p>OS X (and indeed all Linux distributions) have an application called Terminal. On your Mac you can find it in Applications -&gt; Utilities.</p>
+<ol>
+<li>Open Terminal</li>
+<li>Enter the following<pre><code>ssh -X [youruserID]@frontend1.apocrita.hpc.qmul.ac.uk
+</code></pre>e.g.<pre><code>ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk
+</code></pre></li>
+<li>Enter your password when prompted (It will not appear as you type, this is by design, your keystrokes are being registered)</li>
+</ol>
+<p>To avoid having to type your password each time you log in You can also set up SSH keys that will be used when you log in from your computer instead of a password. There are instructions on how to set up SSH keys in the <a href="2_0_advanced.html">advanced section</a></p>
 <h3 id="logging-in-from-windows">Logging in from Windows</h3>
-<p>Download PuTTY. In the host name window enter the server address e.g.  </p>
-<pre><code>frontend1.apocrita.hpc.qmul.ac.uk
-</code></pre><p>Enter the correct port number (22) and check on correct connection type (SSH). Now go to the data tab under connection and in auto-login username box enter your username (e.g.bt12345). Go back to the session tab and in the saved sessions box enter a name for this log in (e.g. frontend1). Save! </p>
-<p>Now double click the name which should open up the Apocrita window. In the window, after your username, double click to bring up a highlighted bar. Now copy password and then right click to paste it into the box. The password won&apos;t appear but it should log on.</p>
-<p>You can also use MobaXterm to log in. </p>
-<h3 id="logging-in-from-mac">Logging in from Mac</h3>
-<p>It&apos;s much easier on Macs as Apple&apos;s OS X is unix-based.
-If you just need the commandline, open Terminal (this is accessible from Spotlight or in Applications/Utilities).</p>
-<pre><code>ssh [youruserID]@frontend[1/2].apocrita.hpc.qmul.ac.uk
-</code></pre><p>e.g.: </p>
-<pre><code>ssh btw000@frontend1.apocrita.hpc.qmul.ac.uk
-</code></pre><p>If prompted, enter the password given by ITS research. You can also set up SSH keys that will be used when you log in from your computer instead of a password.</p>
+<p>The simplest way of doing things on Windows is using a program called <a href="http://mobaxterm.mobatek.net/" target="_blank">MobaXterm</a>. </p>
+<ol>
+<li><a href="http://mobaxterm.mobatek.net/download.html" target="_blank">Download</a> the newest version of MobaXterm</li>
+<li>Create a session</li>
+<li>Enter the address to frontend1 which is <code>frontend1.apocrita.hpc.qmul.ac.uk</code></li>
+<li>You can also enter username and password to save them here</li>
+<li>Connect and enter your username and/or password when prompted</li>
+</ol>
+<p>If you would rather use PuTTY. </p>
+<ol>
+<li><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Download</a> PuTTY</li>
+<li>In the host name window enter the server address <code>frontend1.apocrita.hpc.qmul.ac.uk</code></li>
+<li>Enter the correct port number (22) and check on correct connection type (SSH)</li>
+<li>Now go to the data tab under connection and in auto-login username box enter your username (e.g.btw000)</li>
+<li>Go back to the session tab and in the saved sessions box enter a name for this log in (e.g. frontend1)</li>
+<li>Save!</li>
+<li>Double click the session name and enter your password where prompted</li>
+</ol>
 <h3 id="display">Display</h3>
-<p>Finally, if you&apos;re planning on using any graphical interface, specifically something which requires plots, add the X11 fowarding flag, <code>-X</code>. This instructs the terminal forward display items to your computer, that will allow you to see your plots etc. This is useful when working in R and viewing plots, otherwise you&apos;ll have to save them to .pdfs and download them every time.</p>
+<p>If you&apos;re planning on using any graphical interface, e.g. plotting in R, you need the X11 fowarding flag, <code>-X</code>. This instructs the terminal forward display items to your computer, that will allow you to see your plots or other graphical user interfaces. You might as well always have this option set - to simplify things. MobaXterm uses X11 forwarding by default. </p>
 <pre><code>ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk
-</code></pre><p>Usefully, the <code>screen</code> feature allows you to keep a process running on a server without the need to be consistently connected to the network (e.g. when you&apos;re carrying your laptop between home and campus and can&apos;t be connected to the internet). This is worth remembering for if/when you have a job that requires a lot of time to run.</p>
+</code></pre><h3 id="keep-your-terminal-as-you-log-out-or-lose-network-connection">Keep your terminal as you log out or lose network connection</h3>
+<p>When you shut your laptop down the connections it has made with Apocrita (and the rest of the outside world) will be interrupted. This can happen randomly at other times as well and the implication is that anything you were running in your terminal on Apocrita will be shut down too, along with the connection. </p>
+<h4 id="screen">Screen</h4>
+<p>Usefully, the program <code>screen</code> allows you to keep a process running on a server without the need to be consistently connected to the network. It sets up a session that will stay active even if you quit your terminal, you can just connect to the session later and you will find yourself exactly where you left off. </p>
+<ul>
+<li>screen -ls                   # list all your sessions</li>
+<li>screen -r <session_id>       # reconnect to a session</session_id></li>
+<li>CTRL+A, CTRL+D               # pressing these two key bindnings will detach you from the current screen session</li>
+<li>CTRL+D                       # CTRL+D without CTRL+A first will terminate the session instead </li>
+<li>man screen                   # manual for screen - explaining every option</li>
+</ul>
+<h4 id="make-a-specific-command-uninterruptable">Make a specific command uninterruptable</h4>
+<p>When a terminal is shut down, a so called hangup signal is sent to any process running in that terminal telling it to quit. There is a way you can make your process ignore that specific signal with <code>nohup</code>. It is very simple to use, you add <code>nohup</code> before your command as such:</p>
+<pre><code>bwa mem -t 10 -p inputreference.fa inputfasta.fastq &gt; outputfile.sam &amp;               #if this is your command
+nohup bwa mem -t 10 -p inputreference.fa inputfasta.fastq &gt; outputfile.sam &amp;         #do this instead
+nohup nice bwa mem -t 10 -p inputreference.fa inputfasta.fastq &gt; outputfile.sam &amp;    #its a good idea to add a nice value as well
+</code></pre><p>An ampersand, &amp;, at the end of a command will send it to the background, however this is not enough as it will still be sent the hangup signal when the terminal is closed.</p>
+<p>The last example includes the <code>nice</code> command as well. <code>nice</code> tells the computer that your process should be run with a lower priority, a good idea if you are leaving your process unattended! This does not mean it will take any longer than normal as long as there is available CPUs on the machine.</p>
+<p>Keep in mind that nohup will redirect the output if it is a set to a terminal - use <code>man nohup</code> for more information. <code>nohup</code> does not prevent other signals and will not make your process unkillable!</p>
+<p><img src="img/qmul_logo.png" alt="QMUL logo"></p>
 
                     
                     </section>

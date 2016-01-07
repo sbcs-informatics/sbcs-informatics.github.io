@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.3" data-basepath="." data-revision="Mon Jan 04 2016 16:41:46 GMT+0000 (UTC)">
+    <div class="book" data-level="1.3" data-basepath="." data-revision="Thu Jan 07 2016 13:51:22 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -360,17 +360,21 @@
                     <section class="normal" id="section-">
                     
                         <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_3_launching_a_job_on_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="3-launching-a-job-on-apocrita">3. Launching a Job on Apocrita</h2>
-<p>When you log in to Apocrita you will be accessing a <strong>head node</strong>. It is very important that you do not simply run your scripts on the head node. These nodes are there to accomodate logins to the cluster, not workload. Instead, there is a scheduling program running on the cluster which takes instructions to your job and distributes the total load over all the worker nodes. </p>
-<h3 id="using-accessing-an-apocrita-machine-to-do-work">Using/Accessing an Apocrita machine to do work.</h3>
-<p>There are three methods to get your job running on the cluster. Generally speaking, if you <code>ssh</code> into Apocrita&apos;s frontend, you can instruct it to carry out your jobs on your quota of space using any of these methods.</p>
-<p>There are two types of instruction for this:</p>
-<ul>
-<li><code>qlogin</code>  or <code>qrsh</code>:  gives you access to one machine</li>
-<li><code>qsub</code>: submits a job you describe in a file to the cluster</li>
-</ul>
-<h3 id="-qsub"><code>qsub</code></h3>
-<p>This is the easiest way to run your job on Apocrita. Even so, it is not as simple as running your command. Remember, don&apos;t run jobs on the head nodes. </p>
-<p>You need to write a script with the instructions for your job, below you find the simplest version of such a script.</p>
+<p>When you log in to Apocrita you will be accessing a <strong>frontend</strong>. It is very important that you do not simply run your scripts here. These nodes are there to accomodate logins to the cluster, not workload. Instead, there is a scheduling program running on the cluster which takes instructions to your job and distributes the total load over all the worker nodes. You can also use the utility servers interactively by SSHing to them from the frontend.</p>
+<h3 id="interactive-use">Interactive use</h3>
+<p>These modes will log you in directly to a machine, allowing you to test, develop and try different things out in a single session. This is useful if for example you are trying a new tool out and need to test different parameters or if you are unsure about the syntax of the program. </p>
+<h4 id="using-the-queueing-system-on-apocrita">Using the queueing system on Apocrita</h4>
+<h4 id="sshing-to-a-utility-server">SSHing to a utility server</h4>
+<h5 id="vm21-vm22-and-sm11">VM21, VM22 and SM11</h5>
+<p>Once you have logged into a frontend of Apocrita, all you need to do to log in to one of these servers is to SSH to that particular name. </p>
+<pre><code>ssh -X vm21
+ssh -X vm22
+ssh -X sm11
+</code></pre><p>These machines are all different, to find out how and why, head to the <a href="2_0_advanced.html">advanced section</a>. It is <strong>VERY</strong> important that you do not overload these servers, it is up to the user to figure out what the load on the machine is and determine if there is room for their job.</p>
+<h3 id="non-interactive-use">Non-interactive use</h3>
+<h4 id="submitting-a-job-script-to-the-queue">Submitting a job script to the queue</h4>
+<p>This is the easiest way to run your job on Apocrita. Even so, it is not as simple as running your command. Remember, don&apos;t run jobs on the head nodes. This method uses a command called <code>qsub</code> which takes a script as input. Inside the script you define the resources your job needs.</p>
+<p>You need to write the script with the instructions for your job, below you find the simplest version of such a script. Use this as a template and add options as needed. There are several more options you can add to the header of your script which for example allows for more cores to be used.</p>
 <pre><code class="lang-bash"><span class="hljs-shebang">#!/bin/sh</span>
 <span class="hljs-comment">#$ -cwd              # Set the working directory for the job to the current directory</span>
 <span class="hljs-comment">#$ -V</span>
@@ -380,12 +384,21 @@
 </code></pre>
 <p>After you have written and saved the script you feed it to <code>qsub</code> as such</p>
 <pre><code>qsub job_script.sh
-</code></pre><p>There are several more options you can add to the header of your script which for example allows for more cores to be used.</p>
-<p>For more details have a look at the <a href="https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/SubmittingJobs" target="_blank">ITS research website</a>, or if you feel like you can take it, the <a href="http://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html" target="_blank">qsub man page</a>.</p>
+</code></pre><p>For more details have a look at the <a href="https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/SubmittingJobs" target="_blank">ITS research website</a>, or if you feel like you can take it, the <a href="http://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html" target="_blank">qsub man page</a>.</p>
+<h4 id="monitoring-your-job">Monitoring your job</h4>
+<p>Use <code>qstat</code> to show the status of all your jobs on Apocrita, and <code>qdel</code> to delete a job from the queue if you changed your mind about running the job.</p>
+<h3 id="using-accessing-an-apocrita-machine-to-do-work">Using/Accessing an Apocrita machine to do work.</h3>
+<p>There are three methods to get your job running on the cluster. Generally speaking, if you <code>ssh</code> into Apocrita&apos;s frontend, you can instruct it to carry out your jobs on your quota of space using any of these methods.</p>
+<p>There are two types of instruction for this:</p>
+<ul>
+<li><code>qlogin</code>  or <code>qrsh</code>:  gives you access to one machine</li>
+<li><code>qsub</code>: submits a job you describe in a file to the cluster</li>
+</ul>
 <h3 id="-qlogin-and-qrsh"><code>qlogin</code> and <code>qrsh</code></h3>
 <p>These commands will connect you to one of the worker nodes with the requested resources available for you to use. This will allow you to run your scripts/jobs interactively on a command line. This can be useful if you want to have more freedom in what you are doing than a script allows, but should be avoided for longer jobs as the frontends are rebooted fairly frequently which may kill your job. These commands take the same options as <code>qsub</code>. </p>
 <h3 id="monitoring-your-job">Monitoring your job</h3>
 <p>Use <code>qstat</code> to show the status of all your jobs on Apocrita, and <code>qdel</code> to delete a job from the queue. </p>
+<p><img src="img/qmul_logo.png" alt="QMUL logo"></p>
 
                     
                     </section>
