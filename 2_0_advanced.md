@@ -26,10 +26,10 @@ Hyperthreading is currently enabled on the Intel CPUs but each (serial) job is a
 
 ### Utility servers (SSH-able nodes)
 
-#### SM11
+#### sm11
 * Purchased by Nichols, Leitch, Rossiter, Buggs, Wurm, Chelala, Clayton and Le Comber
 
-A "set free" fat node that SBCS users can ssh directly into. The GPFS is mounted and it should work like any other part of Apocrita, just that the Sun Grid Engine doesnt schedule jobs here so that it is free for users to handle themselves. Check whether or not the machine is free (top, htop) before you start something, and maybe use a [nice value](http://linux.die.net/man/1/nice). To log in, just type `ssh sm11` when logged into a frontend. You can also make an ssh shortcut in your config file, explained below. 
+A "set free" fat node that SBCS users can ssh directly into. The GPFS is mounted and it should work like any other part of Apocrita, just that the Sun Grid Engine doesn't schedule jobs here so that it is free for users to handle themselves. Check whether or not the machine is free (top, htop) before you start something, and maybe use a [nice value](http://linux.die.net/man/1/nice). To log in, just type `ssh sm11` when logged into a frontend. You can also make an ssh shortcut in your config file, explained below. 
 
 * Four 12-core AMD Opteron(TM) Processor 6234 - 2.4GHz
 * Mem 512GB
@@ -50,14 +50,15 @@ This machine is not connected to Apocrita. It runs Ubuntu 14.04 and is administr
 
 Contact: a.larkeryd@qmul.ac.uk, y.wurm@qmul.ac.uk, r.a.nichols@qmul.ac.uk
 
-#### VM21 & VM22
+#### frontend5 and frontend6
 * Purchased with NERC money by Nichols & Wurm.
 
-The VMs are two nodes of the Apocrita cluster on which a KVM is running. These were set up in order to have Docker running on the cluster, however this is not yet up and running properly. Users can log in to these nodes and run their programs. Unfortunately, there are some caveats. Only a few core modules are available at the moment (module avail). There is also a possibility that the virtual machine is slowing the nodes down. Benchmarks are to be held to determine exact implications of this. Possible that one machine will be reinstalled without the KVM.
+These two identical machines are similar to sm11 but are running on newer hardware. For this reason, these two machines are slightly more powerful than sm11. The only difference between the machines is that frontend5 has hyperthreading (HT) turned on and frontend6 has it turned off. If you are aware of your tools running better on HT on/off, you can use the appropriate machine. Please feel free to use the /tmp catalogue on these machines for your temporary analysis files, but remember to move off it as soon as you are done as your files may be deleted during reboots etc. 
 
-* VM21 and VM22 are running on frontend5 and frontend6 respectively
-* Four 10-core Intel Xeon E5-4640 v2  - 2.20GHz
-* Mem 516GB
+* Four 10-core Intel Xeon E5-4640 v2  - 2.20GHz. This means 40 threads with HT off and 80 with HT on.
+* Mem 630GB
+* 13TB local scratch disk located on /tmp - do NOT store things here, it is ephemeral will be deleted.
+* cachecade using a 100GB SSD. This is a caching of the local spinning disks onto the SSD. In principle it should increase performance on /tmp.
 
 ### GPU
 There are no GPUs on Apocrita, if you need this for your analysis you should talk to you PI about acquisition.
@@ -79,7 +80,7 @@ You can set up a pair of SSH keys for a more secure as well as password-less log
 The process is different depending on which operating system you are using. 
 
 ##### Windows and Linux
-Here its very simple, open a terminal (or MobaXterm window) and type in `ssh-copy-id btw000@login.hpc.qmul.ac.uk` using your own username. Thats it. Now try your connection `ssh -X btw000@login.hpc.qmul.ac.uk`!
+Here it's very simple, open a terminal (or MobaXterm window) and type in `ssh-copy-id btw000@login.hpc.qmul.ac.uk` using your own username. That's it. Now try your connection `ssh -X btw000@login.hpc.qmul.ac.uk`!
 
 ##### Mac
 >*If you have [Homebrew](http://brew.sh/) installed on your Mac you can use it to install `ssh-copy-id` and go from there.*
@@ -93,7 +94,7 @@ One of the few times having a mac will make you suffer extra work. You will have
 5. You can now log out and try the connection again to see if your keys work!
 
 ### Shortcuts
-Another convenience tip is to add shorthand names for your ssh logins. The address to the apocrita head node is quite long and arguably tedious to write. So, this being computer science, of course there is a setup that will allow you to simply type something like `ssh apocrita` on the commandline to connect.
+Another convenience tip is to add shorthand names for your ssh logins. The address to the Apocrita head node is quite long and arguably tedious to write. So, this being computer science, of course there is a setup that will allow you to simply type something like `ssh apocrita` on the command line to connect.
 
 1. `cd ~/.ssh`
 2. Open or create the config file `nano config`
@@ -115,12 +116,13 @@ Host sm11
 	Hostname sm11
 	User btw000
 	ProxyCommand ssh apocrita nc %h %p
+	ForwardX11 yes
 ```
 
 You may or may not want X11 forwarding and there are other [options](http://linux.die.net/man/5/ssh_config).
 
 ## 3. `zsh` defaults
-These are instructions to set up your shell with some useful `zsh` settings like better autocompletion and history etc. It also contains a small set of useful aliases.
+These are instructions to set up your shell with some useful `zsh` settings like better auto completion and history etc. It also contains a small set of useful aliases.
 
 ### All you need to do
 #### Save your own `.zshrc` file
@@ -137,7 +139,6 @@ mv .zshrc .zshrc.BAK
 source /data/SBCS-Informatics/zsh_extensions
 ```
 You should find yourself in a helpful shell. Have fun. 
-
 ### Features
 
 Prompt directory information - It will show you an abbreviated version of the full path to where you are, giving you better sense of the file system.
@@ -145,7 +146,7 @@ Prompt directory information - It will show you an abbreviated version of the fu
 /data/scratch/btw000/folder1         # pwd - this is the directory 
 [btw000@frontend1 folder1]$          # prompt with default bash settings
 
-btw000@frontend1 /d/s/b/folder1>     # here is how it looks with te new settings
+btw000@frontend1 /d/s/b/folder1>     # here is how it looks with the new settings
 ```
 
 Better tab completion - case insensitive tab completion and 
@@ -159,16 +160,16 @@ SBCS-ChittkaLab/     SBCS-DuffyLab/       SBCS-GoldupLab/      SBCS-LeComberLab/
 ```
 
 #### `zsh` 5.0.7
-The default version of zsh that every SBCS user has (unless explicitly changed) is version 4.3.10 which doesn't contain all the functionality used here. Because of that a check is made when logging in and if the version of `zsh` isnt 5.0.7 it is loaded. 
+The default version of zsh that every SBCS user has (unless explicitly changed) is version 4.3.10 which doesn't contain all the functionality used here. Because of that a check is made when logging in and if the version of `zsh` isn't 5.0.7, it is loaded. 
 
 #### Oh My Zsh
 [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) is a large package of settings, plugins and themes for zsh which is used as foundation for these defaults. It has a ton of options but it is kept fairly simple here, including the theme. It does allow for much more customisation which you can do for yourself.
 
 #### Per directory history
-This plugin is enabled to give you a comman line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.)
+This plugin is enabled to give you a command line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.)
 
 #### Customising further
-Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe its syntax highlighting you crave. The setup followed above inserted a sourcing of our general `.zshrc` file in your local version. That file is located in your home directory. In order to change the settings you need to replace your `.zshrc.` with the contents of the SBCS-Informatics-zshrc. That way you can change anything you like! Add plugins, try the random theme, add your own aliases or even build your own functions. You can of course write your own .zshrc and use [other](https://github.com/sorin-ionescu/prezto) packages. 
+Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe it's syntax highlighting you crave. The setup followed above inserted a sourcing of our general `.zshrc` file in your local version. That file is located in your home directory. In order to change the settings, you need to replace your `.zshrc.` with the contents of the SBCS-Informatics-zshrc. That way you can change anything you like! Add plugins, try the random theme, add your own aliases or even build your own functions. You can of course write your own .zshrc and use [other](https://github.com/sorin-ionescu/prezto) packages. 
 
 There are other shells available as well. `fish` for example, which claims to be "Finally, a command line shell for the 90s". However, `fish` does have slightly different syntax than `bash` and `zsh`, the two of which are very similar. Feel free to keep looking, there are other more obscure things out there. 
 

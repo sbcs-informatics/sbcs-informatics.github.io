@@ -2,9 +2,9 @@
 
 ### Get an account on the cluster
 
-To get an Apocrita account you need to make a [request to ITS Research](https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/RequestAccount). Once this has been set up you can continue to log in with the details provided
+To get an Apocrita account you need to make a [request to ITS Research](https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/RequestAccount). Once this has been set up you can continue to log in with the details provided. 
 
-### Logging in from Mac (or other unix systems)
+### Logging in from Mac (or other Unix systems)
 OS X (and indeed all Linux distributions) have an application called Terminal. On your Mac you can find it in Applications -> Utilities.
 
 1. Open Terminal
@@ -16,9 +16,9 @@ e.g.
 ```
 ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk
 ```
-3. Enter your password when prompted (It will not appear as you type, this is by design, your keystrokes are being registered)
+3. Enter your password when prompted (It will not appear as you type, this is by design, your keystrokes are being registered.)
 
-To avoid having to type your password each time you log in You can also set up SSH keys that will be used when you log in from your computer instead of a password. There are instructions on how to set up SSH keys in the [advanced section](2_0_advanced.md)
+To avoid having to type your password each time you log in You can also set up SSH keys that will be used when you log in from your computer instead of a password. There are instructions on how to set up SSH keys in the [advanced section](2_0_advanced.md).
 
 ### Logging in from Windows 
 
@@ -42,7 +42,7 @@ If you would rather use PuTTY.
 
 
 ### Display
-If you're planning on using any graphical interface, e.g. plotting in R, you need the X11 fowarding flag, `-X`. This instructs the terminal forward display items to your computer, that will allow you to see your plots or other graphical user interfaces. You might as well always have this option set - to simplify things. MobaXterm uses X11 forwarding by default. 
+If you're planning on using any graphical interface, e.g. plotting in R, you need the X11 forwarding flag, `-X`. This instructs the terminal forward display items to your computer, that will allow you to see your plots or other graphical user interfaces. You might as well always have this option set - to simplify things. MobaXterm uses X11 forwarding by default. 
 
 ```
 ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk
@@ -56,23 +56,23 @@ Usefully, the program `screen` allows you to keep a process running on a server 
 
 * screen -ls                   # list all your sessions
 * screen -r <session_id>       # reconnect to a session
-* CTRL+A, CTRL+D               # pressing these two key bindnings will detach you from the current screen session
+* CTRL+A, CTRL+D               # pressing these two key bindings will detach you from the current screen session
 * CTRL+D                       # CTRL+D without CTRL+A first will terminate the session instead 
 * man screen                   # manual for screen - explaining every option
 
 
 #### Make a specific command uninterruptable
-When a terminal is shut down, a so called hangup signal is sent to any process running in that terminal telling it to quit. There is a way you can make your process ignore that specific signal with `nohup`. It is very simple to use, you add `nohup` before your command as such:
+When a terminal is shut down, a so called hang-up signal is sent to any process running in that terminal telling it to quit. There is a way you can make your process ignore that specific signal with `nohup`. It is very simple to use; you add `nohup` before your command as such:
 
 ```
 bwa mem -t 10 -p inputreference.fa inputfasta.fastq > outputfile.sam &               #if this is your command
 nohup bwa mem -t 10 -p inputreference.fa inputfasta.fastq > outputfile.sam &         #do this instead
-nohup nice bwa mem -t 10 -p inputreference.fa inputfasta.fastq > outputfile.sam &    #its a good idea to add a nice value as well
+nohup nice bwa mem -t 10 -p inputreference.fa inputfasta.fastq > outputfile.sam &    #it's a good idea to add a nice value as well
 ```
 
-An ampersand, &, at the end of a command will send it to the background, however this is not enough as it will still be sent the hangup signal when the terminal is closed.
+An ampersand, &, at the end of a command will send it to the background, however this is not enough as it will still be sent the hang-up signal when the terminal is closed.
 
-The last example includes the `nice` command as well. `nice` tells the computer that your process should be run with a lower priority, a good idea if you are leaving your process unattended! This does not mean it will take any longer than normal as long as there is available CPUs on the machine.
+The last example includes the [`nice`](http://linux.die.net/man/1/nice) command as well. `nice` tells the computer that your process should be run with a lower priority, a good idea if you are leaving your process unattended! This does not mean it will take any longer than normal as long as there is available CPUs on the machine.
 
 Keep in mind that nohup will redirect the output if it is a set to a terminal - use `man nohup` for more information. `nohup` does not prevent other signals and will not make your process unkillable!
 

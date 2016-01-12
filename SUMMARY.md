@@ -8,7 +8,7 @@
    * [Playing With Files](1_5_playing_with_files.md)
    * [Copying & Downloading Files](1_6_copying_and_downloading_files.md)
    * [Dealing with Compressed Files](1_7_dealing_with_compressed_files.md)
-   * [Compiling a Piece of Software](1_8_compiling_a_piece_of_software.md)
+   * [Available Software](1_8_compiling_a_piece_of_software.md)
    * [R](1_9_r.md)
    * [Galaxy](1_10_galaxy.md)
    * [Handy Shortcuts](1_11_handy_shortcuts.md)

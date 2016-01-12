@@ -1,4 +1,5 @@
-## 4. Basic UNIX Navigation
+## 4. Basic Unix Navigation
+This section contains some extremely basic commands that you can run while logged onto Apocrita (or in your own Unix terminal if you are a Mac user.) There are much better guides available online if you want to learn about Linux and the command line. One such is [Learn Linux the Hard Way]](https://nixsrv.com/llthw). That link will take you a version which, although long, could be very useful. Some parts of it are even interactive. 
 
 ### Where am I?
 Files are organised in your allocated server space into folders, or 'directories', just like on your regular computer. You can check your current working directory (i.e. where you are) with the 'print working directory' command, `pwd`.
@@ -22,7 +23,6 @@ ls -l -h -a -t -r
 ```
     
 This bit will print a list of files with all of the above information.
-
 
 ### Changing directories
 Navigate through directories using the 'change directory' command, `cd`.  It will assume you're looking for a directory name that is within your current working directory

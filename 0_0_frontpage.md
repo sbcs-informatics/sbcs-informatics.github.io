@@ -5,7 +5,7 @@
 This is a README explaining how to use the Apocrita HPC resource, it contains:
 
 * Instructions on how to submit jobs and use Apocrita generally
-* An introduction to the command line and unix
+* An introduction to the command line and Unix
 * A slightly more advanced section with tips and tricks for the more seasoned user who has gotten to know Apocrita and Unix better
 
 Click on the menu on the left to navigate through the website. This document is also available as a [single pdf download.](book.pdf)
