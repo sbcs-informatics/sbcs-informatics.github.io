@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.6" data-basepath="." data-revision="Thu Jan 07 2016 13:51:22 GMT+0000 (UTC)">
+    <div class="book" data-level="1.6" data-basepath="." data-revision="Tue Jan 12 2016 14:19:18 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -203,7 +203,7 @@
                         
                             <b>1.8.</b>
                         
-                        Compiling a Piece of Software
+                        Available Software
                     </a>
                 
             
@@ -359,16 +359,16 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_6_copying_and_downloading_files.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="6-copying-downloading-files">6. Copying &amp; Downloading files</h2>
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_6_copying_and_downloading_files.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="6-copying-downloading-files">6. Copying &amp; Downloading Files</h2>
 <p>Files can be copied in an around your computer, in and around your space on the servers, and between the two. The basic copy function, <code>cp</code>, is for within locations (i.e. your computer or the server). To go between the two, use &apos;secure copy&apos;, <code>scp</code>.</p>
 <p>The basic syntax is &apos;cp, original file location, new file&apos;.</p>
 <h3 id="between-a-remote-server-and-local-machine">Between a remote server and local machine</h3>
 <p>From local file to server: </p>
 <pre><code>scp /path/to/local/file.txt server:/path/to/server/directory_or_newfile.txt
 </code></pre><p>For example:</p>
-<pre><code>scp /Users/bob/Desktop/data.csv btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/archive/2013/data.csv
+<pre><code>scp /Users/bob/Desktop/data.csv btw000@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw000/archive/2013/data.csv
 </code></pre><p>From server to local directory on local machine:</p>
-<pre><code>scp btw666@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw666/myoutput.pdf .
+<pre><code>scp btw000@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw000/myoutput.pdf .
 </code></pre><blockquote>
 <p><em>Note, &quot;<code>.</code>&quot; means &quot;current directory&quot;.</em></p>
 </blockquote>
@@ -380,12 +380,15 @@
 These two are GUI programs which offer file-sharing via a straightforward drag-and-drop or by menu navigation. </p>
 <p>Both programs have a facility for attaching your account and passwords to them so they&apos;ll log in automatically. Make sure you check in the preferences/options/settings to set the file transfer protocol to &quot;ssh&quot;, as that&apos;s not usually the default.</p>
 <blockquote>
-<p><em>Note that while these systems are convenient for moving and organising your files, that&apos;s all they do. Alas, it&apos;s back to the command line to do anything with your files.</em></p>
+<p><em>Note that while these systems are convenient for moving and organising your files, they will not let you schedule jobs or run anything on the server. Alas, it&apos;s back to the command line to do anything using the Apocrita computational resources.</em></p>
 </blockquote>
+<h3 id="mounting-your-apocrita-file-system-on-your-computer">Mounting your Apocrita file system on your computer</h3>
+<p>You can use some third party software to easily mount your Apocrita file system on your computer, that way you can manipulate your files in your operating system, and programs on your personal computer will be able to read and write files on Apocrita. </p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh" target="_blank">Here is a good guide for every OS</a>. </p>
 <h3 id="downloading-files-from-the-web">Downloading files from the web</h3>
 <p><code>wget</code> is short for &quot;web-get&quot;, and will download a target file into your current working directory, e.g. </p>
 <pre><code>wget http://ftp.gnu.org/gnu/wget/wget-1.5.3.tar.gz
-</code></pre><p>Here wget is used to download an old version of itself</p>
+</code></pre><p>Here wget is used to download an old version of itself. You often find links to software you are keen on installing that you can use wget to directly transfer the code to the server. </p>
 <p><img src="img/qmul_logo.png" alt="QMUL logo"></p>
 
                     

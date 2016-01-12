@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="2" data-basepath="." data-revision="Thu Jan 07 2016 13:51:22 GMT+0000 (UTC)">
+    <div class="book" data-level="2" data-basepath="." data-revision="Tue Jan 12 2016 14:19:18 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -203,7 +203,7 @@
                         
                             <b>1.8.</b>
                         
-                        Compiling a Piece of Software
+                        Available Software
                     </a>
                 
             
@@ -385,11 +385,11 @@
 <li>Parallel libraries - OpenMPI</li>
 </ul>
 <h3 id="utility-servers-ssh-able-nodes">Utility servers (SSH-able nodes)</h3>
-<h4 id="sm11">SM11</h4>
+<h4 id="sm11">sm11</h4>
 <ul>
 <li>Purchased by Nichols, Leitch, Rossiter, Buggs, Wurm, Chelala, Clayton and Le Comber</li>
 </ul>
-<p>A &quot;set free&quot; fat node that SBCS users can ssh directly into. The GPFS is mounted and it should work like any other part of Apocrita, just that the Sun Grid Engine doesnt schedule jobs here so that it is free for users to handle themselves. Check whether or not the machine is free (top, htop) before you start something, and maybe use a <a href="http://linux.die.net/man/1/nice" target="_blank">nice value</a>. To log in, just type <code>ssh sm11</code> when logged into a frontend. You can also make an ssh shortcut in your config file, explained below. </p>
+<p>A &quot;set free&quot; fat node that SBCS users can ssh directly into. The GPFS is mounted and it should work like any other part of Apocrita, just that the Sun Grid Engine doesn&apos;t schedule jobs here so that it is free for users to handle themselves. Check whether or not the machine is free (top, htop) before you start something, and maybe use a <a href="http://linux.die.net/man/1/nice" target="_blank">nice value</a>. To log in, just type <code>ssh sm11</code> when logged into a frontend. You can also make an ssh shortcut in your config file, explained below. </p>
 <ul>
 <li>Four 12-core AMD Opteron(TM) Processor 6234 - 2.4GHz</li>
 <li>Mem 512GB</li>
@@ -409,15 +409,16 @@
 <li>Docker installed</li>
 </ul>
 <p>Contact: a.larkeryd@qmul.ac.uk, y.wurm@qmul.ac.uk, r.a.nichols@qmul.ac.uk</p>
-<h4 id="vm21-vm22">VM21 &amp; VM22</h4>
+<h4 id="frontend5-and-frontend6">frontend5 and frontend6</h4>
 <ul>
 <li>Purchased with NERC money by Nichols &amp; Wurm.</li>
 </ul>
-<p>The VMs are two nodes of the Apocrita cluster on which a KVM is running. These were set up in order to have Docker running on the cluster, however this is not yet up and running properly. Users can log in to these nodes and run their programs. Unfortunately, there are some caveats. Only a few core modules are available at the moment (module avail). There is also a possibility that the virtual machine is slowing the nodes down. Benchmarks are to be held to determine exact implications of this. Possible that one machine will be reinstalled without the KVM.</p>
+<p>These two identical machines are similar to sm11 but are running on newer hardware. For this reason, these two machines are slightly more powerful than sm11. The only difference between the machines is that frontend5 has hyperthreading (HT) turned on and frontend6 has it turned off. If you are aware of your tools running better on HT on/off, you can use the appropriate machine. Please feel free to use the /tmp catalogue on these machines for your temporary analysis files, but remember to move off it as soon as you are done as your files may be deleted during reboots etc. </p>
 <ul>
-<li>VM21 and VM22 are running on frontend5 and frontend6 respectively</li>
-<li>Four 10-core Intel Xeon E5-4640 v2  - 2.20GHz</li>
-<li>Mem 516GB</li>
+<li>Four 10-core Intel Xeon E5-4640 v2  - 2.20GHz. This means 40 threads with HT off and 80 with HT on.</li>
+<li>Mem 630GB</li>
+<li>13TB local scratch disk located on /tmp - do NOT store things here, it is ephemeral will be deleted.</li>
+<li>cachecade using a 100GB SSD. This is a caching of the local spinning disks onto the SSD. In principle it should increase performance on /tmp.</li>
 </ul>
 <h3 id="gpu">GPU</h3>
 <p>There are no GPUs on Apocrita, if you need this for your analysis you should talk to you PI about acquisition.</p>
@@ -436,7 +437,7 @@
 <h4 id="public-key-copy">Public Key Copy</h4>
 <p>The process is different depending on which operating system you are using. </p>
 <h5 id="windows-and-linux">Windows and Linux</h5>
-<p>Here its very simple, open a terminal (or MobaXterm window) and type in <code>ssh-copy-id btw000@login.hpc.qmul.ac.uk</code> using your own username. Thats it. Now try your connection <code>ssh -X btw000@login.hpc.qmul.ac.uk</code>!</p>
+<p>Here it&apos;s very simple, open a terminal (or MobaXterm window) and type in <code>ssh-copy-id btw000@login.hpc.qmul.ac.uk</code> using your own username. That&apos;s it. Now try your connection <code>ssh -X btw000@login.hpc.qmul.ac.uk</code>!</p>
 <h5 id="mac">Mac</h5>
 <blockquote>
 <p><em>If you have <a href="http://brew.sh/" target="_blank">Homebrew</a> installed on your Mac you can use it to install <code>ssh-copy-id</code> and go from there.</em></p>
@@ -450,7 +451,7 @@
 <li>You can now log out and try the connection again to see if your keys work!</li>
 </ol>
 <h3 id="shortcuts">Shortcuts</h3>
-<p>Another convenience tip is to add shorthand names for your ssh logins. The address to the apocrita head node is quite long and arguably tedious to write. So, this being computer science, of course there is a setup that will allow you to simply type something like <code>ssh apocrita</code> on the commandline to connect.</p>
+<p>Another convenience tip is to add shorthand names for your ssh logins. The address to the Apocrita head node is quite long and arguably tedious to write. So, this being computer science, of course there is a setup that will allow you to simply type something like <code>ssh apocrita</code> on the command line to connect.</p>
 <ol>
 <li><code>cd ~/.ssh</code></li>
 <li>Open or create the config file <code>nano config</code></li>
@@ -469,9 +470,10 @@
     Hostname sm11
     User btw000
     ProxyCommand ssh apocrita nc %h %p
+    ForwardX11 yes
 </code></pre><p>You may or may not want X11 forwarding and there are other <a href="http://linux.die.net/man/5/ssh_config" target="_blank">options</a>.</p>
 <h2 id="3-zsh-defaults">3. <code>zsh</code> defaults</h2>
-<p>These are instructions to set up your shell with some useful <code>zsh</code> settings like better autocompletion and history etc. It also contains a small set of useful aliases.</p>
+<p>These are instructions to set up your shell with some useful <code>zsh</code> settings like better auto completion and history etc. It also contains a small set of useful aliases.</p>
 <h3 id="all-you-need-to-do">All you need to do</h3>
 <h4 id="save-your-own-zshrc-file">Save your own <code>.zshrc</code> file</h4>
 <p>This is the file that says what zsh should do when you log in. You have one in your home directory which you will have to remove in order for this to work. This way you can keep your previous <code>.zshrc</code> if you feel like going back.</p>
@@ -487,7 +489,7 @@ mv .zshrc .zshrc.BAK
 <pre><code>/data/scratch/btw000/folder1         # pwd - this is the directory 
 [btw000@frontend1 folder1]$          # prompt with default bash settings
 
-btw000@frontend1 /d/s/b/folder1&gt;     # here is how it looks with te new settings
+btw000@frontend1 /d/s/b/folder1&gt;     # here is how it looks with the new settings
 </code></pre><p>Better tab completion - case insensitive tab completion and </p>
 <pre><code>btw977@frontend1 ~&gt; cd /data/sbcs    # pressing TAB twice
 sbcs/                SBCS-ClareLab/       SBCS-EizaguirreLab/  SBCS-GreyLab/        SBCS-LeitchLab/      SBCS-OsmanLab/
@@ -496,13 +498,13 @@ SBCS-BuggsLab/       SBCS-CrespoOtero/    SBCS-EvansLab/       SBCS-HurdLab/    
 SBCS-ChassLab/       SBCS-DiTommasoLab/   SBCS-ForniliLab/     SBCS-Irys/           SBCS-MSc-BioInf/     SBCS-StollewerkLab/
 SBCS-ChittkaLab/     SBCS-DuffyLab/       SBCS-GoldupLab/      SBCS-LeComberLab/    SBCS-NicholsLab/     SBCS-WurmLab/
 </code></pre><h4 id="-zsh-5-0-7"><code>zsh</code> 5.0.7</h4>
-<p>The default version of zsh that every SBCS user has (unless explicitly changed) is version 4.3.10 which doesn&apos;t contain all the functionality used here. Because of that a check is made when logging in and if the version of <code>zsh</code> isnt 5.0.7 it is loaded. </p>
+<p>The default version of zsh that every SBCS user has (unless explicitly changed) is version 4.3.10 which doesn&apos;t contain all the functionality used here. Because of that a check is made when logging in and if the version of <code>zsh</code> isn&apos;t 5.0.7, it is loaded. </p>
 <h4 id="oh-my-zsh">Oh My Zsh</h4>
 <p><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank">Oh My Zsh</a> is a large package of settings, plugins and themes for zsh which is used as foundation for these defaults. It has a ton of options but it is kept fairly simple here, including the theme. It does allow for much more customisation which you can do for yourself.</p>
 <h4 id="per-directory-history">Per directory history</h4>
-<p>This plugin is enabled to give you a comman line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.)</p>
+<p>This plugin is enabled to give you a command line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.)</p>
 <h4 id="customising-further">Customising further</h4>
-<p>Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe its syntax highlighting you crave. The setup followed above inserted a sourcing of our general <code>.zshrc</code> file in your local version. That file is located in your home directory. In order to change the settings you need to replace your <code>.zshrc.</code> with the contents of the SBCS-Informatics-zshrc. That way you can change anything you like! Add plugins, try the random theme, add your own aliases or even build your own functions. You can of course write your own .zshrc and use <a href="https://github.com/sorin-ionescu/prezto" target="_blank">other</a> packages. </p>
+<p>Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe it&apos;s syntax highlighting you crave. The setup followed above inserted a sourcing of our general <code>.zshrc</code> file in your local version. That file is located in your home directory. In order to change the settings, you need to replace your <code>.zshrc.</code> with the contents of the SBCS-Informatics-zshrc. That way you can change anything you like! Add plugins, try the random theme, add your own aliases or even build your own functions. You can of course write your own .zshrc and use <a href="https://github.com/sorin-ionescu/prezto" target="_blank">other</a> packages. </p>
 <p>There are other shells available as well. <code>fish</code> for example, which claims to be &quot;Finally, a command line shell for the 90s&quot;. However, <code>fish</code> does have slightly different syntax than <code>bash</code> and <code>zsh</code>, the two of which are very similar. Feel free to keep looking, there are other more obscure things out there. </p>
 <h2 id="4-oneliners">4. Oneliners</h2>
 <ul>

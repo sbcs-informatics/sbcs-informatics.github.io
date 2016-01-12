@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.1" data-basepath="." data-revision="Thu Jan 07 2016 13:51:22 GMT+0000 (UTC)">
+    <div class="book" data-level="1.1" data-basepath="." data-revision="Tue Jan 12 2016 14:19:18 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -203,7 +203,7 @@
                         
                             <b>1.8.</b>
                         
-                        Compiling a Piece of Software
+                        Available Software
                     </a>
                 
             
@@ -361,25 +361,25 @@
                     
                         <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_1_what_is_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="1-what-is-apocrita">1. What is Apocrita?</h2>
 <h3 id="cluster-structure">Cluster Structure</h3>
-<p>Apocrita is a High Performance Computing (HPC) cluster that consists of many interconnected computers, called <strong>nodes</strong>. The user logs into one specific <strong>head node</strong>, from which the rest of the cluster can be accessed. On Apocrita these are called <strong>frontends</strong>. Importantly, <strong><em>no jobs are run directly on the frontends</em></strong>. Instead, whenever the user wants to run a job, the details of the job is submitted to a software that handles scheduling of work on the cluster and it is dispatched to a work node when one is available. </p>
+<p>Apocrita is a High Performance Computing (HPC) cluster that consists of many interconnected computers, called <strong>nodes</strong>. The user logs into one specific <strong>head node</strong>, from which the rest of the cluster can be accessed. On Apocrita these are called <strong>frontends</strong>. Importantly, <strong><em>no jobs are run directly on the frontends</em></strong>. Instead, whenever the user wants to run a job, the details of the job is submitted to a software that handles scheduling of work on the cluster and it is dispatched to a work node when one is available. There are also <strong>utility servers</strong> which the user can interactively log in to. More information on utility servers can be found below and in the <a href="2_0_advanced.html">advanced section</a>.</p>
 <h4 id="nodes">Nodes</h4>
 <ul>
-<li>150 normal use nodes each with two 6-core processors, ie 12 cores, and 24GB RAM</li>
-<li>11 so called <strong>fat nodes</strong> each with four 12-core processors, ie 48 cores, and 512GB RAM. These nodes are used for heavier calculations, in particular ones which require a lot of memory.</li>
+<li>150 normal use nodes each with two 6-core processors, i.e. 12 cores, and 24GB RAM</li>
+<li>11 so called <strong>fat nodes</strong> each with four 12-core processors, i.e. 48 cores, and 512GB RAM. These nodes are used for heavier calculations, in particular ones which require a lot of memory.</li>
 </ul>
 <p>For more information on the specifications on Apocrita nodes, see the <a href="2_0_advanced.html">advanced section</a>.</p>
 <h4 id="frontends">Frontends</h4>
 <ul>
 <li>frontend1 - This is the one you should be using to connect to Apocrita</li>
 <li>frontend2 - Sometimes, frontend1 is unavailable, in this case try frontend2</li>
-<li>There are other servers with the naming convention frontend# which in fact are utility servers</li>
+<li>There are other servers with the naming convention frontend# which in fact are <strong>utility servers</strong></li>
 </ul>
 <h4 id="utility-servers">Utility servers</h4>
 <p>There are a number of very specific so called utility servers that are part of the HPC resources but not the general Apocrita system. Users can SSH to these machines and use them interactively for their analysis. These servers were all purchased separately with different funding, keep this in mind as groups who have contributed to the acquisition of these machines have priority. With that said, feel free to use these resources when they are available, you can find more information in the <a href="2_0_advanced.html">advanced section</a>.</p>
 <h4 id="galaxy">Galaxy</h4>
-<p>There is a Galaxy server set up on Apocrita through which you can run some general (and some more specific) analyses in a graphical web interface. For more information on Galaxy, see the <a href="1_10_galaxy.html">specificaions here</a>.</p>
+<p>There is a Galaxy server set up on Apocrita through which you can run some general (and some more specific) analyses in a graphical web interface. For more information on Galaxy, see the <a href="1_10_galaxy.html">specifications here</a>.</p>
 <h4 id="data">Data</h4>
-<p>Each user has a specific account on Apocrita and have a data quota of 50GB in their home directory. Often this is nowhere near enough to run the analysis needed, therefore there is a so called <strong>scratch</strong> space for temporary files. This is where most people do their work but its important to note that that <strong>scratch area is not backed up</strong> and you should treat these as purely temporary. In the future a time-limit on files may be implemented, automatically deleting old files in the scratch space.</p>
+<p>Each user has a specific account on Apocrita and have a data quota of 50GB in their home directory. Often this is nowhere near enough to run the analysis needed, therefore there is a so called <strong>scratch</strong> space for temporary files. This is where most people do their work but it&apos;s important to note that that <strong>scratch area is not backed up</strong> and you should treat these as purely temporary. In the future a time-limit on files may be implemented, automatically deleting old files in the scratch space.</p>
 <h5 id="home">Home</h5>
 <ul>
 <li>Is tiny</li>
@@ -396,8 +396,8 @@
 <h5 id="lab-specific-storage">Lab specific storage</h5>
 <ul>
 <li>Each lab has a 1TB space, some labs have purchased additional storage</li>
-<li>Ask your supervisor about access to your labs own space</li>
-<li>This is usually for medium term storage of data etc, but each lab handles the area internally</li>
+<li>Ask your supervisor about access to your lab space</li>
+<li>This is usually for medium term storage of data etc., but each lab handles the area internally</li>
 </ul>
 <h5 id="archive">Archive</h5>
 <p>We are working on setting up an archival data space where the user can store data long term, for things like raw and processed data from finished projects that cannot be deleted but probably wont be used a lot in the future. In many cases there is project specific storage implemented.</p>

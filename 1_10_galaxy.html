@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.10" data-basepath="." data-revision="Thu Jan 07 2016 13:51:22 GMT+0000 (UTC)">
+    <div class="book" data-level="1.10" data-basepath="." data-revision="Tue Jan 12 2016 14:19:18 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -203,7 +203,7 @@
                         
                             <b>1.8.</b>
                         
-                        Compiling a Piece of Software
+                        Available Software
                     </a>
                 
             
@@ -363,16 +363,16 @@
 <p>There is a Galaxy server set up on Apocrita. </p>
 <h3 id="login">Login</h3>
 <p><a href="https://galaxy.hpc.qmul.ac.uk/" target="_blank">https://galaxy.hpc.qmul.ac.uk/</a> - This is the link to the web interface. </p>
-<p>To log in, use your entire QMUL email address ie j.doe@qmul.ac.uk as username and your Apocrita password. </p>
+<p>To log in, use your entire QMUL email address i.e. j.doe@qmul.ac.uk as username and your Apocrita password. </p>
 <h3 id="sftp">SFTP</h3>
 <p>You can use SFTP to transfer large files to the Galaxy server. Use a <a href="1_6_copying_and_downloading_files.html">GUI program</a> to connect to the server using SFTP and transfer your files. The hostname is the same as the website, galaxy.hpc.qmul.ac.uk.</p>
 <p>Remember to set SFTP and not FTP. </p>
 <h3 id="specifics">Specifics</h3>
 <p>The actual server runs on frontend2 but it uses DRMAA to submit jobs to the cluster queue. It will run jobs as the &quot;galaxy&quot; user, that means that the user starting the job is not the one that executes it on the cluster, but the username is listed in the job name in the queue.</p>
-<p>For an unknown reason the command line version of sftp may or may not work for transfering files. There seems to be some issue with permissions of files sometimes. Use Cyberduck if you can. Contact Adrian L&#xE4;rkeryd or ITS-Research if you&apos;re having issues with the file transfer.</p>
+<p>For an unknown reason the command line version of sftp may or may not work for transferring files. There seems to be some issue with permissions of files sometimes. Use Cyberduck if you can. Contact Adrian L&#xE4;rkeryd or ITS-Research if you&apos;re having issues with the file transfer.</p>
 <p>This server is still very much experimental and things change. If something is not working or you need a new tool installed do not hesitate to <a href="3_0_contact.html">contact</a> Adrian.</p>
 <h4 id="repeatexplorer">Repeatexplorer</h4>
-<p>Is set to use almost an entire fat node on Apocrita. Unfortunately it doesnt allow for dynamically changing the resource requirement, thus even a small job will request a lot of resources from the cluster and be stuck in the SGE queue for longer than necessary. The main requirement of this tool seems to be memory and the biggest nodes on the cluster have 512GB of RAM. It is possible that some very large jobs could exceed that limit and be killed.</p>
+<p>Is set to use almost an entire fat node on Apocrita. Unfortunately, it doesn&apos;t allow for dynamically changing the resource requirement, thus even a small job will request a lot of resources from the cluster and be stuck in the SGE queue for longer than necessary. The main requirement of this tool seems to be memory and the biggest nodes on the cluster have 512GB of RAM. It is possible that some very large jobs could exceed that limit and be killed.</p>
 <p><img src="img/qmul_logo.png" alt="QMUL logo"></p>
 
                     

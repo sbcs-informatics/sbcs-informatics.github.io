@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.9" data-basepath="." data-revision="Thu Jan 07 2016 13:51:22 GMT+0000 (UTC)">
+    <div class="book" data-level="1.9" data-basepath="." data-revision="Tue Jan 12 2016 14:19:18 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -203,7 +203,7 @@
                         
                             <b>1.8.</b>
                         
-                        Compiling a Piece of Software
+                        Available Software
                     </a>
                 
             
@@ -360,15 +360,15 @@
                     <section class="normal" id="section-">
                     
                         <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_9_r.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="9-r">9. R</h2>
-<p>You can run R in the Unix command line. To do this, simply type <code>R</code>. </p>
+<p>You can run R in the Unix command line. To do this, simply type <code>R</code>. If you have X11 forwarding on in your ssh session, using the <code>-X</code> option, you will be able to see graphical devices that R opens when you for example plot something</p>
 <p>This essentially turns the command window into the R console you&apos;re familiar with. From here, you can do all of the same things as you can in regular R. There are a few things worth noting:</p>
 <h3 id="reading-files">Reading files</h3>
-<p>Alas, the command line is completely mouseless, so the <code>file.choose()</code> command for reading data using <code>read.table()</code> or <code>read.csv()</code> is no longer available. Instead, type in the name of the file you want in inverted commas. Fortunately, R will look for the file in the working directory you were in when you started the console, so it may actually be even more straightforward. However, if you&apos;re not in the same directory, you&apos;ll need to type the path the same way as you would when copying, moving, or navigating files &amp; folders.</p>
+<p>Alas, the command line is completely mouseless, so the <code>file.choose()</code> command for reading data using <code>read.table()</code> or <code>read.csv()</code> is no longer available. Instead, type in the name of the file you want in inverted commas. Fortunately, R will look for the file in the working directory you were in when you started the console, so it may actually be even more straightforward. However, if you&apos;re not in the same directory, you&apos;ll need to type the path the same way as you would when you&apos;re copying, moving, or navigating files &amp; folders.</p>
 <pre><code class="lang-R">mydata &lt;- read.table(<span class="hljs-string">&quot;data.txt&quot;</span>, header=<span class="hljs-literal">T</span>)
 otherdata &lt;- read.csv(<span class="hljs-string">&quot;work-monthly/RData/data.csv&quot;</span>)
 </code></pre>
 <h3 id="creating-pdf-file-of-a-plot">Creating pdf file of a plot</h3>
-<p>Unless you&apos;re using a screen, you won&apos; t be able to see any plots you&apos;ve made in R and so this will be necessary. Even if you are, once you&apos;ve made the plot you want for your paper, you&apos;ll still need to save it. R can do this by opening its own workspace inside a pdf file, called a &apos;device&apos;. Other devices include the Quartz &amp; X11 windows you&apos;re already familiar with looking at your plots on. </p>
+<p>Unless you&apos;re using X11 forwarding, you won&apos; t be able to see any plots you&apos;ve made in R. Even if you are, once you&apos;ve made the plot you want for your paper, you&apos;ll still need to save it. R can do this by opening its own workspace inside a pdf file, called a &apos;device&apos;. Other devices include the Quartz &amp; X11 windows you&apos;re already familiar with looking at your plots on. </p>
 <p>First, call the <code>pdf()</code> function to tell it what the file should be called, then make your plot as you like it. To stop working in that file call the <code>dev.off()</code> function. You can then download it from the server to view it.</p>
 <pre><code class="lang-R">pdf(<span class="hljs-string">&quot;plot.pdf&quot;</span>)
 plot(object)
@@ -386,7 +386,7 @@ dev.off()
         </div>
 
         
-        <a href="./1_8_compiling_a_piece_of_software.html" class="navigation navigation-prev " aria-label="Previous page: Compiling a Piece of Software"><i class="fa fa-angle-left"></i></a>
+        <a href="./1_8_compiling_a_piece_of_software.html" class="navigation navigation-prev " aria-label="Previous page: Available Software"><i class="fa fa-angle-left"></i></a>
         
         
         <a href="./1_10_galaxy.html" class="navigation navigation-next " aria-label="Next page: Galaxy"><i class="fa fa-angle-right"></i></a>
