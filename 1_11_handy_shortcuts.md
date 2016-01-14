@@ -4,6 +4,7 @@
 * Make a soft link to a file `ln -s /path/to/source/file.txt ./destination_file.txt`
 * Find username or information on a user with `finger <search-term>`
 * Peek into the head of a gzipped file with `zcat zippedupfile.gz | head`
+* You can use `bc` to do precision calculations like so `bc -l <<< "sqrt(2)-5/7+18"`
 
 ### Apocrita job stats
 ITS-R has a webpage for statistics where you can see the load on the cluster but more importantly you can see your completed jobs.
