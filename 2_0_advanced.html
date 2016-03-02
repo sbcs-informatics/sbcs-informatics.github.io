@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="2" data-basepath="." data-revision="Thu Jan 14 2016 15:42:00 GMT+0000 (UTC)">
+    <div class="book" data-level="2" data-basepath="." data-revision="Wed Mar 02 2016 17:13:34 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -369,12 +369,18 @@
 <li>Dual 6-core Intel Westmere (E5645) - 2.4GHz</li>
 <li>Memory 24GB</li>
 </ul>
-<p>Hyperthreading is currently enabled on the Intel CPUs but each (serial) job is allocated a single real core</p>
+<p>Hyperthreading is currently disabled on the thin nodes. </p>
 <h4 id="fat-nodes">Fat Nodes</h4>
 <ul>
 <li>11 Nodes</li>
 <li>Four 12-core AMD Bulldozer (6234) - 2.4GHz</li>
 <li>Memory 512GB</li>
+</ul>
+<h4 id="frontends">Frontends</h4>
+<ul>
+<li>frontend1.apocrita.hpc.qmul.ac.uk - This is the one you should be using to connect to Apocrita. <code>login.hpc.qmul.ac.uk</code> currently points to frontend1.</li>
+<li>frontend2.apocrita.hpc.qmul.ac.uk - Sometimes, frontend1 is unavailable, in this case try frontend2. Galaxy runs on frontend2.</li>
+<li>There are other servers with the naming convention frontend# which in fact are <strong>utility servers</strong>, listed below.</li>
 </ul>
 <h4 id="other-information-on-apocrita">Other information on Apocrita</h4>
 <ul>
@@ -446,7 +452,7 @@
 <ol>
 <li>Open a terminal and go to your home directory with <code>cd</code></li>
 <li>Use <code>scp</code> to copy the public key to Apocrita with this command <code>scp .ssh/id_rsa.pub btw000@login.hpc.qmul.ac.uk:~/</code></li>
-<li>Login to Apocrita <code>ssh btw977@login.hpc.qmul.ac.uk</code></li>
+<li>Login to Apocrita <code>ssh btw000@login.hpc.qmul.ac.uk</code></li>
 <li><code>cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></li>
 <li>You can now log out and try the connection again to see if your keys work!</li>
 </ol>
@@ -475,22 +481,25 @@
 <h2 id="3-zsh-defaults">3. <code>zsh</code> defaults</h2>
 <p>These are instructions to set up your shell with some useful <code>zsh</code> settings like better auto completion and history etc. It also contains a small set of useful aliases.</p>
 <h3 id="all-you-need-to-do">All you need to do</h3>
-<h4 id="save-your-own-zshrc-file">Save your own <code>.zshrc</code> file</h4>
-<p>This is the file that says what zsh should do when you log in. You have one in your home directory which you will have to remove in order for this to work. This way you can keep your previous <code>.zshrc</code> if you feel like going back.</p>
+<h4 id="save-your-old-bash-profile-and-zshrc-files">Save your old <code>.bash_profile</code> and <code>.zshrc</code> files</h4>
+<p>These files control settings which should be set up as you log in. They are located in your home directory and control bash and zsh repsectively (You may not have a <code>.zshrc</code> file if you haven&apos;t tried that shell before). You will need to remove them in order for this to work, but it is highly recommended that you save them in case you want to go back. </p>
 <pre><code class="lang-bash"><span class="hljs-built_in">cd</span>
-mv .zshrc .zshrc.BAK
+mv .bash_profile .bash_profile.BAK        <span class="hljs-comment"># this file runs every time you log in with bash</span>
+mv .zshrc .zshrc.BAK                      <span class="hljs-comment"># this file runs every time you log in with zsh</span>
 </code></pre>
 <h4 id="run-the-small-installation">Run the small installation</h4>
 <pre><code class="lang-bash"><span class="hljs-built_in">source</span> /data/SBCS-Informatics/zsh_extensions
 </code></pre>
 <p>You should find yourself in a helpful shell. Have fun. </p>
+<p>What happened was that a new <code>.bash_profile</code> was created which launches <code>zsh</code>. This in turn reads a new <code>.zshrc</code> file. </p>
 <h3 id="features">Features</h3>
-<p>Prompt directory information - It will show you an abbreviated version of the full path to where you are, giving you better sense of the file system.</p>
+<h4 id="prompt-directory-information">Prompt directory information</h4>
+<p><code>zsh</code> will show you an abbreviated version of the full path to where you are, giving you better sense of the file system.</p>
 <pre><code>/data/scratch/btw000/folder1         # pwd - this is the directory 
 [btw000@frontend1 folder1]$          # prompt with default bash settings
-
 btw000@frontend1 /d/s/b/folder1&gt;     # here is how it looks with the new settings
-</code></pre><p>Better tab completion - case insensitive tab completion and </p>
+</code></pre><h4 id="better-tab-completion">Better tab completion</h4>
+<p>Case insensitive tab completion and you can tab between the different options. </p>
 <pre><code>btw977@frontend1 ~&gt; cd /data/sbcs    # pressing TAB twice
 sbcs/                SBCS-ClareLab/       SBCS-EizaguirreLab/  SBCS-GreyLab/        SBCS-LeitchLab/      SBCS-OsmanLab/
 SBCS-BessantLab/     SBCS-ClaytonLab/     SBCS-ElphickLab/     SBCS-HirstLab/       SBCS-MarinakisLab/   SBCS-RossiterLab/
@@ -502,9 +511,11 @@ SBCS-ChittkaLab/     SBCS-DuffyLab/       SBCS-GoldupLab/      SBCS-LeComberLab/
 <h4 id="oh-my-zsh">Oh My Zsh</h4>
 <p><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank">Oh My Zsh</a> is a large package of settings, plugins and themes for zsh which is used as foundation for these defaults. It has a ton of options but it is kept fairly simple here, including the theme. It does allow for much more customisation which you can do for yourself.</p>
 <h4 id="per-directory-history">Per directory history</h4>
-<p>This plugin is enabled to give you a command line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.)</p>
+<p>This plugin is enabled to give you a command line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.) Please keep in mind that this is not retroactive!</p>
 <h4 id="customising-further">Customising further</h4>
-<p>Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe it&apos;s syntax highlighting you crave. The setup followed above inserted a sourcing of our general <code>.zshrc</code> file in your local version. That file is located in your home directory. In order to change the settings, you need to replace your <code>.zshrc.</code> with the contents of the SBCS-Informatics-zshrc. That way you can change anything you like! Add plugins, try the random theme, add your own aliases or even build your own functions. You can of course write your own .zshrc and use <a href="https://github.com/sorin-ionescu/prezto" target="_blank">other</a> packages. </p>
+<p>Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe it&apos;s syntax highlighting you crave. The setup followed above inserted a sourcing of our general <code>.zshrc</code> file in your local version. That file is located in your home directory.</p>
+<p>If you are adding things like <code>module load</code> commands, aliases, changing your $PATH variable or something similar, the easiest way is to just add it to the end of your new <code>.zshrc</code> file which is in your home. </p>
+<p>You can also copy all the contents of the general SBCS-zshrc (/data/SBCS-Informatics/SBCS-zshrc) to your own <code>.zshrc</code>. That way you can change anything you like! Add plugins, try the random theme, or even build your own functions. You can of course write your own .zshrc and use <a href="https://github.com/sorin-ionescu/prezto" target="_blank">other</a> packages. </p>
 <p>There are other shells available as well. <code>fish</code> for example, which claims to be &quot;Finally, a command line shell for the 90s&quot;. However, <code>fish</code> does have slightly different syntax than <code>bash</code> and <code>zsh</code>, the two of which are very similar. Feel free to keep looking, there are other more obscure things out there. </p>
 <h2 id="4-oneliners">4. Oneliners</h2>
 <ul>

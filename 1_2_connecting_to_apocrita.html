@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.2" data-basepath="." data-revision="Thu Jan 14 2016 15:42:00 GMT+0000 (UTC)">
+    <div class="book" data-level="1.2" data-basepath="." data-revision="Wed Mar 02 2016 17:13:34 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -366,8 +366,8 @@
 <p>OS X (and indeed all Linux distributions) have an application called Terminal. On your Mac you can find it in Applications -&gt; Utilities.</p>
 <ol>
 <li>Open Terminal</li>
-<li>Enter the following<pre><code>ssh -X [youruserID]@frontend1.apocrita.hpc.qmul.ac.uk
-</code></pre>e.g.<pre><code>ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk
+<li>Enter the following<pre><code>ssh -X [youruserID]@login.hpc.qmul.ac.uk
+</code></pre>e.g.<pre><code>ssh -X btw000@login.hpc.qmul.ac.uk
 </code></pre></li>
 <li>Enter your password when prompted (It will not appear as you type, this is by design, your keystrokes are being registered.)</li>
 </ol>
@@ -377,23 +377,23 @@
 <ol>
 <li><a href="http://mobaxterm.mobatek.net/download.html" target="_blank">Download</a> the newest version of MobaXterm</li>
 <li>Create a session</li>
-<li>Enter the address to frontend1 which is <code>frontend1.apocrita.hpc.qmul.ac.uk</code></li>
+<li>Enter the address to Apocrita which is <code>login.hpc.qmul.ac.uk</code></li>
 <li>You can also enter username and password to save them here</li>
 <li>Connect and enter your username and/or password when prompted</li>
 </ol>
 <p>If you would rather use PuTTY. </p>
 <ol>
 <li><a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Download</a> PuTTY</li>
-<li>In the host name window enter the server address <code>frontend1.apocrita.hpc.qmul.ac.uk</code></li>
+<li>In the host name window enter the server address <code>login.hpc.qmul.ac.uk</code></li>
 <li>Enter the correct port number (22) and check on correct connection type (SSH)</li>
-<li>Now go to the data tab under connection and in auto-login username box enter your username (e.g.btw000)</li>
-<li>Go back to the session tab and in the saved sessions box enter a name for this log in (e.g. frontend1)</li>
+<li>Now go to the data tab under connection and in auto-login username box enter your username (e.g. btw000)</li>
+<li>Go back to the session tab and in the saved sessions box enter a name for this log in (e.g. apocrita)</li>
 <li>Save!</li>
 <li>Double click the session name and enter your password where prompted</li>
 </ol>
 <h3 id="display">Display</h3>
 <p>If you&apos;re planning on using any graphical interface, e.g. plotting in R, you need the X11 forwarding flag, <code>-X</code>. This instructs the terminal forward display items to your computer, that will allow you to see your plots or other graphical user interfaces. You might as well always have this option set - to simplify things. MobaXterm uses X11 forwarding by default. </p>
-<pre><code>ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk
+<pre><code>ssh -X btw000@login.hpc.qmul.ac.uk
 </code></pre><h3 id="keep-your-terminal-as-you-log-out-or-lose-network-connection">Keep your terminal as you log out or lose network connection</h3>
 <p>When you shut your laptop down the connections it has made with Apocrita (and the rest of the outside world) will be interrupted. This can happen randomly at other times as well and the implication is that anything you were running in your terminal on Apocrita will be shut down too, along with the connection. </p>
 <h4 id="screen">Screen</h4>
@@ -405,12 +405,12 @@
 <li>CTRL+D                       # CTRL+D without CTRL+A first will terminate the session instead </li>
 <li>man screen                   # manual for screen - explaining every option</li>
 </ul>
-<h4 id="make-a-specific-command-uninterruptable">Make a specific command uninterruptable</h4>
+<h4 id="disconnect-a-command-from-the-terminal">Disconnect a command from the terminal</h4>
 <p>When a terminal is shut down, a so called hang-up signal is sent to any process running in that terminal telling it to quit. There is a way you can make your process ignore that specific signal with <code>nohup</code>. It is very simple to use; you add <code>nohup</code> before your command as such:</p>
 <pre><code>bwa mem -t 10 -p inputreference.fa inputfasta.fastq &gt; outputfile.sam &amp;               #if this is your command
 nohup bwa mem -t 10 -p inputreference.fa inputfasta.fastq &gt; outputfile.sam &amp;         #do this instead
 nohup nice bwa mem -t 10 -p inputreference.fa inputfasta.fastq &gt; outputfile.sam &amp;    #it&apos;s a good idea to add a nice value as well
-</code></pre><p>An ampersand, &amp;, at the end of a command will send it to the background, however this is not enough as it will still be sent the hang-up signal when the terminal is closed.</p>
+</code></pre><p>An ampersand, &amp;, at the end of a command will send it to the background, however this is not enough as it will still be sent the hang-up signal when the terminal is closed, you need the <code>nohop</code> addition.</p>
 <p>The last example includes the <a href="http://linux.die.net/man/1/nice" target="_blank"><code>nice</code></a> command as well. <code>nice</code> tells the computer that your process should be run with a lower priority, a good idea if you are leaving your process unattended! This does not mean it will take any longer than normal as long as there is available CPUs on the machine.</p>
 <p>Keep in mind that nohup will redirect the output if it is a set to a terminal - use <code>man nohup</code> for more information. <code>nohup</code> does not prevent other signals and will not make your process unkillable!</p>
 <p><img src="img/qmul_logo.png" alt="QMUL logo"></p>

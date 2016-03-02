@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.3" data-basepath="." data-revision="Thu Jan 14 2016 15:42:00 GMT+0000 (UTC)">
+    <div class="book" data-level="1.3" data-basepath="." data-revision="Wed Mar 02 2016 17:13:34 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -364,21 +364,21 @@
 <h3 id="interactive-use">Interactive use</h3>
 <p>These modes will log you in directly to a machine, allowing you to test, develop and try different things out in a single session. This is useful if for example you are trying a new tool out and need to test different parameters or if you are unsure about the syntax of the program. </p>
 <h4 id="using-the-queueing-system-on-apocrita">Using the queueing system on Apocrita</h4>
-<h5 id="-qlogin-and-qrsh"><code>qlogin</code> and <code>qrsh</code></h5>
+<h5 id="-qlogin"><code>qlogin</code></h5>
 <p>These commands will connect you to one of the worker nodes with the requested resources available for you to use. This will allow you to run your scripts/jobs interactively on a command line. This can be useful if you want to have more freedom in what you are doing than a script allows, but should be avoided for longer jobs as the frontends are rebooted fairly frequently which may kill your job. These commands take the arguments on how what resources you need. For more details, have a look at the <a href="https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/SubmittingJobs" target="_blank">ITS research website</a></p>
-<p>Here is an example of logging onto a machine using qrsh:</p>
-<pre><code>ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk        #log in to frontend1
-qrsh -l h_rt=3600                                      #request a session 3600s (1h) long
-qrsh -l h_rt=10:0:0,h_vmem=4G                          #request 10h and 4G memory
-exit                                                   #just type exit to logout
+<p>Here is an example of logging onto a machine using qlogin:</p>
+<pre><code>ssh -X btw000@login.hpc.qmul.ac.uk                       #log in to Apocrita
+qlogin -l h_rt=3600                                      #request a session 3600s (1h) long
+qlogin -l h_rt=10:0:0,h_vmem=4G                          #request 10h and 4G memory
+exit                                                     #just type exit to logout
 </code></pre><p>Do keep in mind that the frontends are rebooted reasonably frequently to be able to handle all the traffic on them. For this reason, it&apos;s best to keep interactive jobs fairly short. Use the utility servers or <code>qsub</code> described below for longer runs. </p>
 <h4 id="sshing-to-a-utility-server">SSHing to a utility server</h4>
 <h5 id="frontend5-frontend6-and-sm11">frontend5, frontend6 and SM11</h5>
-<p>Once you have logged into a frontend of Apocrita, all you need to do to log in to one of these servers is to SSH to that particular name. These machines have all been bought by different groups of academics and priori</p>
+<p>Once you have logged into a frontend of Apocrita, all you need to do to log in to one of these servers is to SSH to that particular name. These machines have all been bought by different groups of academics and priority remains with these groups. This only means that you need to check carefully before you start to work here, if it is free everyone is allowed to make use of the resource. </p>
 <pre><code>ssh -X frontend5
 ssh -X frontend6
 ssh -X sm11
-</code></pre><p>These machines are all different, to find out how and why, head to the <a href="2_0_advanced.html">advanced section</a>. It is <strong>VERY</strong> important that you do not overload these servers, it is up to the user to figure out what the load on the machine is and determine if there is room for their job. </p>
+</code></pre><p>These machines are all different, to find out how and why, head to the <a href="2_0_advanced.html">advanced section</a>. It is <strong>VERY</strong> important that you do not overload these servers, it is up to the user to figure out what the load on the machine is and determine if there is room for their job. Use commands such as <code>top</code>, <code>htop</code> <code>free</code> etc. to make sure.</p>
 <h3 id="non-interactive-use">Non-interactive use</h3>
 <h4 id="submitting-a-job-script-to-the-queue">Submitting a job script to the queue</h4>
 <p>This is the easiest way to run your job on the Apocrita cluster. Even so, it is not as simple as running your command. Remember, don&apos;t run jobs on the frontends. This method uses a command called <code>qsub</code> which takes a script as input. Inside the script you define the resources your job needs.</p>
