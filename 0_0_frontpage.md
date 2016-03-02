@@ -2,7 +2,7 @@
 
 #SBCS-Informatics
 
-This is a README explaining how to use the Apocrita HPC resource, it contains:
+This is a README explaining how to use the Apocrita HPC resource from an SBCS perspective, it contains:
 
 * Instructions on how to submit jobs and use Apocrita generally
 * An introduction to the command line and Unix

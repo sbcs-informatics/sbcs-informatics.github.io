@@ -9,4 +9,6 @@ This section will help new users to get started using Apocrita. Here you can fin
 
 The information here can also be seen as the first place to look when a question about Apocrita comes up. If there are any unanswered questions after that feel free to create a GitHub issue or use the [contact page](3_0_contact.md).
 
+Much of this information has been gathered from the official Apocrita docs, you can find them [here](http://docs.hpc.qmul.ac.uk/).
+
 ![QMUL logo](./img/qmul_logo.png)

@@ -10,12 +10,17 @@ This section contains more advanced information as well as tips and tricks for u
 * Dual 6-core Intel Westmere (E5645) - 2.4GHz
 * Memory 24GB
 
-Hyperthreading is currently enabled on the Intel CPUs but each (serial) job is allocated a single real core
+Hyperthreading is currently disabled on the thin nodes. 
 
 #### Fat Nodes
 * 11 Nodes
 * Four 12-core AMD Bulldozer (6234) - 2.4GHz
 * Memory 512GB
+
+#### Frontends
+* frontend1.apocrita.hpc.qmul.ac.uk - This is the one you should be using to connect to Apocrita. `login.hpc.qmul.ac.uk` currently points to frontend1.
+* frontend2.apocrita.hpc.qmul.ac.uk - Sometimes, frontend1 is unavailable, in this case try frontend2. Galaxy runs on frontend2.
+* There are other servers with the naming convention frontend# which in fact are **utility servers**, listed below.
 
 #### Other information on Apocrita
 * OS - [Scientific Linux 6.2](https://www.scientificlinux.org/)
@@ -89,7 +94,7 @@ One of the few times having a mac will make you suffer extra work. You will have
 
 1. Open a terminal and go to your home directory with `cd`
 2. Use `scp` to copy the public key to Apocrita with this command `scp .ssh/id_rsa.pub btw000@login.hpc.qmul.ac.uk:~/`
-3. Login to Apocrita `ssh btw977@login.hpc.qmul.ac.uk`
+3. Login to Apocrita `ssh btw000@login.hpc.qmul.ac.uk`
 4. `cat ~/id_rsa.pub >> ~/.ssh/authorized_keys`
 5. You can now log out and try the connection again to see if your keys work!
 
@@ -125,12 +130,13 @@ You may or may not want X11 forwarding and there are other [options](http://linu
 These are instructions to set up your shell with some useful `zsh` settings like better auto completion and history etc. It also contains a small set of useful aliases.
 
 ### All you need to do
-#### Save your own `.zshrc` file
-This is the file that says what zsh should do when you log in. You have one in your home directory which you will have to remove in order for this to work. This way you can keep your previous `.zshrc` if you feel like going back.
+#### Save your old `.bash_profile` and `.zshrc` files
+These files control settings which should be set up as you log in. They are located in your home directory and control bash and zsh repsectively (You may not have a `.zshrc` file if you haven't tried that shell before). You will need to remove them in order for this to work, but it is highly recommended that you save them in case you want to go back. 
 
 ```bash
 cd
-mv .zshrc .zshrc.BAK
+mv .bash_profile .bash_profile.BAK        # this file runs every time you log in with bash
+mv .zshrc .zshrc.BAK                      # this file runs every time you log in with zsh
 ```
 
 #### Run the small installation
@@ -139,17 +145,23 @@ mv .zshrc .zshrc.BAK
 source /data/SBCS-Informatics/zsh_extensions
 ```
 You should find yourself in a helpful shell. Have fun. 
+
+What happened was that a new `.bash_profile` was created which launches `zsh`. This in turn reads a new `.zshrc` file. 
+
 ### Features
 
-Prompt directory information - It will show you an abbreviated version of the full path to where you are, giving you better sense of the file system.
+#### Prompt directory information 
+`zsh` will show you an abbreviated version of the full path to where you are, giving you better sense of the file system.
+
 ```
 /data/scratch/btw000/folder1         # pwd - this is the directory 
 [btw000@frontend1 folder1]$          # prompt with default bash settings
-
 btw000@frontend1 /d/s/b/folder1>     # here is how it looks with the new settings
 ```
 
-Better tab completion - case insensitive tab completion and 
+#### Better tab completion
+Case insensitive tab completion and you can tab between the different options. 
+
 ```
 btw977@frontend1 ~> cd /data/sbcs    # pressing TAB twice
 sbcs/                SBCS-ClareLab/       SBCS-EizaguirreLab/  SBCS-GreyLab/        SBCS-LeitchLab/      SBCS-OsmanLab/
@@ -166,10 +178,14 @@ The default version of zsh that every SBCS user has (unless explicitly changed) 
 [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) is a large package of settings, plugins and themes for zsh which is used as foundation for these defaults. It has a ton of options but it is kept fairly simple here, including the theme. It does allow for much more customisation which you can do for yourself.
 
 #### Per directory history
-This plugin is enabled to give you a command line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.)
+This plugin is enabled to give you a command line history that is specific to the directory you are in. That way when you go back to the folder where you carried out your analysis all those months ago you can just press the up-arrow on your keyboard and it will go through what last happened in this particular directory (instead of the failed installation of that python package you were wrestling with yesterday.) Please keep in mind that this is not retroactive!
 
 #### Customising further
-Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe it's syntax highlighting you crave. The setup followed above inserted a sourcing of our general `.zshrc` file in your local version. That file is located in your home directory. In order to change the settings, you need to replace your `.zshrc.` with the contents of the SBCS-Informatics-zshrc. That way you can change anything you like! Add plugins, try the random theme, add your own aliases or even build your own functions. You can of course write your own .zshrc and use [other](https://github.com/sorin-ionescu/prezto) packages. 
+Perhaps you want some more fancy features than what is provided here? There are a multitude of themes that change appearance of your shell, or maybe it's syntax highlighting you crave. The setup followed above inserted a sourcing of our general `.zshrc` file in your local version. That file is located in your home directory.
+
+If you are adding things like `module load` commands, aliases, changing your $PATH variable or something similar, the easiest way is to just add it to the end of your new `.zshrc` file which is in your home. 
+
+You can also copy all the contents of the general SBCS-zshrc (/data/SBCS-Informatics/SBCS-zshrc) to your own `.zshrc`. That way you can change anything you like! Add plugins, try the random theme, or even build your own functions. You can of course write your own .zshrc and use [other](https://github.com/sorin-ionescu/prezto) packages. 
 
 There are other shells available as well. `fish` for example, which claims to be "Finally, a command line shell for the 90s". However, `fish` does have slightly different syntax than `bash` and `zsh`, the two of which are very similar. Feel free to keep looking, there are other more obscure things out there. 
 

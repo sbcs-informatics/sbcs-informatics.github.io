@@ -3,16 +3,13 @@
 ### Cluster Structure
 Apocrita is a High Performance Computing (HPC) cluster that consists of many interconnected computers, called **nodes**. The user logs into one specific **head node**, from which the rest of the cluster can be accessed. On Apocrita these are called **frontends**. Importantly, ***no jobs are run directly on the frontends***. Instead, whenever the user wants to run a job, the details of the job is submitted to a software that handles scheduling of work on the cluster and it is dispatched to a work node when one is available. There are also **utility servers** which the user can interactively log in to. More information on utility servers can be found below and in the [advanced section](2_0_advanced.md).
 
+Apocrita and all the other peripheral machines are run by the [ITS Research team](http://www.its.qmul.ac.uk/research/). They have a documentation site available [here](http://docs.hpc.qmul.ac.uk/). 
+
 #### Nodes
 * 150 normal use nodes each with two 6-core processors, i.e. 12 cores, and 24GB RAM
 * 11 so called **fat nodes** each with four 12-core processors, i.e. 48 cores, and 512GB RAM. These nodes are used for heavier calculations, in particular ones which require a lot of memory.
 
 For more information on the specifications on Apocrita nodes, see the [advanced section](2_0_advanced.md).
-
-#### Frontends
-* frontend1 - This is the one you should be using to connect to Apocrita
-* frontend2 - Sometimes, frontend1 is unavailable, in this case try frontend2
-* There are other servers with the naming convention frontend# which in fact are **utility servers**
 
 #### Utility servers
 There are a number of very specific so called utility servers that are part of the HPC resources but not the general Apocrita system. Users can SSH to these machines and use them interactively for their analysis. These servers were all purchased separately with different funding, keep this in mind as groups who have contributed to the acquisition of these machines have priority. With that said, feel free to use these resources when they are available, you can find more information in the [advanced section](2_0_advanced.md).
@@ -37,7 +34,7 @@ Each user has a specific account on Apocrita and have a data quota of 50GB in th
 ##### Lab specific storage
 * Each lab has a 1TB space, some labs have purchased additional storage
 * Ask your supervisor about access to your lab space
-* This is usually for medium term storage of data etc., but each lab handles the area internally
+* This is usually for medium term storage of data etc., but each lab handles their area internally
 
 
 ##### Archive

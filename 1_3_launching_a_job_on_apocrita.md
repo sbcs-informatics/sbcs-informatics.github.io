@@ -6,23 +6,23 @@ These modes will log you in directly to a machine, allowing you to test, develop
 
 #### Using the queueing system on Apocrita
 
-##### `qlogin` and `qrsh`
+##### `qlogin`
 These commands will connect you to one of the worker nodes with the requested resources available for you to use. This will allow you to run your scripts/jobs interactively on a command line. This can be useful if you want to have more freedom in what you are doing than a script allows, but should be avoided for longer jobs as the frontends are rebooted fairly frequently which may kill your job. These commands take the arguments on how what resources you need. For more details, have a look at the [ITS research website](https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/SubmittingJobs)
 
-Here is an example of logging onto a machine using qrsh:
+Here is an example of logging onto a machine using qlogin:
 
 ```
-ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk        #log in to frontend1
-qrsh -l h_rt=3600                                      #request a session 3600s (1h) long
-qrsh -l h_rt=10:0:0,h_vmem=4G                          #request 10h and 4G memory
-exit                                                   #just type exit to logout
+ssh -X btw000@login.hpc.qmul.ac.uk                       #log in to Apocrita
+qlogin -l h_rt=3600                                      #request a session 3600s (1h) long
+qlogin -l h_rt=10:0:0,h_vmem=4G                          #request 10h and 4G memory
+exit                                                     #just type exit to logout
 ```
 
 Do keep in mind that the frontends are rebooted reasonably frequently to be able to handle all the traffic on them. For this reason, it's best to keep interactive jobs fairly short. Use the utility servers or `qsub` described below for longer runs. 
 
 #### SSHing to a utility server
 ##### frontend5, frontend6 and SM11
-Once you have logged into a frontend of Apocrita, all you need to do to log in to one of these servers is to SSH to that particular name. These machines have all been bought by different groups of academics and priori
+Once you have logged into a frontend of Apocrita, all you need to do to log in to one of these servers is to SSH to that particular name. These machines have all been bought by different groups of academics and priority remains with these groups. This only means that you need to check carefully before you start to work here, if it is free everyone is allowed to make use of the resource. 
 
 ```
 ssh -X frontend5
@@ -30,7 +30,7 @@ ssh -X frontend6
 ssh -X sm11
 ```
 
-These machines are all different, to find out how and why, head to the [advanced section](2_0_advanced.md). It is **VERY** important that you do not overload these servers, it is up to the user to figure out what the load on the machine is and determine if there is room for their job. 
+These machines are all different, to find out how and why, head to the [advanced section](2_0_advanced.md). It is **VERY** important that you do not overload these servers, it is up to the user to figure out what the load on the machine is and determine if there is room for their job. Use commands such as `top`, `htop` `free` etc. to make sure.
 
 ### Non-interactive use
 #### Submitting a job script to the queue

@@ -10,11 +10,11 @@ OS X (and indeed all Linux distributions) have an application called Terminal. O
 1. Open Terminal
 2. Enter the following
 ```
-ssh -X [youruserID]@frontend1.apocrita.hpc.qmul.ac.uk
+ssh -X [youruserID]@login.hpc.qmul.ac.uk
 ```
 e.g.
 ```
-ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk
+ssh -X btw000@login.hpc.qmul.ac.uk
 ```
 3. Enter your password when prompted (It will not appear as you type, this is by design, your keystrokes are being registered.)
 
@@ -26,17 +26,17 @@ The simplest way of doing things on Windows is using a program called [MobaXterm
 
 1. [Download](http://mobaxterm.mobatek.net/download.html) the newest version of MobaXterm
 2. Create a session
-3. Enter the address to frontend1 which is `frontend1.apocrita.hpc.qmul.ac.uk`
+3. Enter the address to Apocrita which is `login.hpc.qmul.ac.uk`
 4. You can also enter username and password to save them here
 5. Connect and enter your username and/or password when prompted
 
 If you would rather use PuTTY. 
 
 1. [Download](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) PuTTY
-2. In the host name window enter the server address `frontend1.apocrita.hpc.qmul.ac.uk`
+2. In the host name window enter the server address `login.hpc.qmul.ac.uk`
 3. Enter the correct port number (22) and check on correct connection type (SSH)
-4. Now go to the data tab under connection and in auto-login username box enter your username (e.g.btw000)
-5. Go back to the session tab and in the saved sessions box enter a name for this log in (e.g. frontend1)
+4. Now go to the data tab under connection and in auto-login username box enter your username (e.g. btw000)
+5. Go back to the session tab and in the saved sessions box enter a name for this log in (e.g. apocrita)
 6. Save!
 7. Double click the session name and enter your password where prompted
 
@@ -45,7 +45,7 @@ If you would rather use PuTTY.
 If you're planning on using any graphical interface, e.g. plotting in R, you need the X11 forwarding flag, `-X`. This instructs the terminal forward display items to your computer, that will allow you to see your plots or other graphical user interfaces. You might as well always have this option set - to simplify things. MobaXterm uses X11 forwarding by default. 
 
 ```
-ssh -X btw000@frontend1.apocrita.hpc.qmul.ac.uk
+ssh -X btw000@login.hpc.qmul.ac.uk
 ```
 
 ### Keep your terminal as you log out or lose network connection
@@ -61,7 +61,7 @@ Usefully, the program `screen` allows you to keep a process running on a server 
 * man screen                   # manual for screen - explaining every option
 
 
-#### Make a specific command uninterruptable
+#### Disconnect a command from the terminal
 When a terminal is shut down, a so called hang-up signal is sent to any process running in that terminal telling it to quit. There is a way you can make your process ignore that specific signal with `nohup`. It is very simple to use; you add `nohup` before your command as such:
 
 ```
@@ -70,7 +70,7 @@ nohup bwa mem -t 10 -p inputreference.fa inputfasta.fastq > outputfile.sam &    
 nohup nice bwa mem -t 10 -p inputreference.fa inputfasta.fastq > outputfile.sam &    #it's a good idea to add a nice value as well
 ```
 
-An ampersand, &, at the end of a command will send it to the background, however this is not enough as it will still be sent the hang-up signal when the terminal is closed.
+An ampersand, &, at the end of a command will send it to the background, however this is not enough as it will still be sent the hang-up signal when the terminal is closed, you need the `nohop` addition.
 
 The last example includes the [`nice`](http://linux.die.net/man/1/nice) command as well. `nice` tells the computer that your process should be run with a lower priority, a good idea if you are leaving your process unattended! This does not mean it will take any longer than normal as long as there is available CPUs on the machine.
 
