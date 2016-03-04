@@ -192,6 +192,6 @@ There are other shells available as well. `fish` for example, which claims to be
 ## 4. Oneliners
 
 * [Long list of bioinformatic and non-bio oneliners](https://github.com/stephenturner/oneliners)
-* Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`. Can email to <username>@qmul.ac.uk directly
+* Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`. 
 
 ![QMUL logo](./img/qmul_logo.png)

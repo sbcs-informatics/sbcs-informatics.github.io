@@ -7,7 +7,7 @@ Software installed on the cluster is handled through something called the `modul
 module avail                     #prints a long list of available modules
 module avail py                  #prints all available modules starting with "py"
 module load python/3.4.3         #loads python 3.4.3
-module unload python/3.4.3      #unloads python to return to to sweet 2.X
+module unload python/3.4.3       #unloads python to return to to sweet 2.X
 module clear                     #unloads all loaded modules
 ```
 
