@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.2" data-basepath="." data-revision="Wed Mar 02 2016 17:13:34 GMT+0000 (UTC)">
+    <div class="book" data-level="1.2" data-basepath="." data-revision="Mon Mar 14 2016 13:58:18 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -395,17 +395,15 @@
 <p>If you&apos;re planning on using any graphical interface, e.g. plotting in R, you need the X11 forwarding flag, <code>-X</code>. This instructs the terminal forward display items to your computer, that will allow you to see your plots or other graphical user interfaces. You might as well always have this option set - to simplify things. MobaXterm uses X11 forwarding by default. </p>
 <pre><code>ssh -X btw000@login.hpc.qmul.ac.uk
 </code></pre><h3 id="keep-your-terminal-as-you-log-out-or-lose-network-connection">Keep your terminal as you log out or lose network connection</h3>
-<p>When you shut your laptop down the connections it has made with Apocrita (and the rest of the outside world) will be interrupted. This can happen randomly at other times as well and the implication is that anything you were running in your terminal on Apocrita will be shut down too, along with the connection. </p>
+<p>When you shut your laptop down the connections it has made with Apocrita (and the rest of the outside world) will be interrupted. This can happen randomly at other times as well and the implication is that anything you were running in your terminal on Apocrita will be shut down too, along with the connection. You will not need to do this if you submit jobs through the <a href="1_3_launching_a_job_on_apocrita.html">scheduling system on Apocrita</a>.</p>
 <h4 id="screen">Screen</h4>
 <p>Usefully, the program <code>screen</code> allows you to keep a process running on a server without the need to be consistently connected to the network. It sets up a session that will stay active even if you quit your terminal, you can just connect to the session later and you will find yourself exactly where you left off. </p>
-<ul>
-<li>screen -ls                   # list all your sessions</li>
-<li>screen -r <session_id>       # reconnect to a session</session_id></li>
-<li>CTRL+A, CTRL+D               # pressing these two key bindings will detach you from the current screen session</li>
-<li>CTRL+D                       # CTRL+D without CTRL+A first will terminate the session instead </li>
-<li>man screen                   # manual for screen - explaining every option</li>
-</ul>
-<h4 id="disconnect-a-command-from-the-terminal">Disconnect a command from the terminal</h4>
+<pre><code>screen -ls                   # list all your sessions
+screen -r &lt;session_id&gt;       # reconnect to a session
+&lt;CTRL&gt;+A, &lt;CTRL&gt;+D           # pressing these two key bindings will detach you from the current screen session
+&lt;CTRL&gt;+D                     # &lt;CTRL&gt;+D without &lt;CTRL&gt;+A first will terminate the session instead 
+man screen                   # manual for screen - explaining every option
+</code></pre><h4 id="disconnect-a-command-from-the-terminal">Disconnect a command from the terminal</h4>
 <p>When a terminal is shut down, a so called hang-up signal is sent to any process running in that terminal telling it to quit. There is a way you can make your process ignore that specific signal with <code>nohup</code>. It is very simple to use; you add <code>nohup</code> before your command as such:</p>
 <pre><code>bwa mem -t 10 -p inputreference.fa inputfasta.fastq &gt; outputfile.sam &amp;               #if this is your command
 nohup bwa mem -t 10 -p inputreference.fa inputfasta.fastq &gt; outputfile.sam &amp;         #do this instead

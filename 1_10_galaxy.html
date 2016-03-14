@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.10" data-basepath="." data-revision="Wed Mar 02 2016 17:13:34 GMT+0000 (UTC)">
+    <div class="book" data-level="1.10" data-basepath="." data-revision="Mon Mar 14 2016 13:58:18 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -363,10 +363,9 @@
 <p>There is a Galaxy server set up on Apocrita. </p>
 <h3 id="login">Login</h3>
 <p><a href="https://galaxy.hpc.qmul.ac.uk/" target="_blank">https://galaxy.hpc.qmul.ac.uk/</a> - This is the link to the web interface. </p>
-<p>To log in, use your entire QMUL email address i.e. j.doe@qmul.ac.uk as username and your Apocrita password. </p>
+<p>To log in, use your entire QMUL email address i.e. j.doe@qmul.ac.uk as username and your <strong>Apocrita</strong> password. </p>
 <h3 id="sftp">SFTP</h3>
-<p>You can use SFTP to transfer large files to the Galaxy server. Use a <a href="1_6_copying_and_downloading_files.html">GUI program</a> to connect to the server using SFTP and transfer your files. The hostname is the same as the website, galaxy.hpc.qmul.ac.uk.</p>
-<p>Remember to set SFTP and not FTP. </p>
+<p>You can use SFTP to transfer large files to the Galaxy server. Use a <a href="1_6_copying_and_downloading_files.html">GUI program</a> to connect to the server using SFTP and transfer your files. The hostname is the same as the website, galaxy.hpc.qmul.ac.uk. Use the same login information as for the web interface. </p>
 <h3 id="specifics">Specifics</h3>
 <p>The actual server runs on frontend2 but it uses DRMAA to submit jobs to the cluster queue. It will run jobs as the &quot;galaxy&quot; user, that means that the user starting the job is not the one that executes it on the cluster, but the username is listed in the job name in the queue.</p>
 <p>For an unknown reason the command line version of sftp may or may not work for transferring files. There seems to be some issue with permissions of files sometimes. Use Cyberduck if you can. Contact Adrian L&#xE4;rkeryd or ITS-Research if you&apos;re having issues with the file transfer.</p>

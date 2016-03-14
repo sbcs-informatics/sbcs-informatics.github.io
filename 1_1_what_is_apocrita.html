@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.1" data-basepath="." data-revision="Wed Mar 02 2016 17:13:34 GMT+0000 (UTC)">
+    <div class="book" data-level="1.1" data-basepath="." data-revision="Mon Mar 14 2016 13:58:18 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -374,7 +374,7 @@
 <h4 id="galaxy">Galaxy</h4>
 <p>There is a Galaxy server set up on Apocrita through which you can run some general (and some more specific) analyses in a graphical web interface. For more information on Galaxy, see the <a href="1_10_galaxy.html">specifications here</a>.</p>
 <h4 id="data">Data</h4>
-<p>Each user has a specific account on Apocrita and have a data quota of 50GB in their home directory. Often this is nowhere near enough to run the analysis needed, therefore there is a so called <strong>scratch</strong> space for temporary files. This is where most people do their work but it&apos;s important to note that that <strong>scratch area is not backed up</strong> and you should treat these as purely temporary. In the future a time-limit on files may be implemented, automatically deleting old files in the scratch space.</p>
+<p>Each user has a specific account on Apocrita and have a data quota of 50GB in their home directory. Often this is nowhere near enough to run the analysis needed, therefore there is a so called <strong>scratch</strong> space for temporary files. This is where most people do their work but it&apos;s important to note that that <strong>scratch area is not backed up</strong>. In the future a time-limit on files may be implemented, automatically deleting old files in the scratch space.</p>
 <h5 id="home">Home</h5>
 <ul>
 <li>Is tiny</li>
@@ -383,7 +383,6 @@
 </ul>
 <h5 id="scratch">Scratch</h5>
 <ul>
-<li>Is giant</li>
 <li>Is <strong>NOT</strong> backed up</li>
 <li>Is communal, you&apos;re not the only user here - keep this in mind and write only in your directories</li>
 <li>Is temporary - <strong>NEVER</strong> store files on a scratch space, they will be deleted sooner or later</li>
@@ -400,8 +399,9 @@
 <ul>
 <li>Large</li>
 <li>Backed up</li>
-<li>For storing files you cannot delete for some reason</li>
-<li>Please, remember to <a href="1_7_dealing_with_compressed_files.html"><strong>zip</strong></a> your files before transferring them to the archive</li>
+<li>Accessible via SFTP</li>
+<li>For storing files you cannot delete for one reason or another</li>
+<li>Please remember to <a href="1_7_dealing_with_compressed_files.html"><strong>compress</strong></a> your files before transferring them to the archive</li>
 </ul>
 <h4 id="system">System</h4>
 <p>Apocrita is running <a href="https://www.scientificlinux.org/" target="_blank">Scientific Linux 6.2</a>.</p>

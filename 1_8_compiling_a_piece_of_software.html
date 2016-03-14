@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.8" data-basepath="." data-revision="Wed Mar 02 2016 17:13:34 GMT+0000 (UTC)">
+    <div class="book" data-level="1.8" data-basepath="." data-revision="Mon Mar 14 2016 13:58:18 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -365,19 +365,19 @@
 <pre><code>module avail                     #prints a long list of available modules
 module avail py                  #prints all available modules starting with &quot;py&quot;
 module load python/3.4.3         #loads python 3.4.3
-module unload python/3.4.3      #unloads python to return to to sweet 2.X
+module unload python/3.4.3       #unloads python to return to to sweet 2.X
 module clear                     #unloads all loaded modules
 </code></pre><p>All <code>module</code> commands work with tab-completion, that way you can type <code>module load java</code> and press <TAB> twice to see all available java versions. </TAB></p>
-<p>The only problem with these modules is that they are not always up to date. Often you will have to ask for a new version to be installed if you want to be on the bleeding edge.</p>
+<p>The only problem with these modules is that they are not always up to date. You may have to ask for a new version to be installed if you want to be on the bleeding edge.</p>
 <h3 id="installing-new-software">Installing new software</h3>
 <p>If you need a tool that is not currently available there are essentially two ways to get new software on Apocrita. Either request an installation by ITS Research, or install it yourself in your home directory.</p>
 <h4 id="requesting-installation-by-its-research">Requesting installation by ITS Research</h4>
-<p>If you are looking into a piece of software that you think/know other users will have much use of it is best to have it installed for everyone, available through the <code>module</code> commands. The easiest way to create a ticket with ITS Research is by sending an email to <strong>its-research-support@qmul.ac.uk</strong> explaining what software you want installed and providing relevant links to the software webpage. </p>
+<p>If you are looking into a piece of software that you think/know other users will have much use of it is best to have it installed for everyone, available through the <code>module</code> commands. The easiest way to create an application ticket with ITS Research is by filling in <a href="http://docs.hpc.qmul.ac.uk/apps/requesting/" target="_blank">this form</a> or sending an email to <strong>its-research-support@qmul.ac.uk</strong> explaining what software you want installed and providing relevant links to the software webpage. </p>
 <h4 id="compiling-software-yourself">Compiling software yourself</h4>
 <p>If you are in a rush, or if the software is experimental, etc. it might be better to compile it yourself and keep it in your home directory. </p>
 <p>Software for Unix systems is generally distributed as archives. To install a software package:</p>
-<p>Download it (perhaps with <code>wget</code>). Then decompress it (perhaps with <code>unzip</code> or <code>tar</code>). Then check the installation instructions, usually in an <code>INSTALL</code> or <code>README</code> file. A lot of the time this will involve running a script called <code>configure</code> followed typing <code>make</code> in the directory.</p>
-<p>Keep in mind that by default most software will try to install in directories in which you do not have permissions (you need sudo). In almost all cases there are options to instead install the tool in an alternate location. Use these options to install software in your home directory. Often this includes using the <code>--prefix</code> parameter in the <code>configure</code> script. </p>
+<p>Download it (perhaps with <a href="1_6_copying_and_downloading_files.html"><code>wget</code></a>). Then decompress it (perhaps with <a href="1_7_dealing_with_compressed_files.html"><code>unzip</code> or <code>tar</code></a>). Then check the installation instructions, usually in an <code>INSTALL</code> or <code>README</code> file. A lot of the time this will involve running a script called <code>configure</code> followed by typing <code>make</code> in the directory.</p>
+<p>Keep in mind that by default most software will try to install in directories in which you do not have permissions to write. In almost all cases there are options to instead install the tool in an alternate location. Use these options to install software in your home directory. Often this includes using the <code>--prefix</code> parameter in the <code>configure</code> script. </p>
 <p>Some readme files are more useful than others. If there is no help in the readme, but there is a file called <code>makefile</code> in the directory, just type <code>make</code> and that should work. What happens usually in this case is that the compiled software is created in the same directory.</p>
 <p><img src="img/qmul_logo.png" alt="QMUL logo"></p>
 
