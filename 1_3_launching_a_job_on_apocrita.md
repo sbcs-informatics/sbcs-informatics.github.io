@@ -7,7 +7,7 @@ These modes will log you in directly to a machine, allowing you to test, develop
 #### Using the queueing system on Apocrita
 
 ##### `qlogin`
-These commands will connect you to one of the worker nodes with the requested resources available for you to use. This will allow you to run your scripts/jobs interactively on a command line. This can be useful if you want to have more freedom in what you are doing than a script allows, but should be avoided for longer jobs as the frontends are rebooted fairly frequently which may kill your job. These commands take the arguments on how what resources you need. For more details, have a look at the [ITS research website](https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/SubmittingJobs)
+These commands will connect you to one of the worker nodes with the requested resources available for you to use. This will allow you to run your scripts/jobs interactively on a command line. This can be useful if you want to have more freedom in what you are doing than a script allows, but should be avoided for longer jobs as the frontends are rebooted fairly frequently which may kill your job. These commands take the arguments on how what resources you need. For more details, have a look at the [ITS Research website](https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/SubmittingJobs)
 
 Here is an example of logging onto a machine using qlogin:
 
@@ -32,6 +32,8 @@ ssh -X sm11
 
 These machines are all different, to find out how and why, head to the [advanced section](2_0_advanced.md). It is **VERY** important that you do not overload these servers, it is up to the user to figure out what the load on the machine is and determine if there is room for their job. Use commands such as `top`, `htop` `free` etc. to make sure.
 
+If you do not know exactly what this means or how to do it properly, ask your colleagues or set out to find Adrian, the cluster guy. 
+
 ### Non-interactive use
 #### Submitting a job script to the queue
 This is the easiest way to run your job on the Apocrita cluster. Even so, it is not as simple as running your command. Remember, don't run jobs on the frontends. This method uses a command called `qsub` which takes a script as input. Inside the script you define the resources your job needs.
@@ -44,7 +46,10 @@ You need to write the script with the instructions for your job, below you find 
 #$ -V
 #$ -l h_rt=24:0:0    # Request 24 hour runtime
 #$ -l h_vmem=1G      # Request 1GB RAM
-./code               # Your code goes here
+./code                                            # Your code goes here
+/data/home/btw000/scripts/my_fave_script.sh       # It could be a separate script
+bwa mem -t 10 -p inref.fa infa.fastq > out.sam    # Or it could be a program installed on apocrita
+echo "Hello" > world.txt                          # Or just bash code to do whatever
 ```
 
 After you have written and saved the script you feed it to `qsub` as such

@@ -50,6 +50,6 @@ You can use some third party software to easily mount your Apocrita file system 
 wget http://ftp.gnu.org/gnu/wget/wget-1.5.3.tar.gz
 ```
 
-Here wget is used to download an old version of itself. You often find links to software you are keen on installing that you can use wget to directly transfer the code to the server. 
+Here wget is used to download an old version of itself. It is often much easier to download a new piece of software or data straight to the server using `wget`, instead of first downloading it to your local machine and then `scp`-ing the package over. Just copy the download link of the file when you're browsing and paste it to `wget`.  
 
 ![QMUL logo](./img/qmul_logo.png)

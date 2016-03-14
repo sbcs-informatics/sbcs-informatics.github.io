@@ -1,5 +1,5 @@
 ## 4. Basic Unix Navigation
-This section contains some extremely basic commands that you can run while logged onto Apocrita (or in your own Unix terminal if you are a Mac user.) There are much better guides available online if you want to learn about Linux and the command line. One such is [Learn Linux the Hard Way]](https://nixsrv.com/llthw). That link will take you a version which, although long, could be very useful. Some parts of it are even interactive. 
+This section contains some extremely basic commands that you can run while logged onto Apocrita (or in your own Unix terminal if you are a Linux/Mac user.) There are much better guides available online if you want to learn about Linux and the command line. One such is [Learn Linux the Hard Way]](https://nixsrv.com/llthw). That link will take you to one which, although long, could be very useful. Some parts of it are even interactive. IBM has a [technical library for Linux](http://www.ibm.com/developerworks/linux/library/) as well, it's a bit heavier and set up as several tutorials but very informative.
 
 ### Where am I?
 Files are organised in your allocated server space into folders, or 'directories', just like on your regular computer. You can check your current working directory (i.e. where you are) with the 'print working directory' command, `pwd`.

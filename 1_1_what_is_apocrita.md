@@ -18,7 +18,7 @@ There are a number of very specific so called utility servers that are part of t
 There is a Galaxy server set up on Apocrita through which you can run some general (and some more specific) analyses in a graphical web interface. For more information on Galaxy, see the [specifications here](1_10_galaxy.md).
 
 #### Data
-Each user has a specific account on Apocrita and have a data quota of 50GB in their home directory. Often this is nowhere near enough to run the analysis needed, therefore there is a so called **scratch** space for temporary files. This is where most people do their work but it's important to note that that **scratch area is not backed up** and you should treat these as purely temporary. In the future a time-limit on files may be implemented, automatically deleting old files in the scratch space.
+Each user has a specific account on Apocrita and have a data quota of 50GB in their home directory. Often this is nowhere near enough to run the analysis needed, therefore there is a so called **scratch** space for temporary files. This is where most people do their work but it's important to note that that **scratch area is not backed up**. In the future a time-limit on files may be implemented, automatically deleting old files in the scratch space.
 
 ##### Home
 * Is tiny
@@ -26,7 +26,6 @@ Each user has a specific account on Apocrita and have a data quota of 50GB in th
 * Is for your personal scripts and installations, small files you use often and want to keep safe
 
 ##### Scratch
-* Is giant
 * Is **NOT** backed up
 * Is communal, you're not the only user here - keep this in mind and write only in your directories
 * Is temporary - **NEVER** store files on a scratch space, they will be deleted sooner or later
@@ -44,8 +43,9 @@ Archive will be:
 
 * Large
 * Backed up
-* For storing files you cannot delete for some reason
-* Please, remember to [**zip**](1_7_dealing_with_compressed_files.md) your files before transferring them to the archive
+* Accessible via SFTP
+* For storing files you cannot delete for one reason or another
+* Please remember to [**compress**](1_7_dealing_with_compressed_files.md) your files before transferring them to the archive
 
 #### System
 Apocrita is running [Scientific Linux 6.2](https://www.scientificlinux.org/).

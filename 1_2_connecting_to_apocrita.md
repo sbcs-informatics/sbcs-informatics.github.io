@@ -49,17 +49,18 @@ ssh -X btw000@login.hpc.qmul.ac.uk
 ```
 
 ### Keep your terminal as you log out or lose network connection
-When you shut your laptop down the connections it has made with Apocrita (and the rest of the outside world) will be interrupted. This can happen randomly at other times as well and the implication is that anything you were running in your terminal on Apocrita will be shut down too, along with the connection. 
+When you shut your laptop down the connections it has made with Apocrita (and the rest of the outside world) will be interrupted. This can happen randomly at other times as well and the implication is that anything you were running in your terminal on Apocrita will be shut down too, along with the connection. You will not need to do this if you submit jobs through the [scheduling system on Apocrita](1_3_launching_a_job_on_apocrita.md).
 
 #### Screen
 Usefully, the program `screen` allows you to keep a process running on a server without the need to be consistently connected to the network. It sets up a session that will stay active even if you quit your terminal, you can just connect to the session later and you will find yourself exactly where you left off. 
 
-* screen -ls                   # list all your sessions
-* screen -r <session_id>       # reconnect to a session
-* CTRL+A, CTRL+D               # pressing these two key bindings will detach you from the current screen session
-* CTRL+D                       # CTRL+D without CTRL+A first will terminate the session instead 
-* man screen                   # manual for screen - explaining every option
-
+```
+screen -ls                   # list all your sessions
+screen -r <session_id>       # reconnect to a session
+<CTRL>+A, <CTRL>+D           # pressing these two key bindings will detach you from the current screen session
+<CTRL>+D                     # <CTRL>+D without <CTRL>+A first will terminate the session instead 
+man screen                   # manual for screen - explaining every option
+```
 
 #### Disconnect a command from the terminal
 When a terminal is shut down, a so called hang-up signal is sent to any process running in that terminal telling it to quit. There is a way you can make your process ignore that specific signal with `nohup`. It is very simple to use; you add `nohup` before your command as such:
