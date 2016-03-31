@@ -81,6 +81,8 @@ You can set up a pair of SSH keys for a more secure as well as password-less log
 5. There is a message telling you that the key pair has been created, the public key is now located in /home/username/.ssh/id\_rsa.pub and the private key is /home/username/.ssh/id\_rsa.
 6. You are now ready to copy the **public key** to Apocrita
 
+If you want to connect to the archive, Hive, from Apocrita you need to create a separate key on Apocrita. Follow the same procedure, while logged in to Apocrita. At the moment you cannot do the copying of the keys to Hive yourself. Please email its-research-support@qmul.ac.uk with your details, public keys copied in. Remember to CC your PI to get access to the correct subfolder of the archive. 
+
 #### Public Key Copy
 The process is different depending on which operating system you are using. 
 
