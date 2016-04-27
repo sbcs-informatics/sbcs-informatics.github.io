@@ -30,19 +30,22 @@ Each user has a specific account on Apocrita and have a data quota of 50GB in th
 * Is communal, you're not the only user here - keep this in mind and write only in your directories
 * Is temporary - **NEVER** store files on a scratch space, they will be deleted sooner or later
 
+Available scratch spaces include a small personal space in `/data/scratch/btw000` and a larger communal space in `/data/omicsScratch/`. 
+
+A new scratch space is in the works which will include automated deletion protocols. These protocols will be implemented on all communal scratch spaces so please keep this in mind and be aware. 
+
 ##### Lab specific storage
 * Each lab has a 1TB space, some labs have purchased additional storage
 * Ask your supervisor about access to your lab space
 * This is usually for medium term storage of data etc., but each lab handles their area internally
 
 
-##### Archive
-There is an archive available for long term storage of data. It is called Hive and can be accessed from anywhere on a Queen Mary network. It is only available with ssh key authentication, so in order to log in you need to create one or more [ssh keys](2_0_advanced.md). You need to create a key for each machine youre logging in from, i.e. if you want access from both your desktop computer and Apocrita you will need to create two keys, one on your desktop and one while logged into Apocrita. You cannot copy your own key to the Hive, instead you have to send an email to its-research-support@qmul.ac.uk with your public keys and Apocrita username. Remember to CC your PI to get access to the correct subfolder of the Hive. 
+##### The Hive Archive
+There is an archive available for long term storage of data. It is called Hive and can be accessed from anywhere on a Queen Mary network. It is only available with ssh key authentication, so in order to log in you need to create one or more [ssh keys](2_0_advanced.md). You need to create a key for each machine youre logging in from, i.e. if you want access from both your desktop computer and Apocrita you will need to create two keys, one on your desktop and one while logged into Apocrita. You cannot copy your own key to the Hive, instead you have to send an email to its-research-support@qmul.ac.uk with your public keys and Apocrita username.
 
-* Log in with your Apocrita username
+* Log in with your Apocrita username, key authentication only
 * hive-master.hpc.qmul.ac.uk
 * 120TB storage available
-* 
 * Backed up by mirroring to an identical setup
 * Accessible via SFTP, rsync, scp
 * For storing files you cannot delete for one reason or another

@@ -212,9 +212,10 @@ mv .bashrc.BAK .bashrc                  # if you were using bashrc
 mv .zshrc.BAK .zshrc                    # if you were using zshrc
 ```
 
-## 4. Oneliners
+## 4. Oneliners and tricks
 
 * [Long list of bioinformatic and non-bio oneliners](https://github.com/stephenturner/oneliners)
-* Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`. 
+* Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`.
+* All compute nodes have local scratch disks at $TMPDIR which equates to /tmp/jobid.queueid - It is purged at the end of the job so copy everything back when your data processing has finished. 
 
 ![QMUL logo](./img/qmul_logo.png)
