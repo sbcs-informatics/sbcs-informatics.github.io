@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="2" data-basepath="." data-revision="Thu Mar 31 2016 11:03:12 GMT+0000 (UTC)">
+    <div class="book" data-level="2" data-basepath="." data-revision="Wed Apr 27 2016 16:33:12 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -529,10 +529,11 @@ rm .zshrc                               # remove the new zsh config
 mv .bash_profile.BAK .bash_profile      # reinstate your old bash profile
 mv .bashrc.BAK .bashrc                  # if you were using bashrc
 mv .zshrc.BAK .zshrc                    # if you were using zshrc
-</code></pre><h2 id="4-oneliners">4. Oneliners</h2>
+</code></pre><h2 id="4-oneliners-and-tricks">4. Oneliners and tricks</h2>
 <ul>
 <li><a href="https://github.com/stephenturner/oneliners" target="_blank">Long list of bioinformatic and non-bio oneliners</a></li>
-<li>Get all sbcs users: <code>ldapsearch -x cn=sbcs | grep memberUid | sort</code>. </li>
+<li>Get all sbcs users: <code>ldapsearch -x cn=sbcs | grep memberUid | sort</code>.</li>
+<li>All compute nodes have local scratch disks at $TMPDIR which equates to /tmp/jobid.queueid - It is purged at the end of the job so copy everything back when your data processing has finished. </li>
 </ul>
 <p><img src="img/qmul_logo.png" alt="QMUL logo"></p>
 

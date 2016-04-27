@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.1" data-basepath="." data-revision="Thu Mar 31 2016 11:03:12 GMT+0000 (UTC)">
+    <div class="book" data-level="1.1" data-basepath="." data-revision="Wed Apr 27 2016 16:33:12 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -387,19 +387,20 @@
 <li>Is communal, you&apos;re not the only user here - keep this in mind and write only in your directories</li>
 <li>Is temporary - <strong>NEVER</strong> store files on a scratch space, they will be deleted sooner or later</li>
 </ul>
+<p>Available scratch spaces include a small personal space in <code>/data/scratch/btw000</code> and a larger communal space in <code>/data/omicsScratch/</code>. </p>
+<p>A new scratch space is in the works which will include automated deletion protocols. These protocols will be implemented on all communal scratch spaces so please keep this in mind and be aware. </p>
 <h5 id="lab-specific-storage">Lab specific storage</h5>
 <ul>
 <li>Each lab has a 1TB space, some labs have purchased additional storage</li>
 <li>Ask your supervisor about access to your lab space</li>
 <li>This is usually for medium term storage of data etc., but each lab handles their area internally</li>
 </ul>
-<h5 id="archive">Archive</h5>
-<p>There is an archive available for long term storage of data. It is called Hive and can be accessed from anywhere on a Queen Mary network. It is only available with ssh key authentication, so in order to log in you need to create one or more <a href="2_0_advanced.html">ssh keys</a>. You need to create a key for each machine youre logging in from, i.e. if you want access from both your desktop computer and Apocrita you will need to create two keys, one on your desktop and one while logged into Apocrita. You cannot copy your own key to the Hive, instead you have to send an email to its-research-support@qmul.ac.uk with your public keys and Apocrita username. Remember to CC your PI to get access to the correct subfolder of the Hive. </p>
+<h5 id="the-hive-archive">The Hive Archive</h5>
+<p>There is an archive available for long term storage of data. It is called Hive and can be accessed from anywhere on a Queen Mary network. It is only available with ssh key authentication, so in order to log in you need to create one or more <a href="2_0_advanced.html">ssh keys</a>. You need to create a key for each machine youre logging in from, i.e. if you want access from both your desktop computer and Apocrita you will need to create two keys, one on your desktop and one while logged into Apocrita. You cannot copy your own key to the Hive, instead you have to send an email to its-research-support@qmul.ac.uk with your public keys and Apocrita username.</p>
 <ul>
-<li>Log in with your Apocrita username</li>
+<li>Log in with your Apocrita username, key authentication only</li>
 <li>hive-master.hpc.qmul.ac.uk</li>
 <li>120TB storage available</li>
-<li></li>
 <li>Backed up by mirroring to an identical setup</li>
 <li>Accessible via SFTP, rsync, scp</li>
 <li>For storing files you cannot delete for one reason or another</li>
