@@ -1,21 +1,22 @@
 ## 6. Copying & Downloading Files 
-Files can be copied in an around your computer, in and around your space on the servers, and between the two. The basic copy function, `cp`, is for within locations (i.e. your computer or the server). To go between the two, use 'secure copy', `scp`.
+Files can be copied in an around your computer, in and around your space on the servers, and between the two. The basic copy function, `cp`, is for local to local copy (i.e. your within computer or wihtin the server). To go between the two, use `rsync` or the slightly more simple `scp`.
 
-The basic syntax is 'cp, original file location, new file'.
+The basic syntax is `cp /path/to/source/file /path/to/destination`.
+
 ### Between a remote server and local machine
-From local file to server: 
+The most reliable and easiest way to copy and sync files between different machines is rsync. 
 
-```
-scp /path/to/local/file.txt server:/path/to/server/directory_or_newfile.txt
-```
+`rsync -avP ~/my-work username@remote_host:/path/to/destination/`
 
-For example:
+This bit of code will copy the directory "my-work" to the destination at the remote host.
 
-```
-scp /Users/bob/Desktop/data.csv btw000@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw000/archive/2013/data.csv
-```
+To copy files from Apocrita to the Hive, use the following while logged into Apocrita:
 
-From server to local directory on local machine:
+`rsync -avP ~/my-work btw000@hive-master.hpc.qmul.ac.uk:/SBCS-BloggsLab/btw000/`
+
+rsync has many options, find out more by reading the manual (`man rsync`) or look at an [online guide](https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps).
+
+scp is very similar, but it doesn't have the syncing capabilities of rsync, it is therefore best used to copy single files. To use `scp` to copy from server to directory on local machine:
 
 ```
 scp btw000@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw000/myoutput.pdf .
@@ -23,12 +24,6 @@ scp btw000@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw000/myoutput.pdf .
 
 >*Note, "`.`" means "current directory".*
 
-### Within your home computer, or the servers
-This is just the same, except replace `scp` with `cp`.
-    
-```
-cp /path/to/file.extension /new/directory/
-```
 
 ### Using a graphical user interface (GUI)
 [Cyberduck](http://cyberduck.ch) (on Mac) or [FileZilla](http://filezilla-project.org) (on Windows).
