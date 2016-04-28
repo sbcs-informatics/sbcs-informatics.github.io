@@ -41,10 +41,14 @@
         <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search-pro/search-pro.css">
         
     
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
     
 
         
-    <div class="book" data-level="1.1" data-basepath="." data-revision="Wed Apr 27 2016 16:33:12 GMT+0000 (UTC)">
+    <div class="book" data-level="1.1" data-basepath="." data-revision="Thu Apr 28 2016 13:27:16 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -359,29 +363,29 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_1_what_is_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="1-what-is-apocrita">1. What is Apocrita?</h2>
-<h3 id="cluster-structure">Cluster Structure</h3>
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_1_what_is_apocrita.md" class="btn fa fa-edit pull-left">&#xA0;&#xA0;Edit</a><h2 id="1-what-is-apocrita"><a name="1-what-is-apocrita" class="plugin-anchor" href="#1-what-is-apocrita"><span class="fa fa-link"></span></a>1. What is Apocrita?</h2>
+<h3 id="cluster-structure"><a name="cluster-structure" class="plugin-anchor" href="#cluster-structure"><span class="fa fa-link"></span></a>Cluster Structure</h3>
 <p>Apocrita is a High Performance Computing (HPC) cluster that consists of many interconnected computers, called <strong>nodes</strong>. The user logs into one specific <strong>head node</strong>, from which the rest of the cluster can be accessed. On Apocrita these are called <strong>frontends</strong>. Importantly, <strong><em>no jobs are run directly on the frontends</em></strong>. Instead, whenever the user wants to run a job, the details of the job is submitted to a software that handles scheduling of work on the cluster and it is dispatched to a work node when one is available. There are also <strong>utility servers</strong> which the user can interactively log in to. More information on utility servers can be found below and in the <a href="2_0_advanced.html">advanced section</a>.</p>
 <p>Apocrita and all the other peripheral machines are run by the <a href="http://www.its.qmul.ac.uk/research/" target="_blank">ITS Research team</a>. They have a documentation site available <a href="http://docs.hpc.qmul.ac.uk/" target="_blank">here</a>. </p>
-<h4 id="nodes">Nodes</h4>
+<h4 id="nodes"><a name="nodes" class="plugin-anchor" href="#nodes"><span class="fa fa-link"></span></a>Nodes</h4>
 <ul>
 <li>150 normal use nodes each with two 6-core processors, i.e. 12 cores, and 24GB RAM</li>
 <li>11 so called <strong>fat nodes</strong> each with four 12-core processors, i.e. 48 cores, and 512GB RAM. These nodes are used for heavier calculations, in particular ones which require a lot of memory.</li>
 </ul>
 <p>For more information on the specifications on Apocrita nodes, see the <a href="2_0_advanced.html">advanced section</a>.</p>
-<h4 id="utility-servers">Utility servers</h4>
+<h4 id="utility-servers"><a name="utility-servers" class="plugin-anchor" href="#utility-servers"><span class="fa fa-link"></span></a>Utility servers</h4>
 <p>There are a number of very specific so called utility servers that are part of the HPC resources but not the general Apocrita system. Users can SSH to these machines and use them interactively for their analysis. These servers were all purchased separately with different funding, keep this in mind as groups who have contributed to the acquisition of these machines have priority. With that said, feel free to use these resources when they are available, you can find more information in the <a href="2_0_advanced.html">advanced section</a>.</p>
-<h4 id="galaxy">Galaxy</h4>
+<h4 id="galaxy"><a name="galaxy" class="plugin-anchor" href="#galaxy"><span class="fa fa-link"></span></a>Galaxy</h4>
 <p>There is a Galaxy server set up on Apocrita through which you can run some general (and some more specific) analyses in a graphical web interface. For more information on Galaxy, see the <a href="1_10_galaxy.html">specifications here</a>.</p>
-<h4 id="data">Data</h4>
+<h4 id="data"><a name="data" class="plugin-anchor" href="#data"><span class="fa fa-link"></span></a>Data</h4>
 <p>Each user has a specific account on Apocrita and have a data quota of 50GB in their home directory. Often this is nowhere near enough to run the analysis needed, therefore there is a so called <strong>scratch</strong> space for temporary files. This is where most people do their work but it&apos;s important to note that that <strong>scratch area is not backed up</strong>. In the future a time-limit on files may be implemented, automatically deleting old files in the scratch space.</p>
-<h5 id="home">Home</h5>
+<h5 id="home"><a name="home" class="plugin-anchor" href="#home"><span class="fa fa-link"></span></a>Home</h5>
 <ul>
 <li>Is tiny</li>
 <li>Is backed up</li>
 <li>Is for your personal scripts and installations, small files you use often and want to keep safe</li>
 </ul>
-<h5 id="scratch">Scratch</h5>
+<h5 id="scratch"><a name="scratch" class="plugin-anchor" href="#scratch"><span class="fa fa-link"></span></a>Scratch</h5>
 <ul>
 <li>Is <strong>NOT</strong> backed up</li>
 <li>Is communal, you&apos;re not the only user here - keep this in mind and write only in your directories</li>
@@ -389,13 +393,13 @@
 </ul>
 <p>Available scratch spaces include a small personal space in <code>/data/scratch/btw000</code> and a larger communal space in <code>/data/omicsScratch/</code>. </p>
 <p>A new scratch space is in the works which will include automated deletion protocols. These protocols will be implemented on all communal scratch spaces so please keep this in mind and be aware. </p>
-<h5 id="lab-specific-storage">Lab specific storage</h5>
+<h5 id="lab-specific-storage"><a name="lab-specific-storage" class="plugin-anchor" href="#lab-specific-storage"><span class="fa fa-link"></span></a>Lab specific storage</h5>
 <ul>
 <li>Each lab has a 1TB space, some labs have purchased additional storage</li>
 <li>Ask your supervisor about access to your lab space</li>
 <li>This is usually for medium term storage of data etc., but each lab handles their area internally</li>
 </ul>
-<h5 id="the-hive-archive">The Hive Archive</h5>
+<h5 id="the-hive-archive"><a name="the-hive-archive" class="plugin-anchor" href="#the-hive-archive"><span class="fa fa-link"></span></a>The Hive Archive</h5>
 <p>There is an archive available for long term storage of data. It is called Hive and can be accessed from anywhere on a Queen Mary network. It is only available with ssh key authentication, so in order to log in you need to create one or more <a href="2_0_advanced.html">ssh keys</a>. You need to create a key for each machine youre logging in from, i.e. if you want access from both your desktop computer and Apocrita you will need to create two keys, one on your desktop and one while logged into Apocrita. You cannot copy your own key to the Hive, instead you have to send an email to its-research-support@qmul.ac.uk with your public keys and Apocrita username.</p>
 <ul>
 <li>Log in with your Apocrita username, key authentication only</li>
@@ -406,7 +410,7 @@
 <li>For storing files you cannot delete for one reason or another</li>
 <li>Please remember to <a href="1_7_dealing_with_compressed_files.html"><strong>compress</strong></a> your files before transferring them to the archive</li>
 </ul>
-<h4 id="system">System</h4>
+<h4 id="system"><a name="system" class="plugin-anchor" href="#system"><span class="fa fa-link"></span></a>System</h4>
 <p>Apocrita is running <a href="https://www.scientificlinux.org/" target="_blank">Scientific Linux 6.2</a>.</p>
 <p><img src="img/qmul_logo.png" alt="QMUL logo"></p>
 
