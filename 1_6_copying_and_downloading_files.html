@@ -41,14 +41,10 @@
         <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search-pro/search-pro.css">
         
     
-        
-        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-anchors/plugin.css">
-        
-    
     
 
         
-    <div class="book" data-level="1.6" data-basepath="." data-revision="Thu Apr 28 2016 13:27:16 GMT+0000 (UTC)">
+    <div class="book" data-level="1.6" data-basepath="." data-revision="Thu Apr 28 2016 14:45:36 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -363,10 +359,10 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_6_copying_and_downloading_files.md" class="btn fa fa-edit pull-left">&#xA0;&#xA0;Edit</a><h2 id="6-copying-downloading-files"><a name="6-copying-downloading-files" class="plugin-anchor" href="#6-copying-downloading-files"><span class="fa fa-link"></span></a>6. Copying &amp; Downloading Files</h2>
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_6_copying_and_downloading_files.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="6-copying-downloading-files">6. Copying &amp; Downloading Files</h2>
 <p>Files can be copied in an around your computer, in and around your space on the servers, and between the two. The basic copy function, <code>cp</code>, is for within locations (i.e. your computer or the server). To go between the two, use &apos;secure copy&apos;, <code>scp</code>.</p>
 <p>The basic syntax is &apos;cp, original file location, new file&apos;.</p>
-<h3 id="between-a-remote-server-and-local-machine"><a name="between-a-remote-server-and-local-machine" class="plugin-anchor" href="#between-a-remote-server-and-local-machine"><span class="fa fa-link"></span></a>Between a remote server and local machine</h3>
+<h3 id="between-a-remote-server-and-local-machine">Between a remote server and local machine</h3>
 <p>From local file to server: </p>
 <pre><code>scp /path/to/local/file.txt server:/path/to/server/directory_or_newfile.txt
 </code></pre><p>For example:</p>
@@ -376,20 +372,20 @@
 </code></pre><blockquote>
 <p><em>Note, &quot;<code>.</code>&quot; means &quot;current directory&quot;.</em></p>
 </blockquote>
-<h3 id="within-your-home-computer-or-the-servers"><a name="within-your-home-computer-or-the-servers" class="plugin-anchor" href="#within-your-home-computer-or-the-servers"><span class="fa fa-link"></span></a>Within your home computer, or the servers</h3>
+<h3 id="within-your-home-computer-or-the-servers">Within your home computer, or the servers</h3>
 <p>This is just the same, except replace <code>scp</code> with <code>cp</code>.</p>
 <pre><code>cp /path/to/file.extension /new/directory/
-</code></pre><h3 id="using-a-graphical-user-interface-gui"><a name="using-a-graphical-user-interface-gui" class="plugin-anchor" href="#using-a-graphical-user-interface-gui"><span class="fa fa-link"></span></a>Using a graphical user interface (GUI)</h3>
+</code></pre><h3 id="using-a-graphical-user-interface-gui">Using a graphical user interface (GUI)</h3>
 <p><a href="http://cyberduck.ch" target="_blank">Cyberduck</a> (on Mac) or <a href="http://filezilla-project.org" target="_blank">FileZilla</a> (on Windows).
 These two are GUI programs which offer file-sharing via a straightforward drag-and-drop or by menu navigation. </p>
 <p>Both programs have a facility for attaching your account and passwords to them so they&apos;ll log in automatically. Make sure you check in the preferences/options/settings to set the file transfer protocol to &quot;ssh&quot;, as that&apos;s not usually the default.</p>
 <blockquote>
 <p><em>Note that while these systems are convenient for moving and organising your files, they will not let you schedule jobs or run anything on the server. Alas, it&apos;s back to the command line to do anything using the Apocrita computational resources.</em></p>
 </blockquote>
-<h3 id="mounting-your-apocrita-file-system-on-your-computer"><a name="mounting-your-apocrita-file-system-on-your-computer" class="plugin-anchor" href="#mounting-your-apocrita-file-system-on-your-computer"><span class="fa fa-link"></span></a>Mounting your Apocrita file system on your computer</h3>
+<h3 id="mounting-your-apocrita-file-system-on-your-computer">Mounting your Apocrita file system on your computer</h3>
 <p>You can use some third party software to easily mount your Apocrita file system on your computer, that way you can manipulate your files in your operating system, and programs on your personal computer will be able to read and write files on Apocrita. </p>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh" target="_blank">Here is a good guide for every OS</a>. </p>
-<h3 id="downloading-files-from-the-web"><a name="downloading-files-from-the-web" class="plugin-anchor" href="#downloading-files-from-the-web"><span class="fa fa-link"></span></a>Downloading files from the web</h3>
+<h3 id="downloading-files-from-the-web">Downloading files from the web</h3>
 <p><code>wget</code> is short for &quot;web-get&quot;, and will download a target file into your current working directory, e.g. </p>
 <pre><code>wget http://ftp.gnu.org/gnu/wget/wget-1.5.3.tar.gz
 </code></pre><p>Here wget is used to download an old version of itself. It is often much easier to download a new piece of software or data straight to the server using <code>wget</code>, instead of first downloading it to your local machine and then <code>scp</code>-ing the package over. Just copy the download link of the file when you&apos;re browsing and paste it to <code>wget</code>.  </p>
@@ -425,6 +421,14 @@ These two are GUI programs which offer file-sharing via a straightforward drag-a
 
     
     <script src="gitbook/plugins/gitbook-plugin-search-pro/search-pro.js"></script>
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/1.2.1/anchor.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-heading-anchors/anchor-style.js"></script>
     
 
 <script>
