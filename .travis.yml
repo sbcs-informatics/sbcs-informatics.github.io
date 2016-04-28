@@ -4,6 +4,7 @@ node_js:
 install: 
   - npm install -g gitbook-cli
   - npm install ebook-convert
+  - npm i gitbook-plugin-anker-enable
   - wget -q -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | python -c "import sys; main=lambda x,y:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main('~/calibre-bin', True)"
 before_script: 
   - gitbook install
