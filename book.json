@@ -1,7 +1,7 @@
 {
     "gitbook": "2.0.1",
     "plugins": ["share"],
-    "plugins": ["edit-link", "ga", "search-pro", "-search", "anker-enable"],
+    "plugins": ["edit-link", "ga", "search-pro", "-search", "anchors"],
     "pluginsConfig": {
             "edit-link": {
                 "base": "https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src",
