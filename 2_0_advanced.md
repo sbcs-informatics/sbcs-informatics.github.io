@@ -68,8 +68,9 @@ These two identical machines are similar to sm11 but are running newer hardware.
 ### GPU
 There are no GPUs on Apocrita, if you need this for your analysis you should talk to your PI about acquisition. ITSR have been looking into the interest of such a purchase. 
 
-## <a name="ssh-keys"></a>2. SSH Keys
-
+## 2. SSH Keys
+<h2 name="ssh-keys"></h2>
+<a name="abc"></a>
 ### Keys
 You can set up a pair of SSH keys for a more secure as well as password-less login to Apocrita. This is done by having a private key on your local machine, and a matching public key on the remote server, when you try to log in these two match up and let you in without having to type the user password. The private key should never be shared with anyone as it will allow that person access to your login. This is why you should always **protect your private key** with a passphrase.
 
