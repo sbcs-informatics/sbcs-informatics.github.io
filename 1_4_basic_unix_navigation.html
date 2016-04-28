@@ -41,10 +41,14 @@
         <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search-pro/search-pro.css">
         
     
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
     
 
         
-    <div class="book" data-level="1.4" data-basepath="." data-revision="Thu Apr 28 2016 15:51:57 GMT+0000 (UTC)">
+    <div class="book" data-level="1.4" data-basepath="." data-revision="Thu Apr 28 2016 16:01:59 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -359,11 +363,11 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_4_basic_unix_navigation.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="4-basic-unix-navigation">4. Basic Unix Navigation</h2>
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_4_basic_unix_navigation.md" class="btn fa fa-edit pull-left">&#xA0;&#xA0;Edit</a><h2 id="4-basic-unix-navigation"><a name="4-basic-unix-navigation" class="plugin-anchor" href="#4-basic-unix-navigation"><span class="fa fa-link"></span></a>4. Basic Unix Navigation</h2>
 <p>This section contains some extremely basic commands that you can run while logged onto Apocrita (or in your own Unix terminal if you are a Linux/Mac user.) There are much better guides available online if you want to learn about Linux and the command line. One such is <a href="https://nixsrv.com/llthw" target="_blank">Learn Linux the Hard Way]</a>. That link will take you to one which, although long, could be very useful. Some parts of it are even interactive. IBM has a <a href="http://www.ibm.com/developerworks/linux/library/" target="_blank">technical library for Linux</a> as well, it&apos;s a bit heavier and set up as several tutorials but very informative.</p>
-<h3 id="where-am-i">Where am I?</h3>
+<h3 id="where-am-i"><a name="where-am-i" class="plugin-anchor" href="#where-am-i"><span class="fa fa-link"></span></a>Where am I?</h3>
 <p>Files are organised in your allocated server space into folders, or &apos;directories&apos;, just like on your regular computer. You can check your current working directory (i.e. where you are) with the &apos;print working directory&apos; command, <code>pwd</code>.</p>
-<h3 id="checking-the-contents-of-directory">Checking the contents of directory</h3>
+<h3 id="checking-the-contents-of-directory"><a name="checking-the-contents-of-directory" class="plugin-anchor" href="#checking-the-contents-of-directory"><span class="fa fa-link"></span></a>Checking the contents of directory</h3>
 <p>It&apos;s easy to check the contents of the directory you&apos;re currently in, using the list command, <code>ls</code>. Typing <code>ls</code> alone will list the filenames. However, if you require extra information you can add &apos;flags&apos; after the command to give the computer further instructions:</p>
 <pre><code class="lang-bash">ls           <span class="hljs-comment">#prints filenames in a list</span>
 ls <span class="hljs-operator">-a</span>        <span class="hljs-comment">#prints all filenames, including hidden files</span>
@@ -376,17 +380,17 @@ ls -tr       <span class="hljs-comment">#t for time sorted, r for reverse</span>
 ls <span class="hljs-operator">-l</span> -h <span class="hljs-operator">-a</span> -t -r
 </code></pre>
 <p>This bit will print a list of files with all of the above information.</p>
-<h3 id="changing-directories">Changing directories</h3>
+<h3 id="changing-directories"><a name="changing-directories" class="plugin-anchor" href="#changing-directories"><span class="fa fa-link"></span></a>Changing directories</h3>
 <p>Navigate through directories using the &apos;change directory&apos; command, <code>cd</code>.  It will assume you&apos;re looking for a directory name that is within your current working directory</p>
-<h4 id="change-directory">Change directory</h4>
+<h4 id="change-directory"><a name="change-directory" class="plugin-anchor" href="#change-directory"><span class="fa fa-link"></span></a>Change directory</h4>
 <pre><code class="lang-bash"><span class="hljs-built_in">cd</span> directory_name/
 </code></pre>
-<h4 id="go-back-up-one-directory">Go back &quot;up&quot; one directory:</h4>
+<h4 id="go-back-up-one-directory"><a name="go-back-up-one-directory" class="plugin-anchor" href="#go-back-up-one-directory"><span class="fa fa-link"></span></a>Go back &quot;up&quot; one directory:</h4>
 <pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ../
 <span class="hljs-built_in">cd</span> ../../                    <span class="hljs-comment">#you can go several at a time</span>
 <span class="hljs-built_in">cd</span> ../../anthr_dir/subdir2   <span class="hljs-comment">#as many up and down as you want</span>
 </code></pre>
-<h4 id="return-to-home-directory">Return to home directory</h4>
+<h4 id="return-to-home-directory"><a name="return-to-home-directory" class="plugin-anchor" href="#return-to-home-directory"><span class="fa fa-link"></span></a>Return to home directory</h4>
 <pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/
 </code></pre>
 <p>or just </p>
@@ -427,10 +431,6 @@ ls <span class="hljs-operator">-l</span> -h <span class="hljs-operator">-a</span
 
     
     <script src="gitbook/plugins/gitbook-plugin-search-pro/search-pro.js"></script>
-    
-
-    
-    <script src="gitbook/plugins/gitbook-plugin-anker-enable/anker.js"></script>
     
 
 <script>

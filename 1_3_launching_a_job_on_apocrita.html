@@ -41,10 +41,14 @@
         <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search-pro/search-pro.css">
         
     
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-anchors/plugin.css">
+        
+    
     
 
         
-    <div class="book" data-level="1.3" data-basepath="." data-revision="Thu Apr 28 2016 15:51:57 GMT+0000 (UTC)">
+    <div class="book" data-level="1.3" data-basepath="." data-revision="Thu Apr 28 2016 16:01:59 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -359,12 +363,12 @@
                 
                     <section class="normal" id="section-">
                     
-                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_3_launching_a_job_on_apocrita.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="3-launching-a-job-on-apocrita">3. Launching a Job on Apocrita</h2>
+                        <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_3_launching_a_job_on_apocrita.md" class="btn fa fa-edit pull-left">&#xA0;&#xA0;Edit</a><h2 id="3-launching-a-job-on-apocrita"><a name="3-launching-a-job-on-apocrita" class="plugin-anchor" href="#3-launching-a-job-on-apocrita"><span class="fa fa-link"></span></a>3. Launching a Job on Apocrita</h2>
 <p>When you log in to Apocrita you will be accessing a <strong>frontend</strong>. It is very important that you do not simply run your scripts here. These nodes are there to accommodate logins to the cluster, not workload. Instead, there is a scheduling program running on the cluster which takes instructions to your job and distributes the total load over all the worker nodes. You can also use the utility servers interactively by SSHing to them from the frontend.</p>
-<h3 id="interactive-use">Interactive use</h3>
+<h3 id="interactive-use"><a name="interactive-use" class="plugin-anchor" href="#interactive-use"><span class="fa fa-link"></span></a>Interactive use</h3>
 <p>These modes will log you in directly to a machine, allowing you to test, develop and try different things out in a single session. This is useful if for example you are trying a new tool out and need to test different parameters or if you are unsure about the syntax of the program. </p>
-<h4 id="using-the-queueing-system-on-apocrita">Using the queueing system on Apocrita</h4>
-<h5 id="-qlogin"><code>qlogin</code></h5>
+<h4 id="using-the-queueing-system-on-apocrita"><a name="using-the-queueing-system-on-apocrita" class="plugin-anchor" href="#using-the-queueing-system-on-apocrita"><span class="fa fa-link"></span></a>Using the queueing system on Apocrita</h4>
+<h5 id="-qlogin"><a name="-qlogin" class="plugin-anchor" href="#-qlogin"><span class="fa fa-link"></span></a><code>qlogin</code></h5>
 <p>These commands will connect you to one of the worker nodes with the requested resources available for you to use. This will allow you to run your scripts/jobs interactively on a command line. This can be useful if you want to have more freedom in what you are doing than a script allows, but should be avoided for longer jobs as the frontends are rebooted fairly frequently which may kill your job. These commands take the arguments on how what resources you need. For more details, have a look at the <a href="https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/SubmittingJobs" target="_blank">ITS Research website</a></p>
 <p>Here is an example of logging onto a machine using qlogin:</p>
 <pre><code>ssh -X btw000@login.hpc.qmul.ac.uk                       #log in to Apocrita
@@ -372,16 +376,16 @@ qlogin -l h_rt=3600                                      #request a session 3600
 qlogin -l h_rt=10:0:0,h_vmem=4G                          #request 10h and 4G memory
 exit                                                     #just type exit to logout
 </code></pre><p>Do keep in mind that the frontends are rebooted reasonably frequently to be able to handle all the traffic on them. For this reason, it&apos;s best to keep interactive jobs fairly short. Use the utility servers or <code>qsub</code> described below for longer runs. </p>
-<h4 id="sshing-to-a-utility-server">SSHing to a utility server</h4>
-<h5 id="frontend5-frontend6-and-sm11">frontend5, frontend6 and SM11</h5>
+<h4 id="sshing-to-a-utility-server"><a name="sshing-to-a-utility-server" class="plugin-anchor" href="#sshing-to-a-utility-server"><span class="fa fa-link"></span></a>SSHing to a utility server</h4>
+<h5 id="frontend5-frontend6-and-sm11"><a name="frontend5-frontend6-and-sm11" class="plugin-anchor" href="#frontend5-frontend6-and-sm11"><span class="fa fa-link"></span></a>frontend5, frontend6 and SM11</h5>
 <p>Once you have logged into a frontend of Apocrita, all you need to do to log in to one of these servers is to SSH to that particular name. These machines have all been bought by different groups of academics and priority remains with these groups. This only means that you need to check carefully before you start to work here, if it is free everyone is allowed to make use of the resource. </p>
 <pre><code>ssh -X frontend5
 ssh -X frontend6
 ssh -X sm11
 </code></pre><p>These machines are all different, to find out how and why, head to the <a href="2_0_advanced.html">advanced section</a>. It is <strong>VERY</strong> important that you do not overload these servers, it is up to the user to figure out what the load on the machine is and determine if there is room for their job. Use commands such as <code>top</code>, <code>htop</code> <code>free</code> etc. to make sure.</p>
 <p>If you do not know exactly what this means or how to do it properly, ask your colleagues or set out to find Adrian, the cluster guy. </p>
-<h3 id="non-interactive-use">Non-interactive use</h3>
-<h4 id="submitting-a-job-script-to-the-queue">Submitting a job script to the queue</h4>
+<h3 id="non-interactive-use"><a name="non-interactive-use" class="plugin-anchor" href="#non-interactive-use"><span class="fa fa-link"></span></a>Non-interactive use</h3>
+<h4 id="submitting-a-job-script-to-the-queue"><a name="submitting-a-job-script-to-the-queue" class="plugin-anchor" href="#submitting-a-job-script-to-the-queue"><span class="fa fa-link"></span></a>Submitting a job script to the queue</h4>
 <p>This is the easiest way to run your job on the Apocrita cluster. Even so, it is not as simple as running your command. Remember, don&apos;t run jobs on the frontends. This method uses a command called <code>qsub</code> which takes a script as input. Inside the script you define the resources your job needs.</p>
 <p>You need to write the script with the instructions for your job, below you find the simplest version of such a script. Use this as a template and add options as needed. There are several more options you can add to the header of your script which for example allows for more cores to be used.</p>
 <pre><code class="lang-bash"><span class="hljs-shebang">#!/bin/sh</span>
@@ -397,7 +401,7 @@ bwa mem -t <span class="hljs-number">10</span> -p inref.fa infa.fastq &gt; out.s
 <p>After you have written and saved the script you feed it to <code>qsub</code> as such</p>
 <pre><code>qsub job_script.sh
 </code></pre><p>For more details, have a look at the <a href="https://www.hpc.qmul.ac.uk/twiki/bin/view/HPC/SubmittingJobs" target="_blank">ITS research website</a>, or if you feel like you can take it, the <a href="http://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html" target="_blank">qsub man page</a>.</p>
-<h3 id="monitoring-your-job">Monitoring your job</h3>
+<h3 id="monitoring-your-job"><a name="monitoring-your-job" class="plugin-anchor" href="#monitoring-your-job"><span class="fa fa-link"></span></a>Monitoring your job</h3>
 <p>Use <code>qstat</code> to show the status of all your jobs in the queue on Apocrita, and <code>qdel</code> to delete a job from the queue. </p>
 <p>To monitor a job running in an interactive session or on a utility server use a program like <code>top</code>. It lists all processes currently running on the machine and allows you to sort them by various criteria like CPU or memory usage. There is an arguably better version of the same type of tool called <code>htop</code>. You will need to load it with <code>module load htop/1.0.3</code> before you can use it though. Both <code>top</code> and <code>htop</code> have an argument <code>-u</code> taking a username so that you can inspect only your own processes if you want, <code>htop -u btw000</code> will show only btw000&apos;s processes. </p>
 <p><img src="img/qmul_logo.png" alt="QMUL logo"></p>
@@ -432,10 +436,6 @@ bwa mem -t <span class="hljs-number">10</span> -p inref.fa infa.fastq &gt; out.s
 
     
     <script src="gitbook/plugins/gitbook-plugin-search-pro/search-pro.js"></script>
-    
-
-    
-    <script src="gitbook/plugins/gitbook-plugin-anker-enable/anker.js"></script>
     
 
 <script>
