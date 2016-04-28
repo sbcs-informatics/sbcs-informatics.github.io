@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.6" data-basepath="." data-revision="Thu Apr 28 2016 15:03:49 GMT+0000 (UTC)">
+    <div class="book" data-level="1.6" data-basepath="." data-revision="Thu Apr 28 2016 15:35:48 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -360,22 +360,21 @@
                     <section class="normal" id="section-">
                     
                         <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_6_copying_and_downloading_files.md" class="btn fa fa-edit pull-left">&nbsp;&nbsp;Edit</a><h2 id="6-copying-downloading-files">6. Copying &amp; Downloading Files</h2>
-<p>Files can be copied in an around your computer, in and around your space on the servers, and between the two. The basic copy function, <code>cp</code>, is for within locations (i.e. your computer or the server). To go between the two, use &apos;secure copy&apos;, <code>scp</code>.</p>
-<p>The basic syntax is &apos;cp, original file location, new file&apos;.</p>
+<p>Files can be copied in an around your computer, in and around your space on the servers, and between the two. The basic copy function, <code>cp</code>, is for local to local copy (i.e. your within computer or wihtin the server). To go between the two, use <code>rsync</code> or the slightly more simple <code>scp</code>.</p>
+<p>The basic syntax is <code>cp /path/to/source/file /path/to/destination</code>.</p>
 <h3 id="between-a-remote-server-and-local-machine">Between a remote server and local machine</h3>
-<p>From local file to server: </p>
-<pre><code>scp /path/to/local/file.txt server:/path/to/server/directory_or_newfile.txt
-</code></pre><p>For example:</p>
-<pre><code>scp /Users/bob/Desktop/data.csv btw000@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw000/archive/2013/data.csv
-</code></pre><p>From server to local directory on local machine:</p>
+<p>The most reliable and easiest way to copy and sync files between different machines is rsync. </p>
+<p><code>rsync -avP ~/my-work username@remote_host:/path/to/destination/</code></p>
+<p>This bit of code will copy the directory &quot;my-work&quot; to the destination at the remote host.</p>
+<p>To copy files from Apocrita to the Hive, use the following while logged into Apocrita:</p>
+<p><code>rsync -avP ~/my-work btw000@hive-master.hpc.qmul.ac.uk:/SBCS-BloggsLab/btw000/</code></p>
+<p>rsync has many options, find out more by reading the manual (<code>man rsync</code>) or look at an <a href="https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps" target="_blank">online guide</a>.</p>
+<p>scp is very similar, but it doesn&apos;t have the syncing capabilities of rsync, it is therefore best used to copy single files. To use <code>scp</code> to copy from server to directory on local machine:</p>
 <pre><code>scp btw000@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw000/myoutput.pdf .
 </code></pre><blockquote>
 <p><em>Note, &quot;<code>.</code>&quot; means &quot;current directory&quot;.</em></p>
 </blockquote>
-<h3 id="within-your-home-computer-or-the-servers">Within your home computer, or the servers</h3>
-<p>This is just the same, except replace <code>scp</code> with <code>cp</code>.</p>
-<pre><code>cp /path/to/file.extension /new/directory/
-</code></pre><h3 id="using-a-graphical-user-interface-gui">Using a graphical user interface (GUI)</h3>
+<h3 id="using-a-graphical-user-interface-gui">Using a graphical user interface (GUI)</h3>
 <p><a href="http://cyberduck.ch" target="_blank">Cyberduck</a> (on Mac) or <a href="http://filezilla-project.org" target="_blank">FileZilla</a> (on Windows).
 These two are GUI programs which offer file-sharing via a straightforward drag-and-drop or by menu navigation. </p>
 <p>Both programs have a facility for attaching your account and passwords to them so they&apos;ll log in automatically. Make sure you check in the preferences/options/settings to set the file transfer protocol to &quot;ssh&quot;, as that&apos;s not usually the default.</p>
