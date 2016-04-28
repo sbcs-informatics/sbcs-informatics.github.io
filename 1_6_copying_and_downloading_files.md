@@ -29,7 +29,7 @@ scp btw000@frontend1.apocrita.hpc.qmul.ac.uk:/home/btw000/myoutput.pdf .
 [Cyberduck](http://cyberduck.ch) (on Mac) or [FileZilla](http://filezilla-project.org) (on Windows).
 These two are GUI programs which offer file-sharing via a straightforward drag-and-drop or by menu navigation. 
 
-Both programs have a facility for attaching your account and passwords to them so they'll log in automatically. Make sure you check in the preferences/options/settings to set the file transfer protocol to "ssh", as that's not usually the default.
+Both programs have a facility for attaching your account and passwords to them so they'll log in automatically. Make sure you check in the preferences/options/settings to set the file transfer protocol to "SFTP", as that's not usually the default.
 
 >*Note that while these systems are convenient for moving and organising your files, they will not let you schedule jobs or run anything on the server. Alas, it's back to the command line to do anything using the Apocrita computational resources.*
 
