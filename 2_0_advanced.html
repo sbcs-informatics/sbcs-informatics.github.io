@@ -48,7 +48,7 @@
     
 
         
-    <div class="book" data-level="2" data-basepath="." data-revision="Thu Apr 28 2016 16:18:26 GMT+0000 (UTC)">
+    <div class="book" data-level="2" data-basepath="." data-revision="Fri Apr 29 2016 09:44:54 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -445,7 +445,17 @@
 <li>There is a message telling you that the key pair has been created, the public key is now located in /home/username/.ssh/id_rsa.pub and the private key is /home/username/.ssh/id_rsa.</li>
 <li>You are now ready to copy the <strong>public key</strong> to Apocrita</li>
 </ol>
-<p>If you want to connect to the Hive archive from Apocrita you need to create a separate key on Apocrita. Follow the same procedure, while logged in to Apocrita. Send that public key along with any other keys in order to gain access. </p>
+<h5 id="key-for-hive"><a name="key-for-hive" class="plugin-anchor" href="#key-for-hive"><span class="fa fa-link"></span></a>Key for Hive</h5>
+<p>To connect to the Hive archive from Apocrita you need to create a key pair on Apocrita. You need to do this while logged in to Apocrita:</p>
+<ol>
+<li>Log in to Apocrita <code>ssh btw000@login.hpc.qmul.ac.uk</code></li>
+<li>Run the command <code>ssh-keygen</code></li>
+<li>You will see <code>Enter file in which to save the key (/data/home/btw000/.ssh/id_rsa):</code> on the screen. Just hit enter here which will save the keys in their default location.</li>
+<li>The program will now ask you for a passphrase. Please enter one (it is possible to create a key without it but don&apos;t, it&apos;s to protect from someone getting hold of your private key.)</li>
+<li>There is a message telling you that the key pair has been created, the public key is now located in /data/home/btw000/.ssh/id_rsa.pub and the private key is /data/home/btw000/.ssh/id_rsa.</li>
+<li>Open the <strong>public key</strong> with for example <code>less ~/.ssh/id_rsa.pub</code>. Don&apos;t touch the <strong>private key</strong>!</li>
+<li>Send the <strong>public key</strong>, everything that is in the file you just opened, to Adrian.</li>
+</ol>
 <h4 id="public-key-copy"><a name="public-key-copy" class="plugin-anchor" href="#public-key-copy"><span class="fa fa-link"></span></a>Public Key Copy</h4>
 <p>The process is different depending on which operating system you are using. </p>
 <h5 id="windows-and-linux"><a name="windows-and-linux" class="plugin-anchor" href="#windows-and-linux"><span class="fa fa-link"></span></a>Windows and Linux</h5>
