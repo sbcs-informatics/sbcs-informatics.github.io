@@ -81,7 +81,17 @@ You can set up a pair of SSH keys for a more secure as well as password-less log
 5. There is a message telling you that the key pair has been created, the public key is now located in /home/username/.ssh/id\_rsa.pub and the private key is /home/username/.ssh/id\_rsa.
 6. You are now ready to copy the **public key** to Apocrita
 
-If you want to connect to the Hive archive from Apocrita you need to create a separate key on Apocrita. Follow the same procedure, while logged in to Apocrita. Send that public key along with any other keys in order to gain access. 
+##### Key for Hive
+
+To connect to the Hive archive from Apocrita you need to create a key pair on Apocrita. You need to do this while logged in to Apocrita:
+
+1. Log in to Apocrita `ssh btw000@login.hpc.qmul.ac.uk`
+2. Run the command `ssh-keygen`
+3. You will see `Enter file in which to save the key (/data/home/btw000/.ssh/id_rsa):` on the screen. Just hit enter here which will save the keys in their default location.
+4. The program will now ask you for a passphrase. Please enter one (it is possible to create a key without it but don't, it's to protect from someone getting hold of your private key.)
+5. There is a message telling you that the key pair has been created, the public key is now located in /data/home/btw000/.ssh/id\_rsa.pub and the private key is /data/home/btw000/.ssh/id\_rsa.
+6. Open the **public key** with for example `less ~/.ssh/id_rsa.pub`. Don't touch the **private key**!
+7. Send the **public key**, everything that is in the file you just opened, to Adrian.
 
 #### Public Key Copy
 The process is different depending on which operating system you are using. 
