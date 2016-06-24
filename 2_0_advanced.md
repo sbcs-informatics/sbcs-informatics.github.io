@@ -226,6 +226,14 @@ mv .zshrc.BAK .zshrc                    # if you were using zshrc
 
 * [Long list of bioinformatic and non-bio oneliners](https://github.com/stephenturner/oneliners)
 * Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`.
-* All compute nodes have local scratch disks at $TMPDIR which equates to /tmp/jobid.queueid - It is purged at the end of the job so copy everything back when your data processing has finished. 
+* All compute nodes have local scratch disks at $TMPDIR which equates to /tmp/jobid.queueid - It is purged at the end of the job so copy everything back when your data processing has finished.
+
+##### Put an already running process under nohup
+If you have started a process in an interactive session and want to put it in a state where it will keep running when you close the terminal window or lose connection, this is your solution.
+
+1. Press CTRL+Z to suspend the process
+2. `bg %1` to start the process in the background
+3. `disown %1` to make it run disconnected from the terminal
+
 
 ![QMUL logo](./img/qmul_logo.png)
