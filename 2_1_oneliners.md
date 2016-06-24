@@ -1,4 +1,4 @@
-## 1. Oneliners
+## 1. Oneliners and useful tips
 
 * Get all sbcs users: `ldapsearch -x cn=sbcs | grep memberUid | sort`. Can email to <username>@qmul.ac.uk directly
 

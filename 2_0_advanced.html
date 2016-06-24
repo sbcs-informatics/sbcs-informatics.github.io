@@ -48,7 +48,7 @@
     
 
         
-    <div class="book" data-level="2" data-basepath="." data-revision="Fri Apr 29 2016 09:44:54 GMT+0000 (UTC)">
+    <div class="book" data-level="2" data-basepath="." data-revision="Fri Jun 24 2016 15:44:05 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -548,8 +548,15 @@ mv .zshrc.BAK .zshrc                    # if you were using zshrc
 <ul>
 <li><a href="https://github.com/stephenturner/oneliners" target="_blank">Long list of bioinformatic and non-bio oneliners</a></li>
 <li>Get all sbcs users: <code>ldapsearch -x cn=sbcs | grep memberUid | sort</code>.</li>
-<li>All compute nodes have local scratch disks at $TMPDIR which equates to /tmp/jobid.queueid - It is purged at the end of the job so copy everything back when your data processing has finished. </li>
+<li>All compute nodes have local scratch disks at $TMPDIR which equates to /tmp/jobid.queueid - It is purged at the end of the job so copy everything back when your data processing has finished.</li>
 </ul>
+<h5 id="put-an-already-running-process-under-nohup"><a name="put-an-already-running-process-under-nohup" class="plugin-anchor" href="#put-an-already-running-process-under-nohup"><span class="fa fa-link"></span></a>Put an already running process under nohup</h5>
+<p>If you have started a process in an interactive session and want to put it in a state where it will keep running when you close the terminal window or lose connection, this is your solution.</p>
+<ol>
+<li>Press CTRL+Z to suspend the process</li>
+<li><code>bg %1</code> to start the process in the background</li>
+<li><code>disown %1</code> to make it run disconnected from the terminal</li>
+</ol>
 <p><img src="img/qmul_logo.png" alt="QMUL logo"></p>
 
                     
