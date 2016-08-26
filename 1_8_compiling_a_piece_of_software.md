@@ -11,7 +11,7 @@ module unload python/3.4.3       #unloads python to return to to sweet 2.X
 module clear                     #unloads all loaded modules
 ```
 
-All `module` commands work with tab-completion, that way you can type `module load java` and press <TAB> twice to see all available java versions. 
+All `module` commands work with tab-completion, that way you can type `module load java` and press TAB twice to see all available java versions. 
 
 The only problem with these modules is that they are not always up to date. You may have to ask for a new version to be installed if you want to be on the bleeding edge.
 
