@@ -31,6 +31,15 @@ These two are GUI programs which offer file-sharing via a straightforward drag-a
 
 Both programs have a facility for attaching your account and passwords to them so they'll log in automatically. Make sure you check in the preferences/options/settings to set the file transfer protocol to "SFTP", as that's not usually the default.
 
+1. Open Cyberduck
+2. Create a new connection specifying
+	* SFTP protocol
+	* server login.hpc.qmul.ac.uk
+	* username and password
+3. Connect
+4. Manage your files on Apocrita through the interface provided
+
+
 >*Note that while these systems are convenient for moving and organising your files, they will not let you schedule jobs or run anything on the server. Alas, it's back to the command line to do anything using the Apocrita computational resources.*
 
 ### Mounting your Apocrita file system on your computer
