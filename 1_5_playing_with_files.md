@@ -1,4 +1,4 @@
-##5. Playing with Files
+## 5. Playing with Files
 
 ### Creating a new directory 
 The `mkdir` command will create a directory inside your current location.

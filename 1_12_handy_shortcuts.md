@@ -1,4 +1,4 @@
-## 11. Handy Shortcuts
+## 12. Handy Shortcuts
 
 * Get your quota information `qmquota -s`
 * Make a soft link to a file `ln -s /path/to/source/file.txt ./destination_file.txt`
