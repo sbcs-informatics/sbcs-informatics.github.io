@@ -11,7 +11,8 @@
    * [Available Software](1_8_compiling_a_piece_of_software.md)
    * [R](1_9_r.md)
    * [Galaxy](1_10_galaxy.md)
-   * [Handy Shortcuts](1_11_handy_shortcuts.md)
+   * [Singularity Pilot](1_11_singularity_pilot.md)
+   * [Handy Shortcuts](1_12_handy_shortcuts.md)
 * [Advanced](2_0_advanced.md)
 * [Contact](3_0_contact.md)
 
