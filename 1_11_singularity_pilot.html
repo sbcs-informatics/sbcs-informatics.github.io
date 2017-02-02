@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.11" data-basepath="." data-revision="Thu Feb 02 2017 17:25:57 GMT+0000 (UTC)">
+    <div class="book" data-level="1.11" data-basepath="." data-revision="Thu Feb 02 2017 17:43:30 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -379,7 +379,7 @@
 <h3 id="containers"><a name="containers" class="plugin-anchor" href="#containers"><span class="fa fa-link"></span></a>Containers</h3>
 <p>There are many flavours of containers and each has benefits and downsides. Docker is the most ubiquitous and the platform with the most features. However, there are some serious security flaws which prevents us from using Docker on the HPC. </p>
 <h3 id="singularity"><a name="singularity" class="plugin-anchor" href="#singularity"><span class="fa fa-link"></span></a>Singularity</h3>
-<p>Unlike Docker, Singularity does not have a daemon running as root to control the containers running on the system. Everything is running as your user, but in the steps which create the image file you need sudo access. Therefore this cannot be done on the Apocrita file system and must be completed outside, after which you can copy the image in and run it. </p>
+<p>Unlike Docker, Singularity does not have a daemon running as root to control the containers running on the system. Everything is running as your user. However, in the steps that build the image file you need sudo access. For this reason, those steps cannot be completed on the Apocrita file system and must be carried out on another machine. This could for example be your desktop computer if you have a linux machie, a Virtual Machine you have set up yourself, or the vagrant VM that ITSR provides. After you are done creating the image you can copy it to Apocrita and run it. </p>
 <p>There are three fundamental steps to creating and running a container with Singularity.</p>
 <ol>
 <li>Writing a bootstrap definition file</li>
@@ -394,7 +394,12 @@
 OSversion: xenial
 MirrorURL: http://archive.ubuntu.com/ubuntu/
 
+<span class="hljs-comment"># Requires 1024MB image size</span>
+
 %post 
+    <span class="hljs-comment"># Create the /data directory</span>
+    mkdir /data
+
     apt-get update
 
     <span class="hljs-comment"># This is needed to be able to add the universe repo</span>
@@ -474,7 +479,9 @@ mpirun -np <span class="hljs-number">4</span> singularity <span class="hljs-buil
 <span class="hljs-comment"># and the command running within the container is mb ./examples/hymfossil.nex</span>
 </code></pre>
 <h5 id="issues"><a name="issues" class="plugin-anchor" href="#issues"><span class="fa fa-link"></span></a>Issues</h5>
-<p>Singularity is running with surprising smoothness, but not everything worked straight out of the box. </p>
+<p>Singularity is running with surprising smoothness, but not everything worked right away. </p>
+<h6 id="mpi-solved"><a name="mpi-solved" class="plugin-anchor" href="#mpi-solved"><span class="fa fa-link"></span></a>MPI - SOLVED</h6>
+<p>Had to install correct version of OpenMPI and install openssh-server to get it working. More details in the MPI section above. </p>
 <h6 id="image-size-workaround"><a name="image-size-workaround" class="plugin-anchor" href="#image-size-workaround"><span class="fa fa-link"></span></a>Image size - WORKAROUND</h6>
 <p>Singularity does not automatically create an image of the correct size for your container, you need to specify the image size in the create step and if its too small the bootstrap step will fail. On the other hand you do not want to specify a huge image size because you will need to copy the image around afterwards!</p>
 <p>There is a command to grow the image size - unfortunately I have found that once your bootstrap step has failed once, it will not work to run the bootstrap again on the same image. This is a minimal annoyance as you can just delete the image and create a new one with larger size, which is what I have been doing when I run into space issues in the bootstrap step.</p>
