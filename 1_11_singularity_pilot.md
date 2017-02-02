@@ -21,7 +21,7 @@ Here is an example of a fairly simple .def file (This particular one installs bo
 
 The first three lines describe how to start the bootstrap procedure, here we choose Ubuntu Xenial and point to where it can be downloaded. Everything in the %post block runs once when the image is bootstrapped. A %test section is included as well to make sure everything worked out. There are other sections you can include here too, see the [Singularity documentation](http://singularity.lbl.gov/bootstrap-image).
 
-```
+```bash
 Bootstrap: debootstrap
 OSversion: xenial
 MirrorURL: http://archive.ubuntu.com/ubuntu/
@@ -54,7 +54,7 @@ MirrorURL: http://archive.ubuntu.com/ubuntu/
 #### Bootstrap
 To create an image which contains the things you detailed in the definition file, you need to first create an empty image and then run the bootstrap. These two steps are the only ones that require sudo access. The default image size is 768MB, which is enough for many lightweight toolchains, but you can decide the image size yourself. Unfortunately it cannot be automatically grown by the bootstrap command, so if it runs out of space it will just crash. Delete the image and create a new one with larger size and try again. Sometimes its hard to tell what size you will need, I have created images varying in size from 768MB to 10GB. 
 
-```
+```bash
 sudo singularity create --size 1024 image_name.img       
 # Create empty image of size 1024MB
 
@@ -65,7 +65,7 @@ sudo singularity bootstrap image_name.img definition_file.def
 #### Execution
 This is the step in which you will run the container and the tools you have packaged within. This step does not require sudo access, but it does take settings from a global configuration file which ITSR has control over. The container is immutable once created so you will not be able to install any more tools or anything like that, you also cannot change/store data in the container once its been created. All of that will have to happen in the bootstrap step, so if you want to change the version of the tool installed, you need to create a new image and bootstrap it with a different definition file. 
 
-```
+```bash
 singularity exec image_name.img command [arguments ...]
 
 # For example, to print bowtie2 help
@@ -74,7 +74,7 @@ singularity exec ubuntu-bowtie2-2.3.0.img bowtie2 -h
 
 You can also shell into the container, either by using the singularity shell command or by exec invoking bash/sh:
 
-```
+```bash
 singularity shell image_name.img
 
 singularity exec image_name.img bash
