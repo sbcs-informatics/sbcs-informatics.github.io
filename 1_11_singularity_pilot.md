@@ -22,18 +22,26 @@ Here is an example of a fairly simple .def file (This particular one installs bo
 The first three lines describe how to start the bootstrap procedure, here we choose Ubuntu Xenial and point to where it can be downloaded. Everything in the %post block runs once when the image is bootstrapped. A %test section is included as well to make sure everything worked out. There are other sections you can include here too, see the [Singularity documentation](http://singularity.lbl.gov/bootstrap-image).
 
 ```
-Bootstrap: debootstrap                                # Debian based bootstrap
-OSversion: xenial                                     # xenial is the name of ubuntu 16.04
-MirrorURL: http://archive.ubuntu.com/ubuntu/          # downloading from the ubuntu archive
+Bootstrap: debootstrap
+OSversion: xenial
+MirrorURL: http://archive.ubuntu.com/ubuntu/
 
 %post 
 	apt-get update
-	apt-get install -y software-properties-common     # This is needed to be able to run next line
-	add-apt-repository universe                       # This will add the universe repo to apt
-													  # Needed for apt to find libtbb-dev
+	
+	# This is needed to be able to add the universe repo
+	# which is needed for apt to find libtbb-dev
+
+	apt-get install -y software-properties-common     
+	add-apt-repository universe                       												  
+	
+	# Running normal apt-get update and isntalling the tools needed
 	apt-get update
 	apt-get install -y vim wget unzip build-essential libtbb-dev
+
+	# Downloading from sourceforge and installing
 	wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.0/bowtie2-2.3.0-source.zip
+
 	unzip bowtie2-2.3.0-source.zip
 	cd bowtie2-2.3.0/
 	make
@@ -47,9 +55,11 @@ MirrorURL: http://archive.ubuntu.com/ubuntu/          # downloading from the ubu
 To create an image which contains the things you detailed in the definition file, you need to first create an empty image and then run the bootstrap. These two steps are the only ones that require sudo access. The default image size is 768MB, which is enough for many lightweight toolchains, but you can decide the image size yourself. Unfortunately it cannot be automatically grown by the bootstrap command, so if it runs out of space it will just crash. Delete the image and create a new one with larger size and try again. Sometimes its hard to tell what size you will need, I have created images varying in size from 768MB to 10GB. 
 
 ```
-sudo singularity create --size 1024 image_name.img                  # Create empty image of size 1024MB.  
+sudo singularity create --size 1024 image_name.img       
+# Create empty image of size 1024MB
 
-sudo singularity bootstrap image_name.img definition_file.def       # Run bootstrap on that image.
+sudo singularity bootstrap image_name.img definition_file.def
+# Run bootstrap on that image
 ```
 
 #### Execution
@@ -58,7 +68,8 @@ This is the step in which you will run the container and the tools you have pack
 ```
 singularity exec image_name.img command [arguments ...]
 
-singularity exec ubuntu-bowtie2-2.3.0.img bowtie2 -h       # For example, to print bowtie2 help
+# For example, to print bowtie2 help
+singularity exec ubuntu-bowtie2-2.3.0.img bowtie2 -h
 ```
 
 You can also shell into the container, either by using the singularity shell command or by exec invoking bash/sh:
@@ -71,7 +82,7 @@ singularity exec image_name.img bash
 
 
 #### Singularity on Apocrita
-Singularity is installed on Apocrita and ITSR have allowed access to those willign to try it out. However, because singularity needs sudo access to create the empty image and for the bootstrap step, those two steps need to be completed outside Apocrita. Execution of a container does not require sudo access and thus it is possible to create the image on your own machine, copy it over to Apocrita and then run your packaged tool through singularity as your Apocrita user. 
+Singularity is installed on Apocrita and ITSR have allowed access to those willing to try it out. However, because singularity needs sudo access to create the empty image and for the bootstrap step, those two steps need to be completed outside Apocrita. Execution of a container does not require sudo access and thus it is possible to create the image on your own machine, copy it over to Apocrita and then run your packaged tool through singularity as your Apocrita user. 
 
 ##### /data mount
 In order to have access to your data on Apocrita, you need to create the /data directory in your image during the bootstrap step. After doing that, Singularity will be able to mount all your data directories automatically when you run the container. If you do not have the /data directory made in your bootstrap step the container will not have any access to your data files. 
@@ -115,11 +126,15 @@ mpirun -np 4 singularity exec ./ubuntu-mrbayes-3.2.6.img mb ./examples/hymfossil
 ##### Issues
 Singularity is running with surprising smoothness, but not everything worked straight out of the box. 
 
-###### Growing images WORKAROUND
+###### Image size - WORKAROUND
+Singularity does not automatically create an image of the correct size for your container, you need to specify the image size in the create step and if its too small the bootstrap step will fail. On the other hand you do not want to specify a huge image size because you will need to copy the image around afterwards!
+
 There is a command to grow the image size - unfortunately I have found that once your bootstrap step has failed once, it will not work to run the bootstrap again on the same image. This is a minimal annoyance as you can just delete the image and create a new one with larger size, which is what I have been doing when I run into space issues in the bootstrap step.
 
-###### /data mount SOLVED
+I have tried to get into the habit of adding image size specifications in the .def file so that a future user will know what image size is needed to successfully complete the bootstrap step. 
+
+###### /data mount - SOLVED
 Singularity will automatically mount your home directory, but it did not automatically mount the rest of /data, which is where almost all users have their data spread out. ITSR changed the config file for Singularity to automatically mount all of /data instead of just /data/home/username, that way all data that users have access to should be available in the container. Very simple and quick fix.
 
-###### debootstrap not installed SOLVED
+###### debootstrap not installed - SOLVED
 This was a minor issue, but the host you are creating your images on has to have the tool debootstrap installed if you are going to base your images on ubuntu. This has to be installed with yum on a centos machine and may have to be installed even on ubuntu machines. `sudo yum install debootstrap` should do the trick. You might have to install yum on ubuntu to create centos images? (Not tested)
