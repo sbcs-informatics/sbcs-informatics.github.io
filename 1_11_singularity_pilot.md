@@ -1,1 +1,125 @@
-## 11. Singularity pilot
+## 11. Singularity Pilot
+
+ITS Research have installed [Singularity](singularity.lbl.gov) for us to test in SBCS. Singularity is a containerisation platform which enables full control of the environment in which a program runs, without having to rely on libraries and software installed on the Apocrita filesystem. 
+
+### Containers
+There are many flavours of containers and each has benefits and downsides. Docker is the most ubiquitous and the platform with the most features. However, there are some serious security flaws which prevents us from using Docker on the HPC. 
+
+### Singularity
+Unlike Docker, Singularity does not have a daemon running as root to control the containers running on the system. Everything is running as your user, but in the steps which create the image file you need sudo access. Therefore this cannot be done on the Apocrita file system and must be completed outside, after which you can copy the image in and run it. 
+
+There are three fundamental steps to creating and running a container with Singularity.
+
+1. Writing a bootstrap definition file
+2. Creating the empty image and running the bootstrap (ie installing the things described in the definition file inside the image file)
+3. Running the container
+
+#### Definition file
+This is a description file which tells singularity what to put inside the image. There are a few ways of doing it, but the most fundamental way is to have it download a version of ubuntu or centos, then install your tools/libraries through yum/apt-get/git etc. You can also import Docker containers in the bootstrap step. 
+
+Here is an example of a fairly simple .def file (This particular one installs bowtie2-2.3.0 from sourceforge):
+
+The first three lines describe how to start the bootstrap procedure, here we choose Ubuntu Xenial and point to where it can be downloaded. Everything in the %post block runs once when the image is bootstrapped. A %test section is included as well to make sure everything worked out. There are other sections you can include here too, see the [Singularity documentation](http://singularity.lbl.gov/bootstrap-image).
+
+```
+Bootstrap: debootstrap                                # Debian based bootstrap
+OSversion: xenial                                     # xenial is the name of ubuntu 16.04
+MirrorURL: http://archive.ubuntu.com/ubuntu/          # downloading from the ubuntu archive
+
+%post 
+	apt-get update
+	apt-get install -y software-properties-common     # This is needed to be able to run next line
+	add-apt-repository universe                       # This will add the universe repo to apt
+													  # Needed for apt to find libtbb-dev
+	apt-get update
+	apt-get install -y vim wget unzip build-essential libtbb-dev
+	wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.0/bowtie2-2.3.0-source.zip
+	unzip bowtie2-2.3.0-source.zip
+	cd bowtie2-2.3.0/
+	make
+	make install
+
+%test
+	bowtie2 -h
+```
+
+#### Bootstrap
+To create an image which contains the things you detailed in the definition file, you need to first create an empty image and then run the bootstrap. These two steps are the only ones that require sudo access. The default image size is 768MB, which is enough for many lightweight toolchains, but you can decide the image size yourself. Unfortunately it cannot be automatically grown by the bootstrap command, so if it runs out of space it will just crash. Delete the image and create a new one with larger size and try again. Sometimes its hard to tell what size you will need, I have created images varying in size from 768MB to 10GB. 
+
+```
+sudo singularity create --size 1024 image_name.img                  # Create empty image of size 1024MB.  
+
+sudo singularity bootstrap image_name.img definition_file.def       # Run bootstrap on that image.
+```
+
+#### Execution
+This is the step in which you will run the container and the tools you have packaged within. This step does not require sudo access, but it does take settings from a global configuration file which ITSR has control over. The container is immutable once created so you will not be able to install any more tools or anything like that, you also cannot change/store data in the container once its been created. All of that will have to happen in the bootstrap step, so if you want to change the version of the tool installed, you need to create a new image and bootstrap it with a different definition file. 
+
+```
+singularity exec image_name.img command [arguments ...]
+
+singularity exec ubuntu-bowtie2-2.3.0.img bowtie2 -h       # For example, to print bowtie2 help
+```
+
+You can also shell into the container, either by using the singularity shell command or by exec invoking bash/sh:
+
+```
+singularity shell image_name.img
+
+singularity exec image_name.img bash
+```
+
+
+#### Singularity on Apocrita
+Singularity is installed on Apocrita and ITSR have allowed access to those willign to try it out. However, because singularity needs sudo access to create the empty image and for the bootstrap step, those two steps need to be completed outside Apocrita. Execution of a container does not require sudo access and thus it is possible to create the image on your own machine, copy it over to Apocrita and then run your packaged tool through singularity as your Apocrita user. 
+
+##### /data mount
+In order to have access to your data on Apocrita, you need to create the /data directory in your image during the bootstrap step. After doing that, Singularity will be able to mount all your data directories automatically when you run the container. If you do not have the /data directory made in your bootstrap step the container will not have any access to your data files. 
+
+You do this in the %post section of your bootstrap definition file. It does not matter where, but I usually put it in the beginning to remember.
+
+##### MPI
+Singularity does support MPI over the cluster scheduler out of the box. In order to get it running there are a couple of things you need to do though. 
+
+###### Building the image
+In order to take advantage of MPI on the cluster a version of MPI must be installed in the singularity image, as well as a way for the MPI jobs to communicate. 
+
+* The MPI version must be the same as the one you load on Apocrita
+	* Loading the module openmpi/1.6.5 on Apocrita means you need to install Open MPI 1.6.5 in the bootstrap step of your container
+* Installing openssh-server (using either yum or apt-get depending on your flavour) in the bootstrap step should enough to handle communications
+
+###### Running the image on the queue
+Requesting an MPI environment on the cluster can be done in several ways. The new hardware provision will provide a large number of compute cores with high performance interconnect, which is perfect for MPI. It is still not clear whether these machines will be on a separate queue or if everything will be handled by the scheduler internally. 
+
+This is an example of a submission script which utilises MPI on the old provision. The number of parallel slots must match the -np argument supplied to mpirun!
+
+```bash
+#!/bin/sh
+#$ -cwd              # Set the working directory for the job to the current directory
+#$ -V                # 
+#$ -pe parallel 4    # Request 4 parallel slots
+#$ -l h_rt=1:0:0     # Request 1 hour runtime
+#$ -l h_vmem=1G      # Request 1GB RAM per core
+
+module load use.dev
+module load singularity
+module load openmpi/1.6.5/gcc/4.7.2 # OpenMPI 1.6.5 is installed in the image
+
+mpirun -np 4 singularity exec ./ubuntu-mrbayes-3.2.6.img mb ./examples/hymfossil.nex
+
+# The image is called ubuntu-mrbayes-3.2.6.img
+# and the command running within the container is mb ./examples/hymfossil.nex
+```
+
+
+##### Issues
+Singularity is running with surprising smoothness, but not everything worked straight out of the box. 
+
+###### Growing images WORKAROUND
+There is a command to grow the image size - unfortunately I have found that once your bootstrap step has failed once, it will not work to run the bootstrap again on the same image. This is a minimal annoyance as you can just delete the image and create a new one with larger size, which is what I have been doing when I run into space issues in the bootstrap step.
+
+###### /data mount SOLVED
+Singularity will automatically mount your home directory, but it did not automatically mount the rest of /data, which is where almost all users have their data spread out. ITSR changed the config file for Singularity to automatically mount all of /data instead of just /data/home/username, that way all data that users have access to should be available in the container. Very simple and quick fix.
+
+###### debootstrap not installed SOLVED
+This was a minor issue, but the host you are creating your images on has to have the tool debootstrap installed if you are going to base your images on ubuntu. This has to be installed with yum on a centos machine and may have to be installed even on ubuntu machines. `sudo yum install debootstrap` should do the trick. You might have to install yum on ubuntu to create centos images? (Not tested)
