@@ -6,7 +6,7 @@ ITS Research have installed [Singularity](singularity.lbl.gov) for us to test in
 There are many flavours of containers and each has benefits and downsides. Docker is the most ubiquitous and the platform with the most features. However, there are some serious security flaws which prevents us from using Docker on the HPC. 
 
 ### Singularity
-Unlike Docker, Singularity does not have a daemon running as root to control the containers running on the system. Everything is running as your user, but in the steps which create the image file you need sudo access. Therefore this cannot be done on the Apocrita file system and must be completed outside, after which you can copy the image in and run it. 
+Unlike Docker, Singularity does not have a daemon running as root to control the containers running on the system. Everything is running as your user. However, in the steps that build the image file you need sudo access. For this reason, those steps cannot be completed on the Apocrita file system and must be carried out on another machine. This could for example be your desktop computer if you have a linux machie, a Virtual Machine you have set up yourself, or the vagrant VM that ITSR provides. After you are done creating the image you can copy it to Apocrita and run it. 
 
 There are three fundamental steps to creating and running a container with Singularity.
 
@@ -26,7 +26,12 @@ Bootstrap: debootstrap
 OSversion: xenial
 MirrorURL: http://archive.ubuntu.com/ubuntu/
 
+# Requires 1024MB image size
+
 %post 
+	# Create the /data directory
+	mkdir /data
+
 	apt-get update
 	
 	# This is needed to be able to add the universe repo
@@ -124,7 +129,10 @@ mpirun -np 4 singularity exec ./ubuntu-mrbayes-3.2.6.img mb ./examples/hymfossil
 
 
 ##### Issues
-Singularity is running with surprising smoothness, but not everything worked straight out of the box. 
+Singularity is running with surprising smoothness, but not everything worked right away. 
+
+###### MPI - SOLVED
+Had to install correct version of OpenMPI and install openssh-server to get it working. More details in the MPI section above. 
 
 ###### Image size - WORKAROUND
 Singularity does not automatically create an image of the correct size for your container, you need to specify the image size in the create step and if its too small the bootstrap step will fail. On the other hand you do not want to specify a huge image size because you will need to copy the image around afterwards!
