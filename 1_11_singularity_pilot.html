@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.11" data-basepath="." data-revision="Thu Feb 02 2017 17:23:07 GMT+0000 (UTC)">
+    <div class="book" data-level="1.11" data-basepath="." data-revision="Thu Feb 02 2017 17:25:57 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -390,51 +390,55 @@
 <p>This is a description file which tells singularity what to put inside the image. There are a few ways of doing it, but the most fundamental way is to have it download a version of ubuntu or centos, then install your tools/libraries through yum/apt-get/git etc. You can also import Docker containers in the bootstrap step. </p>
 <p>Here is an example of a fairly simple .def file (This particular one installs bowtie2-2.3.0 from sourceforge):</p>
 <p>The first three lines describe how to start the bootstrap procedure, here we choose Ubuntu Xenial and point to where it can be downloaded. Everything in the %post block runs once when the image is bootstrapped. A %test section is included as well to make sure everything worked out. There are other sections you can include here too, see the <a href="http://singularity.lbl.gov/bootstrap-image" target="_blank">Singularity documentation</a>.</p>
-<pre><code>Bootstrap: debootstrap
+<pre><code class="lang-bash">Bootstrap: debootstrap
 OSversion: xenial
 MirrorURL: http://archive.ubuntu.com/ubuntu/
 
 %post 
     apt-get update
 
-    # This is needed to be able to add the universe repo
-    # which is needed for apt to find libtbb-dev
+    <span class="hljs-comment"># This is needed to be able to add the universe repo</span>
+    <span class="hljs-comment"># which is needed for apt to find libtbb-dev</span>
 
     apt-get install -y software-properties-common     
     add-apt-repository universe                                                                         
 
-    # Running normal apt-get update and isntalling the tools needed
+    <span class="hljs-comment"># Running normal apt-get update and isntalling the tools needed</span>
     apt-get update
     apt-get install -y vim wget unzip build-essential libtbb-dev
 
-    # Downloading from sourceforge and installing
-    wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.3.0/bowtie2-2.3.0-source.zip
+    <span class="hljs-comment"># Downloading from sourceforge and installing</span>
+    wget https://sourceforge.net/projects/bowtie-bio/files/bowtie2/<span class="hljs-number">2.3</span>.<span class="hljs-number">0</span>/bowtie2-<span class="hljs-number">2.3</span>.<span class="hljs-number">0</span>-source.zip
 
-    unzip bowtie2-2.3.0-source.zip
-    cd bowtie2-2.3.0/
+    unzip bowtie2-<span class="hljs-number">2.3</span>.<span class="hljs-number">0</span>-source.zip
+    <span class="hljs-built_in">cd</span> bowtie2-<span class="hljs-number">2.3</span>.<span class="hljs-number">0</span>/
     make
     make install
 
-%test
+%<span class="hljs-built_in">test</span>
     bowtie2 -h
-</code></pre><h4 id="bootstrap"><a name="bootstrap" class="plugin-anchor" href="#bootstrap"><span class="fa fa-link"></span></a>Bootstrap</h4>
+</code></pre>
+<h4 id="bootstrap"><a name="bootstrap" class="plugin-anchor" href="#bootstrap"><span class="fa fa-link"></span></a>Bootstrap</h4>
 <p>To create an image which contains the things you detailed in the definition file, you need to first create an empty image and then run the bootstrap. These two steps are the only ones that require sudo access. The default image size is 768MB, which is enough for many lightweight toolchains, but you can decide the image size yourself. Unfortunately it cannot be automatically grown by the bootstrap command, so if it runs out of space it will just crash. Delete the image and create a new one with larger size and try again. Sometimes its hard to tell what size you will need, I have created images varying in size from 768MB to 10GB. </p>
-<pre><code>sudo singularity create --size 1024 image_name.img       
-# Create empty image of size 1024MB
+<pre><code class="lang-bash">sudo singularity create --size <span class="hljs-number">1024</span> image_name.img       
+<span class="hljs-comment"># Create empty image of size 1024MB</span>
 
 sudo singularity bootstrap image_name.img definition_file.def
-# Run bootstrap on that image
-</code></pre><h4 id="execution"><a name="execution" class="plugin-anchor" href="#execution"><span class="fa fa-link"></span></a>Execution</h4>
+<span class="hljs-comment"># Run bootstrap on that image</span>
+</code></pre>
+<h4 id="execution"><a name="execution" class="plugin-anchor" href="#execution"><span class="fa fa-link"></span></a>Execution</h4>
 <p>This is the step in which you will run the container and the tools you have packaged within. This step does not require sudo access, but it does take settings from a global configuration file which ITSR has control over. The container is immutable once created so you will not be able to install any more tools or anything like that, you also cannot change/store data in the container once its been created. All of that will have to happen in the bootstrap step, so if you want to change the version of the tool installed, you need to create a new image and bootstrap it with a different definition file. </p>
-<pre><code>singularity exec image_name.img command [arguments ...]
+<pre><code class="lang-bash">singularity <span class="hljs-built_in">exec</span> image_name.img <span class="hljs-built_in">command</span> [arguments ...]
 
-# For example, to print bowtie2 help
-singularity exec ubuntu-bowtie2-2.3.0.img bowtie2 -h
-</code></pre><p>You can also shell into the container, either by using the singularity shell command or by exec invoking bash/sh:</p>
-<pre><code>singularity shell image_name.img
+<span class="hljs-comment"># For example, to print bowtie2 help</span>
+singularity <span class="hljs-built_in">exec</span> ubuntu-bowtie2-<span class="hljs-number">2.3</span>.<span class="hljs-number">0</span>.img bowtie2 -h
+</code></pre>
+<p>You can also shell into the container, either by using the singularity shell command or by exec invoking bash/sh:</p>
+<pre><code class="lang-bash">singularity shell image_name.img
 
-singularity exec image_name.img bash
-</code></pre><h4 id="singularity-on-apocrita"><a name="singularity-on-apocrita" class="plugin-anchor" href="#singularity-on-apocrita"><span class="fa fa-link"></span></a>Singularity on Apocrita</h4>
+singularity <span class="hljs-built_in">exec</span> image_name.img bash
+</code></pre>
+<h4 id="singularity-on-apocrita"><a name="singularity-on-apocrita" class="plugin-anchor" href="#singularity-on-apocrita"><span class="fa fa-link"></span></a>Singularity on Apocrita</h4>
 <p>Singularity is installed on Apocrita and ITSR have allowed access to those willing to try it out. However, because singularity needs sudo access to create the empty image and for the bootstrap step, those two steps need to be completed outside Apocrita. Execution of a container does not require sudo access and thus it is possible to create the image on your own machine, copy it over to Apocrita and then run your packaged tool through singularity as your Apocrita user. </p>
 <h5 id="-data-mount"><a name="-data-mount" class="plugin-anchor" href="#-data-mount"><span class="fa fa-link"></span></a>/data mount</h5>
 <p>In order to have access to your data on Apocrita, you need to create the /data directory in your image during the bootstrap step. After doing that, Singularity will be able to mount all your data directories automatically when you run the container. If you do not have the /data directory made in your bootstrap step the container will not have any access to your data files. </p>
