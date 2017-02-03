@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.11" data-basepath="." data-revision="Thu Feb 02 2017 17:43:30 GMT+0000 (UTC)">
+    <div class="book" data-level="1.11" data-basepath="." data-revision="Fri Feb 03 2017 16:52:45 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -387,7 +387,7 @@
 <li>Running the container</li>
 </ol>
 <h4 id="definition-file"><a name="definition-file" class="plugin-anchor" href="#definition-file"><span class="fa fa-link"></span></a>Definition file</h4>
-<p>This is a description file which tells singularity what to put inside the image. There are a few ways of doing it, but the most fundamental way is to have it download a version of ubuntu or centos, then install your tools/libraries through yum/apt-get/git etc. You can also import Docker containers in the bootstrap step. </p>
+<p>This is a description file which tells singularity what to put inside the image. There are a few ways of doing it, but the most fundamental way is to have it download a version of ubuntu or centos, then install your tools/libraries through yum/apt-get/git etc. You can also import Docker images in the bootstrap step. </p>
 <p>Here is an example of a fairly simple .def file (This particular one installs bowtie2-2.3.0 from sourceforge):</p>
 <p>The first three lines describe how to start the bootstrap procedure, here we choose Ubuntu Xenial and point to where it can be downloaded. Everything in the %post block runs once when the image is bootstrapped. A %test section is included as well to make sure everything worked out. There are other sections you can include here too, see the <a href="http://singularity.lbl.gov/bootstrap-image" target="_blank">Singularity documentation</a>.</p>
 <pre><code class="lang-bash">Bootstrap: debootstrap
@@ -424,7 +424,7 @@ MirrorURL: http://archive.ubuntu.com/ubuntu/
     bowtie2 -h
 </code></pre>
 <h4 id="bootstrap"><a name="bootstrap" class="plugin-anchor" href="#bootstrap"><span class="fa fa-link"></span></a>Bootstrap</h4>
-<p>To create an image which contains the things you detailed in the definition file, you need to first create an empty image and then run the bootstrap. These two steps are the only ones that require sudo access. The default image size is 768MB, which is enough for many lightweight toolchains, but you can decide the image size yourself. Unfortunately it cannot be automatically grown by the bootstrap command, so if it runs out of space it will just crash. Delete the image and create a new one with larger size and try again. Sometimes its hard to tell what size you will need, I have created images varying in size from 768MB to 10GB. </p>
+<p>To create an image which contains the things you detailed in the definition file, you need to first create an empty image and then run the bootstrap. These two steps are the only ones that require sudo access. The default image size is 768MB, which is enough for many lightweight toolchains, but you can decide the image size yourself. Unfortunately it cannot be automatically grown by the bootstrap command, so if it runs out of space it will just crash. If this happens, delete the image and create a new one with larger size and try again. Sometimes its hard to tell what size you will need, I have created images varying in size from 768MB to 10GB. </p>
 <pre><code class="lang-bash">sudo singularity create --size <span class="hljs-number">1024</span> image_name.img       
 <span class="hljs-comment"># Create empty image of size 1024MB</span>
 
@@ -432,7 +432,7 @@ sudo singularity bootstrap image_name.img definition_file.def
 <span class="hljs-comment"># Run bootstrap on that image</span>
 </code></pre>
 <h4 id="execution"><a name="execution" class="plugin-anchor" href="#execution"><span class="fa fa-link"></span></a>Execution</h4>
-<p>This is the step in which you will run the container and the tools you have packaged within. This step does not require sudo access, but it does take settings from a global configuration file which ITSR has control over. The container is immutable once created so you will not be able to install any more tools or anything like that, you also cannot change/store data in the container once its been created. All of that will have to happen in the bootstrap step, so if you want to change the version of the tool installed, you need to create a new image and bootstrap it with a different definition file. </p>
+<p>This is the step in which you will run the container and the tools you have packaged within. This step does not require sudo access, but it does take settings from a global configuration file which ITSR has control over. The image is immutable once created so you will not be able to install any more tools or anything like that, you also cannot change/store data in the image once its been created. All of that will have to happen in the bootstrap step, so if you want to change the version of the tool installed, you need to create a new image and bootstrap it with a different definition file. </p>
 <pre><code class="lang-bash">singularity <span class="hljs-built_in">exec</span> image_name.img <span class="hljs-built_in">command</span> [arguments ...]
 
 <span class="hljs-comment"># For example, to print bowtie2 help</span>
@@ -446,7 +446,7 @@ singularity <span class="hljs-built_in">exec</span> image_name.img bash
 <h4 id="singularity-on-apocrita"><a name="singularity-on-apocrita" class="plugin-anchor" href="#singularity-on-apocrita"><span class="fa fa-link"></span></a>Singularity on Apocrita</h4>
 <p>Singularity is installed on Apocrita and ITSR have allowed access to those willing to try it out. However, because singularity needs sudo access to create the empty image and for the bootstrap step, those two steps need to be completed outside Apocrita. Execution of a container does not require sudo access and thus it is possible to create the image on your own machine, copy it over to Apocrita and then run your packaged tool through singularity as your Apocrita user. </p>
 <h5 id="-data-mount"><a name="-data-mount" class="plugin-anchor" href="#-data-mount"><span class="fa fa-link"></span></a>/data mount</h5>
-<p>In order to have access to your data on Apocrita, you need to create the /data directory in your image during the bootstrap step. After doing that, Singularity will be able to mount all your data directories automatically when you run the container. If you do not have the /data directory made in your bootstrap step the container will not have any access to your data files. </p>
+<p>In order to have access to your data on Apocrita, you need to create the /data directory in your image during the bootstrap step. After doing that, Singularity will be able to mount all your data directories automatically when you run the container. If you do not have the /data directory made in your bootstrap step the container will not have any access to your data files on Apocrita. </p>
 <p>You do this in the %post section of your bootstrap definition file. It does not matter where, but I usually put it in the beginning to remember.</p>
 <h5 id="mpi"><a name="mpi" class="plugin-anchor" href="#mpi"><span class="fa fa-link"></span></a>MPI</h5>
 <p>Singularity does support MPI over the cluster scheduler out of the box. In order to get it running there are a couple of things you need to do though. </p>
@@ -454,12 +454,12 @@ singularity <span class="hljs-built_in">exec</span> image_name.img bash
 <p>In order to take advantage of MPI on the cluster a version of MPI must be installed in the singularity image, as well as a way for the MPI jobs to communicate. </p>
 <ul>
 <li>The MPI version must be the same as the one you load on Apocrita<ul>
-<li>Loading the module openmpi/1.6.5 on Apocrita means you need to install Open MPI 1.6.5 in the bootstrap step of your container</li>
+<li>Loading the module openmpi/1.6.5 on Apocrita means you need to install Open MPI 1.6.5 in the bootstrap step of your image</li>
 </ul>
 </li>
 <li>Installing openssh-server (using either yum or apt-get depending on your flavour) in the bootstrap step should enough to handle communications</li>
 </ul>
-<h6 id="running-the-image-on-the-queue"><a name="running-the-image-on-the-queue" class="plugin-anchor" href="#running-the-image-on-the-queue"><span class="fa fa-link"></span></a>Running the image on the queue</h6>
+<h6 id="executing-the-image-on-the-queue"><a name="executing-the-image-on-the-queue" class="plugin-anchor" href="#executing-the-image-on-the-queue"><span class="fa fa-link"></span></a>Executing the image on the queue</h6>
 <p>Requesting an MPI environment on the cluster can be done in several ways. The new hardware provision will provide a large number of compute cores with high performance interconnect, which is perfect for MPI. It is still not clear whether these machines will be on a separate queue or if everything will be handled by the scheduler internally. </p>
 <p>This is an example of a submission script which utilises MPI on the old provision. The number of parallel slots must match the -np argument supplied to mpirun!</p>
 <pre><code class="lang-bash"><span class="hljs-shebang">#!/bin/sh</span>
