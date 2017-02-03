@@ -15,7 +15,7 @@ There are three fundamental steps to creating and running a container with Singu
 3. Running the container
 
 #### Definition file
-This is a description file which tells singularity what to put inside the image. There are a few ways of doing it, but the most fundamental way is to have it download a version of ubuntu or centos, then install your tools/libraries through yum/apt-get/git etc. You can also import Docker containers in the bootstrap step. 
+This is a description file which tells singularity what to put inside the image. There are a few ways of doing it, but the most fundamental way is to have it download a version of ubuntu or centos, then install your tools/libraries through yum/apt-get/git etc. You can also import Docker images in the bootstrap step. 
 
 Here is an example of a fairly simple .def file (This particular one installs bowtie2-2.3.0 from sourceforge):
 
@@ -57,7 +57,7 @@ MirrorURL: http://archive.ubuntu.com/ubuntu/
 ```
 
 #### Bootstrap
-To create an image which contains the things you detailed in the definition file, you need to first create an empty image and then run the bootstrap. These two steps are the only ones that require sudo access. The default image size is 768MB, which is enough for many lightweight toolchains, but you can decide the image size yourself. Unfortunately it cannot be automatically grown by the bootstrap command, so if it runs out of space it will just crash. Delete the image and create a new one with larger size and try again. Sometimes its hard to tell what size you will need, I have created images varying in size from 768MB to 10GB. 
+To create an image which contains the things you detailed in the definition file, you need to first create an empty image and then run the bootstrap. These two steps are the only ones that require sudo access. The default image size is 768MB, which is enough for many lightweight toolchains, but you can decide the image size yourself. Unfortunately it cannot be automatically grown by the bootstrap command, so if it runs out of space it will just crash. If this happens, delete the image and create a new one with larger size and try again. Sometimes its hard to tell what size you will need, I have created images varying in size from 768MB to 10GB. 
 
 ```bash
 sudo singularity create --size 1024 image_name.img       
@@ -68,7 +68,7 @@ sudo singularity bootstrap image_name.img definition_file.def
 ```
 
 #### Execution
-This is the step in which you will run the container and the tools you have packaged within. This step does not require sudo access, but it does take settings from a global configuration file which ITSR has control over. The container is immutable once created so you will not be able to install any more tools or anything like that, you also cannot change/store data in the container once its been created. All of that will have to happen in the bootstrap step, so if you want to change the version of the tool installed, you need to create a new image and bootstrap it with a different definition file. 
+This is the step in which you will run the container and the tools you have packaged within. This step does not require sudo access, but it does take settings from a global configuration file which ITSR has control over. The image is immutable once created so you will not be able to install any more tools or anything like that, you also cannot change/store data in the image once its been created. All of that will have to happen in the bootstrap step, so if you want to change the version of the tool installed, you need to create a new image and bootstrap it with a different definition file. 
 
 ```bash
 singularity exec image_name.img command [arguments ...]
@@ -90,7 +90,7 @@ singularity exec image_name.img bash
 Singularity is installed on Apocrita and ITSR have allowed access to those willing to try it out. However, because singularity needs sudo access to create the empty image and for the bootstrap step, those two steps need to be completed outside Apocrita. Execution of a container does not require sudo access and thus it is possible to create the image on your own machine, copy it over to Apocrita and then run your packaged tool through singularity as your Apocrita user. 
 
 ##### /data mount
-In order to have access to your data on Apocrita, you need to create the /data directory in your image during the bootstrap step. After doing that, Singularity will be able to mount all your data directories automatically when you run the container. If you do not have the /data directory made in your bootstrap step the container will not have any access to your data files. 
+In order to have access to your data on Apocrita, you need to create the /data directory in your image during the bootstrap step. After doing that, Singularity will be able to mount all your data directories automatically when you run the container. If you do not have the /data directory made in your bootstrap step the container will not have any access to your data files on Apocrita. 
 
 You do this in the %post section of your bootstrap definition file. It does not matter where, but I usually put it in the beginning to remember.
 
@@ -101,10 +101,10 @@ Singularity does support MPI over the cluster scheduler out of the box. In order
 In order to take advantage of MPI on the cluster a version of MPI must be installed in the singularity image, as well as a way for the MPI jobs to communicate. 
 
 * The MPI version must be the same as the one you load on Apocrita
-	* Loading the module openmpi/1.6.5 on Apocrita means you need to install Open MPI 1.6.5 in the bootstrap step of your container
+	* Loading the module openmpi/1.6.5 on Apocrita means you need to install Open MPI 1.6.5 in the bootstrap step of your image
 * Installing openssh-server (using either yum or apt-get depending on your flavour) in the bootstrap step should enough to handle communications
 
-###### Running the image on the queue
+###### Executing the image on the queue
 Requesting an MPI environment on the cluster can be done in several ways. The new hardware provision will provide a large number of compute cores with high performance interconnect, which is perfect for MPI. It is still not clear whether these machines will be on a separate queue or if everything will be handled by the scheduler internally. 
 
 This is an example of a submission script which utilises MPI on the old provision. The number of parallel slots must match the -np argument supplied to mpirun!
