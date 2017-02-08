@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.11" data-basepath="." data-revision="Fri Feb 03 2017 16:52:45 GMT+0000 (UTC)">
+    <div class="book" data-level="1.11" data-basepath="." data-revision="Wed Feb 08 2017 10:10:33 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -490,6 +490,8 @@ mpirun -np <span class="hljs-number">4</span> singularity <span class="hljs-buil
 <p>Singularity will automatically mount your home directory, but it did not automatically mount the rest of /data, which is where almost all users have their data spread out. ITSR changed the config file for Singularity to automatically mount all of /data instead of just /data/home/username, that way all data that users have access to should be available in the container. Very simple and quick fix.</p>
 <h6 id="debootstrap-not-installed-solved"><a name="debootstrap-not-installed-solved" class="plugin-anchor" href="#debootstrap-not-installed-solved"><span class="fa fa-link"></span></a>debootstrap not installed - SOLVED</h6>
 <p>This was a minor issue, but the host you are creating your images on has to have the tool debootstrap installed if you are going to base your images on ubuntu. This has to be installed with yum on a centos machine and may have to be installed even on ubuntu machines. <code>sudo yum install debootstrap</code> should do the trick. You might have to install yum on ubuntu to create centos images? (Not tested)</p>
+<h6 id="-def-file-too-large-workaround"><a name="-def-file-too-large-workaround" class="plugin-anchor" href="#-def-file-too-large-workaround"><span class="fa fa-link"></span></a>.def file too large - WORKAROUND</h6>
+<p>Found that one of my def files was too large, singularity complains in the bootstrap step if there is too many characters in the %post section. I recompiled Singularity on the machine where I build the images after editing some of the C code. It did work but I had to run the binary from the src directory, running <code>sudo make install</code> did not change anything...! More info on this <a href="https://github.com/singularityware/singularity/issues/456" target="_blank">github issue</a>.</p>
 
                     
                     </section>
