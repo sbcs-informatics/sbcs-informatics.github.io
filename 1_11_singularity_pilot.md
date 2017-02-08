@@ -146,3 +146,8 @@ Singularity will automatically mount your home directory, but it did not automat
 
 ###### debootstrap not installed - SOLVED
 This was a minor issue, but the host you are creating your images on has to have the tool debootstrap installed if you are going to base your images on ubuntu. This has to be installed with yum on a centos machine and may have to be installed even on ubuntu machines. `sudo yum install debootstrap` should do the trick. You might have to install yum on ubuntu to create centos images? (Not tested)
+
+###### .def file too large - WORKAROUND
+Found that one of my def files was too large, singularity complains in the bootstrap step if there is too many characters in the %post section. I recompiled Singularity on the machine where I build the images after editing some of the C code. It did work but I had to run the binary from the src directory, running `sudo make install` did not change anything...! More info on this [github issue](https://github.com/singularityware/singularity/issues/456).
+
+
