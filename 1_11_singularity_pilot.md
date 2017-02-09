@@ -2,7 +2,7 @@
 
 ITS Research have installed [Singularity](singularity.lbl.gov) for us to test in SBCS. Singularity is a containerisation platform which enables full control of the environment in which a program runs, without having to rely on libraries and software installed on the Apocrita filesystem. 
 
-IF YOU WANT TO TRY SINGULARITY DURING THE PILOT PHASE PLEASE [CONTACT ADRIAN](3_0_contact.md)
+#IF YOU WANT TO TRY SINGULARITY DURING THE PILOT PHASE PLEASE [CONTACT ADRIAN](3_0_contact.md)
 
 ### Containers
 There are many flavours of containers and each has benefits and downsides. Docker is the most ubiquitous and the platform with the most features. However, there are some serious security flaws which prevents us from using Docker on the HPC. Singularity does however support a very simple import of Docker containers from the repository [Docker Hub](hub.docker.com).
@@ -203,3 +203,4 @@ This was a minor issue, but the host you are creating your images on has to have
 Found that one of my def files was too large, singularity complains in the bootstrap step if there is too many characters in the %post section. I recompiled Singularity on the machine where I build the images after editing some of the C code. It did work but I had to run the binary from the src directory, running `sudo make install` did not change anything...! More info on this [github issue](https://github.com/singularityware/singularity/issues/456).
 
 
+![QMUL logo](./img/qmul_logo.png)
