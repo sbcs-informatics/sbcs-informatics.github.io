@@ -2,16 +2,18 @@
 
 ITS Research have installed [Singularity](singularity.lbl.gov) for us to test in SBCS. Singularity is a containerisation platform which enables full control of the environment in which a program runs, without having to rely on libraries and software installed on the Apocrita filesystem. 
 
+IF YOU WANT TO TRY SINGULARITY DURING THE PILOT PHASE PLEASE [CONTACT ADRIAN](3_0_contact.md)
+
 ### Containers
 There are many flavours of containers and each has benefits and downsides. Docker is the most ubiquitous and the platform with the most features. However, there are some serious security flaws which prevents us from using Docker on the HPC. Singularity does however support a very simple import of Docker containers from the repository [Docker Hub](hub.docker.com).
 
 ### Quick-start import a Docker container from [Docker Hub](hub.docker.com)
-If you have ever found a docker container you might want to use on Apocrita, the following will explain how to make it run on the cluster through Singularity. 
+If you have ever found a docker container you might want to use on Apocrita, the following will explain how to make it run on the cluster through Singularity. You do not need a Docker Hub user account but you do need to know the Docker Hub user and container names.
 
 The only thing you need is access to a machine with Singularity installed where you have administrator permissions. This can be a Virtual Machine (VM) with Linux and Singularity installed in it or your local Linux machine if you have one. If you are unsure about what this means or how to create a VM like that, [please get in contact](3_0_contact.md).
 
 #### 1. Create a definition file
-Create a new text file and enter the following. Exchange the name of the Docker container from Docker Hub in the second line after `From: ` to your preferred container. Leave everything else as it is. 
+Create a new text file and enter the following. Exchange the name of the Docker container from Docker Hub in the second line after `From: ` to your preferred container. Leave everything else as it is. The Docker Hub user in this example is bioconductor and the container name is release_sequencing. The identifier for this container is thus `bioconductor/release_sequencing`. 
 
 `my_definition_file.def`:
 ```bash
@@ -37,19 +39,22 @@ sudo singularity bootstrap image_name.img my_definition_file.def
 #### 3. Copy the image to Apocrita and run!
 The image is ready to be transferred to Apocrita for execution on the cluster. 
 
-```
+```bash
 scp image_name.img btw000@login.hpc.qmul.ac.uk:~/
 # Using scp to copy the image to your home directory on Apocrita
 ```
 
 Once the image is on the Apocrita file system, create your submission script and add the following to run your newly created container. 
 
-```
+You can test your container in a qlogin session
+
+```bash
+qlogin
 module load singularity
 singularity exec image_name.img command_name argument1 argument2
 
-#singularity exec image_name.img    <- This is a Singularity call which will run something from inside image_name.img
-#command_name argument1 argument2   <- This is the call to the software which you want to run from inside the container
+#singularity exec image_name.img    <- This is a Singularity call
+#command_name argument1 argument2   <- This is your call to the software
 ```
 
 ### Creating a custom definition file
