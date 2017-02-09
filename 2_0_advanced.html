@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="2" data-basepath="." data-revision="Thu Feb 09 2017 17:03:35 GMT+0000 (UTC)">
+    <div class="book" data-level="2" data-basepath="." data-revision="Thu Feb 09 2017 17:28:15 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -384,17 +384,19 @@
 <li>Dual 6-core Intel Westmere (E5645) - 2.4GHz</li>
 <li>Memory 24GB</li>
 </ul>
-<p>Hyperthreading is currently disabled on the thin nodes. </p>
+<p>Hyperthreading is currently disabled on the thin nodes, giving us 12 cores and 24GB RAM, 2GB RAM per core. </p>
 <h4 id="fat-nodes"><a name="fat-nodes" class="plugin-anchor" href="#fat-nodes"><span class="fa fa-link"></span></a>Fat Nodes</h4>
 <ul>
 <li>11 Nodes</li>
 <li>Four 12-core AMD Bulldozer (6234) - 2.4GHz</li>
 <li>Memory 512GB</li>
 </ul>
+<p>Fat nodes total 48 cores and 512GB RAM, ~10.67GB RAM per core.</p>
 <h4 id="frontends"><a name="frontends" class="plugin-anchor" href="#frontends"><span class="fa fa-link"></span></a>Frontends</h4>
 <ul>
-<li>frontend1.apocrita.hpc.qmul.ac.uk - This is the one you should be using to connect to Apocrita. <code>login.hpc.qmul.ac.uk</code> currently points to frontend1.</li>
-<li>frontend2.apocrita.hpc.qmul.ac.uk - Sometimes, frontend1 is unavailable, in this case try frontend2. Galaxy runs on frontend2.</li>
+<li>frontend1.apocrita.hpc.qmul.ac.uk - This is a legacy server, you should not connect to frontend1 anymore. </li>
+<li>frontend8.apocrita.hpc.qmul.ac.uk - This is the one you should be using to connect to Apocrita. <code>login.hpc.qmul.ac.uk</code> currently points to frontend8.</li>
+<li>frontend2.apocrita.hpc.qmul.ac.uk - Galaxy runs on frontend2.</li>
 <li>There are other servers with the naming convention frontend# which in fact are <strong>utility servers</strong>, listed below.</li>
 </ul>
 <h4 id="other-information-on-apocrita"><a name="other-information-on-apocrita" class="plugin-anchor" href="#other-information-on-apocrita"><span class="fa fa-link"></span></a>Other information on Apocrita</h4>
@@ -442,8 +444,8 @@
 <li>cachecade using a 100GB SSD. This is a caching of the local spinning disks onto the SSD. In principle it should increase performance on /tmp.</li>
 </ul>
 <h3 id="gpu"><a name="gpu" class="plugin-anchor" href="#gpu"><span class="fa fa-link"></span></a>GPU</h3>
-<p>There are no GPUs on Apocrita, if you need this for your analysis you should talk to your PI about acquisition. ITSR have been looking into the interest of such a purchase. 
-<a name="ssh-keys"></a></p>
+<p>There are no GPUs on Apocrita, if you need this for your analysis you should talk to your PI about acquisition. ITSR have been looking into the interest of such a purchase. </p>
+<p><a name="ssh-keys"></a></p>
 <h2 id="2-ssh-keys"><a name="2-ssh-keys" class="plugin-anchor" href="#2-ssh-keys"><span class="fa fa-link"></span></a>2. SSH Keys</h2>
 <h3 id="keys"><a name="keys" class="plugin-anchor" href="#keys"><span class="fa fa-link"></span></a>Keys</h3>
 <p>You can set up a pair of SSH keys for a more secure as well as password-less login to Apocrita. This is done by having a private key on your local machine, and a matching public key on the remote server, when you try to log in these two match up and let you in without having to type the user password. The private key should never be shared with anyone as it will allow that person access to your login. This is why you should always <strong>protect your private key</strong> with a passphrase.</p>
