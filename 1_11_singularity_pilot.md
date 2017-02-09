@@ -3,9 +3,56 @@
 ITS Research have installed [Singularity](singularity.lbl.gov) for us to test in SBCS. Singularity is a containerisation platform which enables full control of the environment in which a program runs, without having to rely on libraries and software installed on the Apocrita filesystem. 
 
 ### Containers
-There are many flavours of containers and each has benefits and downsides. Docker is the most ubiquitous and the platform with the most features. However, there are some serious security flaws which prevents us from using Docker on the HPC. 
+There are many flavours of containers and each has benefits and downsides. Docker is the most ubiquitous and the platform with the most features. However, there are some serious security flaws which prevents us from using Docker on the HPC. Singularity does however support a very simple import of Docker containers from the repository [Docker Hub](hub.docker.com).
 
-### Singularity
+### Quick-start import a Docker container from [Docker Hub](hub.docker.com)
+If you have ever found a docker container you might want to use on Apocrita, the following will explain how to make it run on the cluster through Singularity. 
+
+The only thing you need is access to a machine with Singularity installed where you have administrator permissions. This can be a Virtual Machine (VM) with Linux and Singularity installed in it or your local Linux machine if you have one. If you are unsure about what this means or how to create a VM like that, [please get in contact](3_0_contact.md).
+
+#### 1. Create a definition file
+Create a new text file and enter the following. Exchange the name of the Docker container from Docker Hub in the second line after `From: ` to your preferred container. Leave everything else as it is. 
+
+`my_definition_file.def`:
+```bash
+Bootstrap: docker
+From: bioconductor/release_sequencing
+IncludeCmd: yes
+
+%post
+        mkdir /data
+```
+
+#### 2. Build the image
+To create the image and import the docker container run the following commands. Depending on the size of the Docker container, you may have to increase the size of your image. This is the step which requires administrative permissions on a Linux machine. 
+
+```bash
+sudo singularity create --size 1024 image_name.img       
+# Create empty image of size 1024MB
+
+sudo singularity bootstrap image_name.img my_definition_file.def
+# Run bootstrap on that image
+```
+
+#### 3. Copy the image to Apocrita and run!
+The image is ready to be transferred to Apocrita for execution on the cluster. 
+
+```
+scp image_name.img btw000@login.hpc.qmul.ac.uk:~/
+# Using scp to copy the image to your home directory on Apocrita
+```
+
+Once the image is on the Apocrita file system, create your submission script and add the following to run your newly created container. 
+
+```
+module load singularity
+singularity exec image_name.img command_name argument1 argument2
+
+#singularity exec image_name.img    <- This is a Singularity call which will run something from inside image_name.img
+#command_name argument1 argument2   <- This is the call to the software which you want to run from inside the container
+```
+
+### Creating a custom definition file
 Unlike Docker, Singularity does not have a daemon running as root to control the containers running on the system. Everything is running as your user. However, in the steps that build the image file you need sudo access. For this reason, those steps cannot be completed on the Apocrita file system and must be carried out on another machine. This could for example be your desktop computer if you have a linux machie, a Virtual Machine you have set up yourself, or the vagrant VM that ITSR provides. After you are done creating the image you can copy it to Apocrita and run it. 
 
 There are three fundamental steps to creating and running a container with Singularity.
