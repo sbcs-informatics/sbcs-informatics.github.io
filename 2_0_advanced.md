@@ -10,16 +10,19 @@ This section contains more advanced information as well as tips and tricks for u
 * Dual 6-core Intel Westmere (E5645) - 2.4GHz
 * Memory 24GB
 
-Hyperthreading is currently disabled on the thin nodes. 
+Hyperthreading is currently disabled on the thin nodes, giving us 12 cores and 24GB RAM, 2GB RAM per core. 
 
 #### Fat Nodes
 * 11 Nodes
 * Four 12-core AMD Bulldozer (6234) - 2.4GHz
 * Memory 512GB
 
+Fat nodes total 48 cores and 512GB RAM, ~10.67GB RAM per core.
+
 #### Frontends
-* frontend1.apocrita.hpc.qmul.ac.uk - This is the one you should be using to connect to Apocrita. `login.hpc.qmul.ac.uk` currently points to frontend1.
-* frontend2.apocrita.hpc.qmul.ac.uk - Sometimes, frontend1 is unavailable, in this case try frontend2. Galaxy runs on frontend2.
+* frontend1.apocrita.hpc.qmul.ac.uk - This is a legacy server, you should not connect to frontend1 anymore. 
+* frontend8.apocrita.hpc.qmul.ac.uk - This is the one you should be using to connect to Apocrita. `login.hpc.qmul.ac.uk` currently points to frontend8.
+* frontend2.apocrita.hpc.qmul.ac.uk - Galaxy runs on frontend2.
 * There are other servers with the naming convention frontend# which in fact are **utility servers**, listed below.
 
 #### Other information on Apocrita
@@ -67,6 +70,7 @@ These two identical machines are similar to sm11 but are running newer hardware.
 
 ### GPU
 There are no GPUs on Apocrita, if you need this for your analysis you should talk to your PI about acquisition. ITSR have been looking into the interest of such a purchase. 
+
 <a name="ssh-keys"></a>
 ## 2. SSH Keys
 
