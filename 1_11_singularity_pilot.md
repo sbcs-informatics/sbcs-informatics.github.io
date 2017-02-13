@@ -1,13 +1,13 @@
 ## 11. Singularity Pilot
 
-ITS Research have installed [Singularity](singularity.lbl.gov) for us to test in SBCS. Singularity is a containerisation platform which enables full control of the environment in which a program runs, without having to rely on libraries and software installed on the Apocrita filesystem. 
+ITS Research have installed [Singularity](https://singularity.lbl.gov) for us to test in SBCS. Singularity is a containerisation platform which enables full control of the environment in which a program runs, without having to rely on libraries and software installed on the Apocrita filesystem. 
 
 #IF YOU WANT TO TRY SINGULARITY DURING THE PILOT PHASE PLEASE [CONTACT ADRIAN](3_0_contact.md)
 
 ### Containers
-There are many flavours of containers and each has benefits and downsides. Docker is the most ubiquitous and the platform with the most features. However, there are some serious security flaws which prevents us from using Docker on the HPC. Singularity does however support a very simple import of Docker containers from the repository [Docker Hub](hub.docker.com).
+There are many flavours of containers and each has benefits and downsides. Docker is the most ubiquitous and the platform with the most features. However, there are some serious security flaws which prevents us from using Docker on the HPC. Singularity does however support a very simple import of Docker containers from the repository [Docker Hub](https://hub.docker.com).
 
-### Quick-start import a Docker container from [Docker Hub](hub.docker.com)
+### Quick-start import a Docker container from [Docker Hub](https://hub.docker.com)
 If you have ever found a docker container you might want to use on Apocrita, the following will explain how to make it run on the cluster through Singularity. You do not need a Docker Hub user account but you do need to know the Docker Hub user and container names.
 
 The only thing you need is access to a machine with Singularity installed where you have administrator permissions. This can be a Virtual Machine (VM) with Linux and Singularity installed in it or your local Linux machine if you have one. If you are unsure about what this means or how to create a VM like that, [please get in contact](3_0_contact.md).
