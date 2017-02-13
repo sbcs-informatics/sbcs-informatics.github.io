@@ -89,8 +89,8 @@ MirrorURL: http://archive.ubuntu.com/ubuntu/
 	# This is needed to be able to add the universe repo
 	# which is needed for apt to find libtbb-dev
 
-	apt-get install -y software-properties-common     
-	add-apt-repository universe                       												  
+	apt-get install -y software-properties-common
+	add-apt-repository universe
 	
 	# Running normal apt-get update and isntalling the tools needed
 	apt-get update
@@ -202,5 +202,7 @@ This was a minor issue, but the host you are creating your images on has to have
 ###### .def file too large - WORKAROUND
 Found that one of my def files was too large, singularity complains in the bootstrap step if there is too many characters in the %post section. I recompiled Singularity on the machine where I build the images after editing some of the C code. It did work but I had to run the binary from the src directory, running `sudo make install` did not change anything...! More info on this [github issue](https://github.com/singularityware/singularity/issues/456).
 
+###### Software tries to write in installation directory - UNSOLVED
+When installing Trinity into a singularity container, Trinity comes with several of its dependencies in the bundle. One of them is jellyfish. jellyfish, when executed, tries to write a file in its installation directory - which is cannot do due to the read only file system. I do not know if this can be resolved at all. 
 
 ![QMUL logo](./img/qmul_logo.png)
