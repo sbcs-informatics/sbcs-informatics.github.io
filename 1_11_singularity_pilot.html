@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.11" data-basepath="." data-revision="Thu Feb 09 2017 17:28:15 GMT+0000 (UTC)">
+    <div class="book" data-level="1.11" data-basepath="." data-revision="Mon Feb 13 2017 15:57:57 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -441,8 +441,8 @@ MirrorURL: http://archive.ubuntu.com/ubuntu/
     <span class="hljs-comment"># This is needed to be able to add the universe repo</span>
     <span class="hljs-comment"># which is needed for apt to find libtbb-dev</span>
 
-    apt-get install -y software-properties-common     
-    add-apt-repository universe                                                                         
+    apt-get install -y software-properties-common
+    add-apt-repository universe
 
     <span class="hljs-comment"># Running normal apt-get update and isntalling the tools needed</span>
     apt-get update
@@ -528,6 +528,8 @@ mpirun -np <span class="hljs-number">4</span> singularity <span class="hljs-buil
 <p>This was a minor issue, but the host you are creating your images on has to have the tool debootstrap installed if you are going to base your images on ubuntu. This has to be installed with yum on a centos machine and may have to be installed even on ubuntu machines. <code>sudo yum install debootstrap</code> should do the trick. You might have to install yum on ubuntu to create centos images? (Not tested)</p>
 <h6 id="-def-file-too-large-workaround"><a name="-def-file-too-large-workaround" class="plugin-anchor" href="#-def-file-too-large-workaround"><span class="fa fa-link"></span></a>.def file too large - WORKAROUND</h6>
 <p>Found that one of my def files was too large, singularity complains in the bootstrap step if there is too many characters in the %post section. I recompiled Singularity on the machine where I build the images after editing some of the C code. It did work but I had to run the binary from the src directory, running <code>sudo make install</code> did not change anything...! More info on this <a href="https://github.com/singularityware/singularity/issues/456" target="_blank">github issue</a>.</p>
+<h6 id="software-tries-to-write-in-installation-directory-unsolved"><a name="software-tries-to-write-in-installation-directory-unsolved" class="plugin-anchor" href="#software-tries-to-write-in-installation-directory-unsolved"><span class="fa fa-link"></span></a>Software tries to write in installation directory - UNSOLVED</h6>
+<p>When installing Trinity into a singularity container, Trinity comes with several of its dependencies in the bundle. One of them is jellyfish. jellyfish, when executed, tries to write a file in its installation directory - which is cannot do due to the read only file system. I do not know if this can be resolved at all. </p>
 <p><img src="img/qmul_logo.png" alt="QMUL logo"></p>
 
                     
