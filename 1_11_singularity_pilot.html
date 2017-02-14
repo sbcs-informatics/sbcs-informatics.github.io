@@ -44,7 +44,7 @@
     
 
         
-    <div class="book" data-level="1.11" data-basepath="." data-revision="Mon Feb 13 2017 17:03:51 GMT+0000 (UTC)">
+    <div class="book" data-level="1.11" data-basepath="." data-revision="Tue Feb 14 2017 15:27:06 GMT+0000 (UTC)">
     
 
 <div class="book-summary">
@@ -376,12 +376,12 @@
                     
                         <a id="edit-link" href="https://github.com/sbcs-informatics/sbcs-informatics.github.io/edit/src/1_11_singularity_pilot.md" class="btn fa fa-edit pull-left">&#xA0;&#xA0;Edit</a><h2 id="11-singularity-pilot"><a name="11-singularity-pilot" class="plugin-anchor" href="#11-singularity-pilot"><span class="fa fa-link"></span></a>11. Singularity Pilot</h2>
 <p>ITS Research have installed <a href="https://singularity.lbl.gov" target="_blank">Singularity</a> for us to test in SBCS. Singularity is a containerisation platform which enables full control of the environment in which a program runs, without having to rely on libraries and software installed on the Apocrita filesystem. </p>
-<h1 id="if-you-want-to-try-singularity-during-the-pilot-phase-please-contact-adrian-3-0-contact-md"><a name="if-you-want-to-try-singularity-during-the-pilot-phase-please-contact-adrian-3-0-contact-md" class="plugin-anchor" href="#if-you-want-to-try-singularity-during-the-pilot-phase-please-contact-adrian-3-0-contact-md"><span class="fa fa-link"></span></a>IF YOU WANT TO TRY SINGULARITY DURING THE PILOT PHASE PLEASE <a href="3_0_contact.html">CONTACT ADRIAN</a></h1>
-<h3 id="containers"><a name="containers" class="plugin-anchor" href="#containers"><span class="fa fa-link"></span></a>Containers</h3>
+<h1 id="if-you-want-to-try-singularity-during-the-pilot-phase-please-contact-adrian-3-0-contact-md"><a name="if-you-want-to-try-singularity-during-the-pilot-phase-please-contact-adrian-3-0-contact-md" class="plugin-anchor" href="#if-you-want-to-try-singularity-during-the-pilot-phase-please-contact-adrian-3-0-contact-md"><span class="fa fa-link"></span></a>IF YOU WANT TO TRY SINGULARITY DURING THE PILOT PHASE, PLEASE <a href="3_0_contact.html">CONTACT ADRIAN</a></h1>
+<h2 id="containers"><a name="containers" class="plugin-anchor" href="#containers"><span class="fa fa-link"></span></a>Containers</h2>
 <p>There are many flavours of containers and each has benefits and downsides. Docker is the most ubiquitous and the platform with the most features. However, there are some serious security flaws which prevents us from using Docker on the HPC. Singularity does however support a very simple import of Docker containers from the repository <a href="https://hub.docker.com" target="_blank">Docker Hub</a>.</p>
-<h3 id="quick-start-import-a-docker-container-from-docker-hub-https-hub-docker-com"><a name="quick-start-import-a-docker-container-from-docker-hub-https-hub-docker-com" class="plugin-anchor" href="#quick-start-import-a-docker-container-from-docker-hub-https-hub-docker-com"><span class="fa fa-link"></span></a>Quick-start import a Docker container from <a href="https://hub.docker.com" target="_blank">Docker Hub</a></h3>
+<h2 id="quick-start-import-a-docker-container-from-docker-hub-https-hub-docker-com"><a name="quick-start-import-a-docker-container-from-docker-hub-https-hub-docker-com" class="plugin-anchor" href="#quick-start-import-a-docker-container-from-docker-hub-https-hub-docker-com"><span class="fa fa-link"></span></a>Quick-start import a Docker container from <a href="https://hub.docker.com" target="_blank">Docker Hub</a></h2>
 <p>If you have ever found a docker container you might want to use on Apocrita, the following will explain how to make it run on the cluster through Singularity. You do not need a Docker Hub user account but you do need to know the Docker Hub user and container names.</p>
-<p>The only thing you need is access to a machine with Singularity installed where you have administrator permissions. This can be a Virtual Machine (VM) with Linux and Singularity installed in it or your local Linux machine if you have one. If you are unsure about what this means or how to create a VM like that, <a href="3_0_contact.html">please get in contact</a>.</p>
+<p>The only thing you need is access to a machine with Singularity installed where you have administrator permissions. This can be a Virtual Machine (VM) with Linux and Singularity installed in it or your local Linux machine if you have one. Here are instructions on how to get singularity running on a <a href="http://singularity.lbl.gov/install-mac" target="_blank">Mac</a> and on <a href="http://singularity.lbl.gov/install-linux" target="_blank">Linux</a>. If you are unsure about what this means or how to create a VM like that, <a href="3_0_contact.html">please get in contact</a>.</p>
 <h4 id="1-create-a-definition-file"><a name="1-create-a-definition-file" class="plugin-anchor" href="#1-create-a-definition-file"><span class="fa fa-link"></span></a>1. Create a definition file</h4>
 <p>Create a new text file and enter the following. Exchange the name of the Docker container from Docker Hub in the second line after <code>From:</code> to your preferred container. Leave everything else as it is. The Docker Hub user in this example is bioconductor and the container name is release_sequencing. The identifier for this container is thus <code>bioconductor/release_sequencing</code>. </p>
 <p><code>my_definition_file.def</code>:</p>
@@ -393,11 +393,11 @@ IncludeCmd: yes
         mkdir /data
 </code></pre>
 <h4 id="2-build-the-image"><a name="2-build-the-image" class="plugin-anchor" href="#2-build-the-image"><span class="fa fa-link"></span></a>2. Build the image</h4>
-<p>To create the image and import the docker container run the following commands. Depending on the size of the Docker container, you may have to increase the size of your image. This is the step which requires administrative permissions on a Linux machine. </p>
-<pre><code class="lang-bash">sudo singularity create --size <span class="hljs-number">1024</span> image_name.img       
+<p>To create the image and import the docker container run the following commands. Depending on the size of the Docker container, you may have to increase the size of your image. This is the step which requires administrative permissions on a Linux machine with Singularity installed.</p>
+<pre><code class="lang-bash">sudo singularity create --size <span class="hljs-number">1024</span> my_image_name.img
 <span class="hljs-comment"># Create empty image of size 1024MB</span>
 
-sudo singularity bootstrap image_name.img my_definition_file.def
+sudo singularity bootstrap my_image_name.img my_definition_file.def
 <span class="hljs-comment"># Run bootstrap on that image</span>
 </code></pre>
 <h4 id="3-copy-the-image-to-apocrita-and-run"><a name="3-copy-the-image-to-apocrita-and-run" class="plugin-anchor" href="#3-copy-the-image-to-apocrita-and-run"><span class="fa fa-link"></span></a>3. Copy the image to Apocrita and run!</h4>
@@ -405,17 +405,19 @@ sudo singularity bootstrap image_name.img my_definition_file.def
 <pre><code class="lang-bash">scp image_name.img btw000@login.hpc.qmul.ac.uk:~/
 <span class="hljs-comment"># Using scp to copy the image to your home directory on Apocrita</span>
 </code></pre>
-<p>Once the image is on the Apocrita file system, create your submission script and add the following to run your newly created container. </p>
-<p>You can test your container in a qlogin session</p>
+<p>Once the image is on the Apocrita file system, create your submission script and add a singularity call to it to run your newly created container.</p>
+<p>You can test your container first in a qlogin session, here is how it works:</p>
 <pre><code class="lang-bash">qlogin
 module load singularity
-singularity <span class="hljs-built_in">exec</span> image_name.img <span class="hljs-built_in">command</span>_name argument1 argument2
+singularity <span class="hljs-built_in">exec</span> my_image_name.img <span class="hljs-built_in">command</span>_name argument1 argument2
 
-<span class="hljs-comment">#singularity exec image_name.img    &lt;- This is a Singularity call</span>
+<span class="hljs-comment">#singularity exec my_image_name.img    &lt;- This is a Singularity call</span>
 <span class="hljs-comment">#command_name argument1 argument2   &lt;- This is your call to the software</span>
 </code></pre>
+<p>That&apos;s it! You have executed your first Singularity image.</p>
+<h2 id="advanced-singularity"><a name="advanced-singularity" class="plugin-anchor" href="#advanced-singularity"><span class="fa fa-link"></span></a>Advanced Singularity</h2>
 <h3 id="creating-a-custom-definition-file"><a name="creating-a-custom-definition-file" class="plugin-anchor" href="#creating-a-custom-definition-file"><span class="fa fa-link"></span></a>Creating a custom definition file</h3>
-<p>Unlike Docker, Singularity does not have a daemon running as root to control the containers running on the system. Everything is running as your user. However, in the steps that build the image file you need sudo access. For this reason, those steps cannot be completed on the Apocrita file system and must be carried out on another machine. This could for example be your desktop computer if you have a linux machie, a Virtual Machine you have set up yourself, or the vagrant VM that ITSR provides. After you are done creating the image you can copy it to Apocrita and run it. </p>
+<p>Unlike Docker, Singularity does not have a daemon running as root to control the containers running on the system. Everything is running as your user. However, in the steps that build the image file you need sudo access. For this reason, those steps cannot be completed on the Apocrita file system and must be carried out on another machine. This could for example be your desktop computer if you have a linux machine, a Virtual Machine you have set up yourself, or the vagrant VM that ITSR provides. There are official instructions on how to run singularity on a <a href="http://singularity.lbl.gov/install-mac" target="_blank">Mac</a> and on <a href="http://singularity.lbl.gov/install-linux" target="_blank">Linux</a>. After you are done creating the Singularity image, you can copy it to Apocrita and run it.</p>
 <p>There are three fundamental steps to creating and running a container with Singularity.</p>
 <ol>
 <li>Writing a bootstrap definition file</li>
@@ -425,7 +427,7 @@ singularity <span class="hljs-built_in">exec</span> image_name.img <span class="
 <h4 id="definition-file"><a name="definition-file" class="plugin-anchor" href="#definition-file"><span class="fa fa-link"></span></a>Definition file</h4>
 <p>This is a description file which tells singularity what to put inside the image. There are a few ways of doing it, but the most fundamental way is to have it download a version of ubuntu or centos, then install your tools/libraries through yum/apt-get/git etc. You can also import Docker images in the bootstrap step. </p>
 <p>Here is an example of a fairly simple .def file (This particular one installs bowtie2-2.3.0 from sourceforge):</p>
-<p>The first three lines describe how to start the bootstrap procedure, here we choose Ubuntu Xenial and point to where it can be downloaded. Everything in the %post block runs once when the image is bootstrapped. A %test section is included as well to make sure everything worked out. There are other sections you can include here too, see the <a href="http://singularity.lbl.gov/bootstrap-image" target="_blank">Singularity documentation</a>.</p>
+<p>The first three lines specify the most common operating system, Ubuntu Xenial, and point to where it can be downloaded (There are other flavours of Linux you can build the image upon, if required see the <a href="http://singularity.lbl.gov/bootstrap-image" target="_blank">Singularity documentation</a>). Everything in the %post block runs once when the image is bootstrapped. A %test section is included as well to make sure everything worked out. There are other sections you can include here too, see the <a href="http://singularity.lbl.gov/bootstrap-image" target="_blank">Singularity documentation</a>.</p>
 <pre><code class="lang-bash">Bootstrap: debootstrap
 OSversion: xenial
 MirrorURL: http://archive.ubuntu.com/ubuntu/
